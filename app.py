@@ -1,8 +1,9 @@
 """Run with: streamlit run app.py"""
 import base64
-import os
+import logging
 import streamlit as st
 from grievance import agents
+from grievance.speech import readiness, transcribe_local
 from grievance.knowledge import AUTHORITIES
 from grievance.storage import aggregates, save_aggregate
 
@@ -13,7 +14,7 @@ for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None
 st.sidebar.title("⚖️ Civic Access")
 st.sidebar.caption("Pak Angels • Pakistan National Impact Challenge")
 page = st.sidebar.radio("Workspace", ["Submit Grievance", "Live Tracker", "Analytics & Heatmap", "Knowledge Base Admin"])
-st.sidebar.info("Demo workspace. Electronic dispatch is simulated. Private case details stay in this browser session; uploaded documents are not saved to disk.")
+st.sidebar.info("Demo workspace. Electronic dispatch is simulated. Private case details stay in this session on the app server; uploaded documents are not saved to disk.")
 st.title("Public Grievance & Statutory Escalation Platform")
 st.caption("A clearer path from a public service problem to a prepared complaint.")
 
@@ -41,15 +42,35 @@ if page == "Submit Grievance":
         st.subheader("Tell us what happened")
         mode = st.radio("Input method", ["Text", "Voice"], horizontal=True)
         if mode == "Voice":
+            ready, speech_status = readiness()
+            if ready:
+                st.success(speech_status)
+            else:
+                st.warning(speech_status)
+            language = st.selectbox("Recording language", ["Urdu", "English", "Detect automatically"])
             recording = st.audio_input("Record in Urdu or English")
             audio = st.file_uploader("Or upload audio", type=["wav", "mp3", "m4a"])
             source = recording or audio
-            st.caption("Transcription uses OpenAI when configured. Offline mode accepts a typed transcript. Audio is sent only when you select Transcribe.")
-            if source and st.button("Transcribe audio"):
+            if source:
+                # Retain the recording across reruns/settings changes in this session.
+                st.session_state["pending_recording"] = {"bytes": source.getvalue(), "name": source.name}
+            pending = st.session_state.get("pending_recording")
+            st.caption("Audio is processed on the server running this app. No OpenAI account is needed. Keep recordings under 2 minutes / 10 MB. The first request downloads the speech model and may take a few minutes.")
+            if pending:
+                st.audio(pending["bytes"])
+                st.download_button("Save my recording", pending["bytes"], pending["name"], key="save_recording")
+                if not source:
+                    st.caption("Using the recording retained from this session.")
+            if st.button("Transcribe audio", disabled=not ready or not pending):
                 try:
-                    st.session_state["narrative"] = agents.transcribe(source.getvalue(), source.name)
+                    with st.spinner("Preparing the speech model and transcribing… The first request may take a few minutes."):
+                        transcript = transcribe_local(pending["bytes"], {"Urdu": "ur", "English": "en", "Detect automatically": None}[language])
+                    st.session_state["narrative"] = transcript
+                    st.success("Transcription is ready in the complaint box below. Please review it for accuracy.")
                 except Exception as exc:
-                    st.error(str(exc) if isinstance(exc, ValueError) else "Transcription failed. Check your API configuration or enter a transcript.")
+                    if not isinstance(exc, ValueError):
+                        logging.getLogger(__name__).exception("Speech transcription failed")
+                    st.error(str(exc) if isinstance(exc, ValueError) else "Transcription could not finish. Try a shorter WAV or MP3 recording. If it keeps failing, ask the app owner to check the server logs. Your recording has been retained.")
         with st.form("grievance"):
             left, right = st.columns(2)
             with left:

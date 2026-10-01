@@ -1,0 +1,2 @@
+# Also included in requirements.txt for automatic Streamlit Cloud installation.
+faster-whisper==1.2.1

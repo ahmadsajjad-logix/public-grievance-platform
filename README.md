@@ -14,9 +14,25 @@ python -m venv .venv
 
 No API key is needed for typed English/Roman Urdu complaints. Select a category, enter a complaint, authorize document processing, and select **Prepare my grievance**. The PDF and calendar appear under **Petition & Downloads**. Missing attachments are explicitly reported, but do not prevent generating a draft.
 
-## Optional integrations
+## Deploy on Streamlit Community Cloud
 
-- Audio: set `OPENAI_API_KEY` and optionally `TRANSCRIPTION_MODEL` in the environment. Only the explicit transcription action sends audio to OpenAI. A typed transcript works without a key.
+Deploy `ahmadsajjad-logix/public-grievance-platform`, branch `main`, entrypoint `app.py`. Select Python **3.13** in Advanced settings (the version tested locally). The root `requirements.txt` includes the speech engine, so no separate audio installation or OpenAI secret is required. A private GitHub repository needs to be accessible to your Streamlit account.
+
+On the first transcription request, the server downloads the public `Systran/faster-whisper-base` model into `data/models/`. The model is shared across sessions in memory; recordings and transcripts are not shared. A restart may require downloading/loading it again. Download failure leaves the recording available for retry. Each request is limited to two minutes and 10 MB, and only one transcription runs at a time. Visitors are told when the server is busy. In hosted use, audio travels from the visitor's browser to the Streamlit server and is processed there in memory; it is not sent to an external transcription API.
+
+The multilingual `base` model uses CPU INT8 to reduce memory consumption. Its Urdu accuracy can be limited, especially with noise or mixed speech; transcripts must be reviewed. On a larger host, set `WHISPER_MODEL_SIZE=small` before startup for the larger model. No resource allocation or transcription latency is guaranteed on shared hosting. Verify a representative Urdu recording on the actual deployment before the hackathon.
+
+Community Cloud's local disk is ephemeral. The SQLite analytics database may be lost after restart/redeployment; use a hosted database before relying on durable records.
+
+## Integrations
+
+- Audio: the Voice screen uses multilingual Whisper on the app server's CPU. No API key or API billing is needed. The speech engine is installed by the main requirements. To pre-download the model locally (optional):
+
+  ```powershell
+  .\.venv\Scripts\python scripts/setup_audio.py
+  ```
+
+  First use needs internet access to download model weights into `data/models/` (excluded from Git). Once downloaded, transcription can work offline on that server. Choose **Voice → Urdu → Transcribe audio**. Recordings are processed in memory, retained only for the session, and can be downloaded with **Save my recording**. The optional `agents.transcribe` OpenAI adapter remains available to developers but is not called by the Voice screen.
 - Image OCR: install Tesseract separately and put it on PATH. Missing OCR produces a manual-review message, not fabricated extraction. Searchable PDFs use pypdf. OCR defaults to English.
 - Urdu PDF: set `PETITION_FONT_PATH` to a Unicode TrueType font. Arabic shaping and right-to-left layout need further validation before Urdu petitions are suitable for submission. Without a configured font, enter an English/Roman Urdu transcript to generate a readable PDF. Urdu intake and keyword routing work independently.
 - Knowledge base: upload searchable PDF/text manuals and associate their jurisdiction. FAISS indexes normalized hashed lexical features; NumPy or keyword retrieval provides an offline fallback. This does not claim semantic embeddings or legally verified interpretations.

@@ -11,3 +11,4 @@ pytesseract>=0.3.13,<1
 openai>=1.55,<3
 langchain-core>=0.3,<2
 pytest>=8,<10
+faster-whisper==1.2.1
