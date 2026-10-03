@@ -19,7 +19,7 @@ KEYWORDS = {
     "Electricity": "electricity|electric|load shedding|loadshedding|bijli|wapda|بجلی|لوڈ شیڈنگ",
     "Gas & petroleum": "gas|petrol|petroleum|lpg|cng|گیس|پٹرول",
     "Telecom": "telecom|internet|mobile network|sim|spam|انٹرنیٹ|سم|اسپیم",
-    "Broadcasting": "broadcast|television|tv channel|cable|نشریات|کیبل|ٹی وی",
+    "Broadcasting": "broadcast|television|tv channel|cable|drama|drama serial|نشریات|کیبل|ٹی وی|ڈرامہ",
     "Federal administration": "federal|pension|passport|nadra|وفاقی|پنشن|پاسپورٹ|نادرا",
     "Tax administration": "tax refund|income tax|customs|fbr|tax|ٹیکس|کسٹمز",
     "Cybercrime": "cybercrime|hacking|hacked|online harassment|online fraud|identity theft|blackmail|فراڈ|ہیک|بلیک میل|آن لائن ہراسانی",
@@ -95,7 +95,7 @@ def retrieve(query, documents, limit=3):
         return [dict(d, score=len(q & set(tokens(d["text"])))) for d in ranked[:limit] if q & set(tokens(d["text"]))], "Keyword fallback"
 
 def route(text, category, documents, region="Punjab", department_id=None,
-          stage="First complaint", city="", prior_reference="", in_court=False):
+          stage="First complaint", city="", prior_reference="", in_court=False, complaint_kind=None):
     if stage not in STAGES:
         raise ValueError("Choose a valid complaint stage.")
     inferred = None
@@ -146,7 +146,11 @@ def route(text, category, documents, region="Punjab", department_id=None,
     scoped = [d for d in scoped if (not d.get("region") or region in d["region"])
               and (not d.get("department_id") or d["department_id"] in allowed_ids)]
     hits, backend = retrieve(text + " " + department.name, scoped)
-    return {"category": category, "body": target.name, "portal": target.url,
+    from .legal import filing_profile
+    profile = filing_profile(target.id, region, text, complaint_kind)
+    if stage == "Challenge a formal decision":
+        profile.update(endpoint_verified=False, legal_provisions=[], legal_status="Formal appeal recipient, provisions and limitation period require decision-specific review")
+    return {**profile, "category": category, "body": profile["recipient"] or target.name, "portal": target.url,
             "department_id": department.id, "department": department.name, "target_id": target.id,
             "guidance": target.scope, "source": target.url, "channel": target.channel,
             "matches": hits, "backend": backend, "stage": stage, "notes": notes,

@@ -83,7 +83,7 @@ def petition(case):
 
 
 def dispatch(case, mode):
-    return {"status": "Demo dispatch" if mode == "Electronic (simulation)" else "Ready for offline submission",
+    return {"status": "Demo dispatch" if mode == "Electronic (simulation)" else "Draft prepared - review recipient and legal grounds before filing",
             "tracking_id": "DEMO-" + case["id"][:12] if mode == "Electronic (simulation)" else "LOCAL-" + case["id"][:12],
             "steps": ["Review and sign the petition; confirm authority eligibility.",
                       "Use the official website to confirm the nearest office, address and current opening hours.",

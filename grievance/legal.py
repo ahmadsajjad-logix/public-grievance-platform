@@ -1,0 +1,76 @@
+"""Source-backed filing profiles, separate from the general agency directory.
+
+Only the profiles below have provision-level research. An agency URL alone
+does not establish an exact filing recipient or a substantive legal ground.
+"""
+import re
+
+REVIEWED = "2026-10-03"
+COC = "https://www.pemra.gov.pk/coc/"
+RULES = "https://www.pemra.gov.pk/assets/uploads/legal/coc_rules_2010.pdf"
+ORDINANCE = "https://pemra.gov.pk/assets/uploads/legal/Ordinance_2002.pdf"
+CODE = "https://pemra.gov.pk/assets/uploads/legal/Code_of_Conduct.pdf"
+GENERAL_RULES = "https://www.pemra.gov.pk/assets/uploads/legal/PEMRA_Rules_2009.pdf"
+ISLAMABAD = "https://www.pemra.gov.pk/isb/"
+KINDS = ["Not specified", "Programme / advertisement content", "Cable / distribution service", "Employee wages", "Other"]
+
+
+def provision(citation, purpose, source, kind="Filing procedure"):
+    return dict(citation=citation, purpose=purpose, source=source, kind=kind)
+
+
+def filing_profile(department_id, region, text, complaint_kind=None):
+    result = dict(endpoint_verified=False, recipient=None, address="",
+                  endpoint_source="", legal_provisions=[], legal_reviewed=None,
+                  legal_status="Directory only - exact recipient and applicable legal provisions are not verified",
+                  evidence_needed=[], complaint_kind=complaint_kind)
+    if department_id != "pemra":
+        return result
+    result["recipient"] = "Regional Director, PEMRA - concerned regional office (confirm jurisdiction)"
+    result["endpoint_source"] = COC
+    if region == "Islamabad":
+        result.update(recipient="Regional Director, PEMRA Islamabad / Secretary, Council of Complaints Islamabad",
+                      address="3rd Floor, PEMRA Headquarters, Sector G-8/1, Mauve Area, Islamabad",
+                      endpoint_verified=True, endpoint_source=ISLAMABAD)
+    if not complaint_kind or complaint_kind == "Not specified":
+        # Conservative fallback for existing callers; ambiguous services need selection.
+        content = re.search(r"\b(drama|programme|program|advertisement|content|religious|cultural)\b|ڈرامہ|اشتہار|مواد", text, re.I)
+        service = re.search(r"\b(bill|billing|connection|salary|wages)\b", text, re.I)
+        complaint_kind = "Programme / advertisement content" if content and not service else "Not specified"
+    result["complaint_kind"] = complaint_kind
+    if complaint_kind != "Programme / advertisement content":
+        result["legal_status"] = "PEMRA recipient researched; provisions for this complaint type still require verification"
+        return result
+    result["legal_reviewed"] = REVIEWED
+    result["legal_status"] = "PEMRA broadcast-content filing provisions sourced; alleged breach requires evidence and review"
+    result["legal_provisions"] = [
+        provision("PEMRA Ordinance 2002, section 26(2), as amended in 2023",
+                  "Council jurisdiction to receive and review public complaints about licensed broadcast or distributed programmes.", COC),
+        provision("PEMRA (Councils of Complaints) Rules 2010, rule 8(1)",
+                  "File before the Council or authorized officer where the programme or advertisement was viewed; the officer places it before the Council.", RULES),
+        provision("PEMRA (Councils of Complaints) Rules 2010, rule 11(1) and (3)",
+                  "The regional officer in charge acts as Council Secretary and receives complaints.", RULES),
+        provision("PEMRA Rules 2009, rule 18",
+                  "The Regional General Manager acts as secretary to the respective Council.", GENERAL_RULES),
+        provision("PEMRA Rules 2009, rule 15(1)",
+                  "Broadcast content must comply with section 20, applicable rules, the content code and licence conditions.", GENERAL_RULES),
+    ]
+    if re.search(r"religio|cultur|islam|مذہب|ثقافت|اسلام", text, re.I):
+        result["legal_provisions"].append(
+            provision("PEMRA Ordinance 2002, section 20(b)",
+                      "Potential ground: preservation of national, cultural, social and religious values. The stated concern needs specific examples; a violation is not established by this draft.", ORDINANCE, "Potential substantive ground"))
+    if re.search(r"religio|islam|مذہب|اسلام", text, re.I):
+        result["legal_provisions"].append(
+            provision("Electronic Media (Programmes and Advertisements) Code of Conduct 2015, clause 3(1)(a)",
+                      "Potential ground concerning Islamic values. Ask the Council to assess identified broadcast material, rather than asserting an established breach.", CODE, "Potential substantive ground"))
+    if re.search(r"indecen|obscen|vulgar|pornograph|فحش|عریاں", text, re.I):
+        result["legal_provisions"].extend([
+            provision("PEMRA Ordinance 2002, section 20(c)",
+                      "Potential content restriction relevant to the stated decency allegation, subject to evidence and context.", ORDINANCE, "Potential substantive ground"),
+            provision("Electronic Media (Programmes and Advertisements) Code of Conduct 2015, clause 3(1)(e)",
+                      "Potential restriction on indecent, obscene or pornographic content; the Council must assess the actual material.", CODE, "Potential substantive ground"),
+        ])
+    result["evidence_needed"] = ["Identify the channel, programme, episode, broadcast date/time, and place where viewed.",
+                                 "Describe the exact scenes or dialogue and explain how each alleged ground applies; include timestamps or clips if available.",
+                                 "These are provisions for a complaint requesting examination, not a finding that the broadcaster broke the law."]
+    return result

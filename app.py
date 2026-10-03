@@ -3,6 +3,7 @@ from datetime import date
 import streamlit as st
 from grievance import agents
 from grievance.identity import validate_identity
+from grievance.legal import KINDS, filing_profile
 from grievance.knowledge import detect
 from grievance.catalog import CATEGORIES, DEPARTMENTS, REGIONS, STAGES, available_departments, REVIEW_DATE
 from grievance.storage import aggregates, save_aggregate
@@ -27,6 +28,12 @@ def downloads(case):
     st.download_button("Download calendar reminder", case["ics"], "follow-up.ics", "text/calendar")
     st.caption(f"Personal follow-up: {case['due'].date()}. This is not a statutory or appeal deadline.")
     st.write("Complaint concerns:", case["route"].get("department", case["route"]["body"]))
+    st.warning(case["route"].get("legal_status", "Recipient and legal provisions require verification."))
+    if case["route"].get("address"):
+        st.write("Receiving office:", case["route"]["address"])
+    for provision in case["route"].get("legal_provisions", []):
+        st.write(provision["citation"] + ": " + provision["purpose"])
+        st.link_button("Source: " + provision["citation"], provision["source"])
     st.write("Suggested next forum:", case["route"].get("escalation", "Review required"))
     for note in case["route"].get("notes", []):
         st.info(note)
@@ -74,6 +81,14 @@ if page == "Submit Grievance":
             st.caption(department.scope)
             if department.review_required:
                 st.info("The district office or channel needs verification. Enter its name and location below.")
+        complaint_kind = st.selectbox("PEMRA complaint type", KINDS) if department_id == "pemra" else None
+        if department_id:
+            filing = filing_profile(department_id, region, text, complaint_kind)
+            st.info(filing["legal_status"])
+            if not filing["endpoint_verified"]:
+                st.warning("This entry does not yet have a verified regional filing recipient. A draft is available, but confirm the recipient and legal grounds before filing.")
+            if department_id == "pemra":
+                st.caption("Use the place where the programme was viewed for jurisdiction. Include channel, episode, broadcast date/time, and the specific scenes or dialogue in your complaint.")
         complaint_stage = st.selectbox("Complaint stage", STAGES)
         st.caption("First complaint goes to the selected office. An unresolved complaint may go to its regulator or eligible ombudsman. A formal appeal requires review of the decision and law.")
         with st.form("grievance"):
@@ -129,7 +144,7 @@ if page == "Submit Grievance":
                             if stage == agents.STAGES[0]:
                                 case["intake"] = agents.intake(text, files)
                             elif stage == agents.STAGES[1]:
-                                case["route"] = agents.route(text, category, st.session_state.manuals, region, department_id, complaint_stage, city, prior_reference, in_court)
+                                case["route"] = agents.route(text, category, st.session_state.manuals, region, department_id, complaint_stage, city, prior_reference, in_court, complaint_kind)
                             elif stage == agents.STAGES[2]:
                                 case["audit"] = agents.audit(files, case["route"]["category"], complaint_stage, payment_dispute)
                             elif stage == agents.STAGES[3]:
@@ -192,6 +207,7 @@ elif page == "Analytics & Heatmap":
         st.caption("Coarse local aggregates of demo preparations; these are not official complaint statistics.")
 elif page == "Department Directory":
     st.subheader("Departments and complaint routes")
+    st.warning("This is a department directory, not a fully verified filing service. Provision-level research currently covers PEMRA broadcast-content complaints; an exact receiving office is verified here only for PEMRA Islamabad. Other entries require recipient and legal research.")
     st.caption(f"Directory review: {REVIEW_DATE}. A listed office is not a promise of admissibility. Local offices and statutory appeal routes may need verification.")
     region_filter = st.selectbox("Filter by province / territory", ["All", *REGIONS])
     category_filter = st.selectbox("Filter by service", ["All", *CATEGORIES])
@@ -204,6 +220,7 @@ elif page == "Department Directory":
         if search and search.casefold() not in (department.name + " " + department.scope + " " + " ".join(department.aliases)).casefold():
             continue
         with st.expander(department.name):
+            st.caption("PEMRA broadcast-content profile available; regional verification varies." if department.id == "pemra" else "Directory only: exact filing recipient and legal provisions not yet verified.")
             st.write(department.scope)
             st.caption("Regions: " + (", ".join(department.regions) or "Federal / nationwide"))
             st.write(department.caveat)

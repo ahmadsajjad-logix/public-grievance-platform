@@ -109,7 +109,9 @@ def build_petition(case):
     sections = [
         ("Title", "DRAFT - Public service grievance"),
         ("Normal", f"To: {route['body']}"),
-        ("Normal", f"Concerning: {route.get('department', route['body'])}"),
+        ("Normal", route.get("address", "")),
+        ("Normal", "Filing recipient: " + ("Official source checked; confirm territorial facts" if route.get("endpoint_verified") else "Exact recipient / territorial jurisdiction requires verification")),
+        ("Normal", f"Selected authority: {route.get('department', route['body'])}"),
         ("Normal", f"Date: {case['created'].date()} | Stage: {route.get('stage', 'First complaint')}"),
         ("Normal", f"Applicant: {case['name'] or 'To be supplied'}"),
         *[("Normal", f"{label}: {case['identity'][key]}")
@@ -122,6 +124,12 @@ def build_petition(case):
         ("Heading2", "Service and earlier complaint references"),
         ("Normal", case["reference"] or ", ".join(case["intake"]["references"]) or "Service reference to be supplied"),
         ("Normal", "Earlier complaint: " + (route.get("prior_reference") or "None provided")),
+        ("Heading2", "Legal basis and applicability"),
+        ("Normal", route.get("legal_status", "Applicable provisions have not been verified for this complaint.")),
+        ("Normal", "Legal source review date: " + (route.get("legal_reviewed") or "Not researched")),
+        *[("Normal", f"{p['citation']} ({p['kind']}). {p['purpose']} Source: {p['source']}") for p in route.get("legal_provisions", [])],
+        *[("Normal", item) for item in route.get("evidence_needed", [])],
+        ("Normal", "Recipient source: " + (route.get("endpoint_source") or "Not verified")),
         ("Heading2", "Routing basis and review notes"),
         ("Normal", route["guidance"]),
         ("Normal", "Official source: " + route["source"]),

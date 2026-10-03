@@ -26,6 +26,14 @@ Community Cloud's local disk is ephemeral; analytics may be lost after a redeplo
 
 ## Data and operating limits
 
+### Filing coverage (2026-10-03)
+
+The 71 entries are directory coverage, **not 71 verified legal filing routes**. Provision-level research currently covers PEMRA programme/advertisement content complaints. The exact receiving office is verified only for PEMRA Islamabad: Regional Director / Secretary, Council of Complaints, 3rd Floor, PEMRA Headquarters, G-8/1, Mauve Area, Islamabad. Other PEMRA regions and all other departments require individual recipient and jurisdiction verification.
+
+PEMRA profiles distinguish filing procedure (Ordinance section 26(2), Council Rules 8(1), 11(1)/(3), PEMRA Rules 18 and 15(1)) from potential substantive grounds (section 20(b)/Code 3(1)(a) for stated cultural/religious concerns; section 20(c)/Code 3(1)(e) for stated decency concerns). Sources accompany each provision in the PDF. Keyword matching does not establish a legal breach. Cable service, employee wages and statutory appeals do not reuse the broadcast-content provisions. Programme dates, scenes and viewing location need factual review. Optional uploads remain optional.
+
+Sources: https://www.pemra.gov.pk/coc/ ; https://www.pemra.gov.pk/isb/ ; https://www.pemra.gov.pk/assets/uploads/legal/coc_rules_2010.pdf ; https://pemra.gov.pk/assets/uploads/legal/Ordinance_2002.pdf ; https://pemra.gov.pk/assets/uploads/legal/Code_of_Conduct.pdf ; https://www.pemra.gov.pk/assets/uploads/legal/PEMRA_Rules_2009.pdf . The 2023 amendment is reflected in PEMRA's current Council guidance; old fine limits and generic deadlines are not generated.
+
 Names, narratives and supporting documents remain in Streamlit session memory and are not written to disk. With explicit consent, SQLite stores a random case identifier, day, category, province and demo dispatch status. Analytics receives grouped counts only. Session case records are lost when the session ends; database aggregates survive restarts. Do not expose this single-user prototype publicly with sensitive documents.
 
 Electronic submissions are **simulated**, never sent to an authority. Reminder dates are user-selected, not statutory deadlines. No automatic appeal or escalation is filed. Exact legal sections, provincial applicability, appellate forums, deadlines, office addresses and hours require source verification and review. Retrieved manuals are shown as evidence rather than injected as unverified statutory clauses. Government links are provided for manual submission.
