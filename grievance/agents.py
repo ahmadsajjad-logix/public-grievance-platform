@@ -42,10 +42,11 @@ def transcribe(content, name):
         model=os.getenv("TRANSCRIPTION_MODEL", "whisper-1"), file=(name, content)).text
 
 EVIDENCE = {
+    "Banking": "Institution/branch, transaction reference, disputed entry, earlier complaint and response; never include PINs, passwords or OTPs",
     "Electricity": "Bill, meter/reference number, outage dates or connection application",
     "Gas & petroleum": "Gas bill/application or fuel receipt, supplier and issue dates",
     "Telecom": "Operator ticket, disputed bill/SIM details, spam screenshots",
-    "Broadcasting": "Channel/operator, programme, date, time and relevant clip reference",
+    "Electronic Media (Radio, TV, Cable TV, etc.)": "Channel/operator, programme, date, time and relevant clip reference",
     "Federal administration": "Application, acknowledgment and agency correspondence",
     "Tax administration": "Refund/tax reference, correspondence and relevant order",
     "Cybercrime": "Original messages, URLs, transaction IDs and dated screenshots",

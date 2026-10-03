@@ -11,15 +11,16 @@ from .catalog import CATEGORIES, DEPARTMENTS, STAGES, available_departments, sta
 AUTHORITIES = {
     "Electricity": ("NEPRA", "https://nepra.org.pk/CAD-Database/CMS-CAD/home.php", "NEPRA Complaint Handling & Dispute Resolution Procedure Rules, 2015", "https://nepra.org.pk/"),
     "Telecom": ("PTA", "https://complaint.pta.gov.pk/userlogin.aspx", "PTA complaint management guidance", "https://complaint.pta.gov.pk/Usermanual/User_Manual_CMS_Web.pdf"),
-    "Broadcasting": ("PEMRA", "https://pemra.gov.pk/", "Consult current PEMRA complaint guidance", "https://pemra.gov.pk/"),
+    "Electronic Media (Radio, TV, Cable TV, etc.)": ("PEMRA", "https://pemra.gov.pk/", "Consult current PEMRA complaint guidance", "https://pemra.gov.pk/"),
     "Federal administration": ("Wafaqi Mohtasib", "https://complaints.mohtasib.gov.pk/", "Federal ombudsman jurisdiction requires eligibility review", "https://www.mohtasib.gov.pk/"),
     "Municipal services": ("Local municipal authority", "", "Local jurisdiction and provincial service rules require verification", ""),
 }
 KEYWORDS = {
+    "Banking": "bank|banking|bank account|atm|debit card|credit card|remittance|microfinance|jazzcash|easypaisa|upaisa|بینک|بینک اکاؤنٹ|اے ٹی ایم|ایزی پیسہ|جاز کیش",
     "Electricity": "electricity|electric|load shedding|loadshedding|bijli|wapda|بجلی|لوڈ شیڈنگ",
     "Gas & petroleum": "gas|petrol|petroleum|lpg|cng|گیس|پٹرول",
     "Telecom": "telecom|internet|mobile network|sim|spam|انٹرنیٹ|سم|اسپیم",
-    "Broadcasting": "broadcast|television|tv channel|cable|drama|drama serial|نشریات|کیبل|ٹی وی|ڈرامہ",
+    "Electronic Media (Radio, TV, Cable TV, etc.)": "broadcast|television|tv channel|cable|drama|drama serial|نشریات|کیبل|ٹی وی|ڈرامہ",
     "Federal administration": "federal|pension|passport|nadra|وفاقی|پنشن|پاسپورٹ|نادرا",
     "Tax administration": "tax refund|income tax|customs|fbr|tax|ٹیکس|کسٹمز",
     "Cybercrime": "cybercrime|hacking|hacked|online harassment|online fraud|identity theft|blackmail|فراڈ|ہیک|بلیک میل|آن لائن ہراسانی",
@@ -49,6 +50,9 @@ def contains(text, phrase):
 def detect(text, region):
     """Return candidates instead of silently choosing between competing scopes."""
     named = [d for d in DEPARTMENTS.values() if any(contains(text, a) for a in d.aliases)]
+    # Brand names can appear in wallet complaints; never send money disputes to PTA.
+    if any(contains(text, word) for word in ("jazzcash", "jazz cash", "easypaisa", "easy paisa", "upaisa", "جاز کیش", "ایزی پیسہ")):
+        return "Banking", None
     categories = list(dict.fromkeys(d.category for d in named))
     if len(categories) == 1:
         return categories[0], named[0].id if len(named) == 1 else None
@@ -120,6 +124,8 @@ def route(text, category, documents, region="Punjab", department_id=None,
     target = department
     escalation = DEPARTMENTS.get(department.escalation)
     notes = [department.caveat] if department.caveat else []
+    if category == "Banking":
+        notes.append("Use Sunwai to complain to the financial institution first. Select BMP only after checking commercial-bank eligibility; SBP handles specified cases and is not an automatic appeal from BMP.")
     review = department.review_required or in_court or stage == "Challenge a formal decision"
     if department.review_required and not city.strip():
         notes.append("District and exact office were not supplied. Confirm the local office before submission.")
@@ -153,7 +159,7 @@ def route(text, category, documents, region="Punjab", department_id=None,
     profile = filing_profile(target.id, region, text, complaint_kind)
     if stage == "Challenge a formal decision":
         profile.update(endpoint_verified=False, legal_provisions=[], legal_status="Formal appeal recipient, provisions and limitation period require decision-specific review")
-    if in_court and target.id in ("wafaqi", "omb-kp"):
+    if in_court and target.id in ("wafaqi", "omb-kp", "banking-mohtasib"):
         profile.update(endpoint_verified=False, legal_provisions=[], legal_status="Pending court proceedings: ombudsman admissibility requires individual review")
     guide = department_guide(target.id, region, profile)
     return {**profile, "filing_guide": guide, "category": category, "body": profile["recipient"] or target.name, "portal": target.url,

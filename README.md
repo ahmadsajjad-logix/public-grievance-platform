@@ -28,7 +28,7 @@ Community Cloud's local disk is ephemeral; analytics may be lost after a redeplo
 
 ### Filing coverage (2026-10-03)
 
-All 71 directory entries now have source-linked framework and filing guidance, plus the supplied departmental reference library. This is **not 71 fully verified legal filing routes**: broad provincial categories still require the actual provider/district, some references cover institutional powers rather than a complaint-specific entitlement, and some electronic endpoints or court filing details remain unverified. Guides explain ambit, exclusions, filing steps, documented channels and preparation. The exact regional receiving officer is verified only for PEMRA Islamabad; other office details and provision-level coverage vary.
+All 83 directory entries now have source-linked framework and filing guidance, plus the supplied departmental reference library. This is **not 83 fully verified legal filing routes**: broad provincial categories still require the actual provider/district, some references cover institutional powers rather than a complaint-specific entitlement, and some electronic endpoints or court filing details remain unverified. Guides explain ambit, exclusions, filing steps, documented channels and preparation. The exact regional receiving officer is verified only for PEMRA Islamabad; other office details and provision-level coverage vary.
 
 Each department guide prominently presents its official complaint form or portal before petition preparation, without requiring identity details in this app. Forms, sign-in portals, WhatsApp contacts, complaint instructions and office directories have separate labels. General government portals are identified as administrative routes; they are not substitutes for judicial or statutory appeals. City-specific routes such as KWSC and private-school-only routes such as PEPRIS state their scope. Opening a link sends no case data and does not file a complaint.
 
@@ -75,3 +75,6 @@ The repository ignores keys, virtual environments and the local analytics databa
 - NEPRA: https://nepra.org.pk/CAD-Database/CMS-CAD/home.php
 - PTA manual: https://complaint.pta.gov.pk/Usermanual/User_Manual_CMS_Web.pdf
 - Wafaqi Mohtasib: https://complaints.mohtasib.gov.pk/
+
+
+Telecom now lists Jazz, Zong, Ufone, Telenor, Onic (PTML brand), PTCL and regional SCOM/SCO separately from PTA. First complaints stay with the operator; eligible unresolved cases require an earlier reference before PTA escalation. SCOM territorial escalation requires review. Banking lists only Banking Mohtasib Pakistan and SBP, links Sunwai for institution-first complaints, and does not model SBP as an appeal from BMP. MEPCO, TESCO and HAZECO complete the 11 public DISCO entries, alongside K-Electric. Framework and complaint-channel review: 4 October 2026; operator contracts not verified for every brand are identified in the guides.

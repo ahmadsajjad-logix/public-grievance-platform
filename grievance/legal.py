@@ -29,6 +29,12 @@ def filing_profile(department_id, region, text, complaint_kind=None):
         researched = PROFILES.get(department_id)
         if researched:
             result["legal_status"] = "Filing guidance researched; exact statutory grounds require complaint-specific review"
+        if department_id in ("banking-mohtasib", "sbp", "jazz", "zong", "ufone", "telenor", "onic", "ptcl", "scom"):
+            result.update(legal_reviewed=researched.get("reviewed"),
+                          legal_provisions=[provision(p["citation"], p["purpose"], p["source"], "Regulatory framework — applicability requires review") for p in researched["laws"]])
+        if department_id == "banking-mohtasib":
+            result.update(recipient="Banking Mohtasib (Ombudsman) Pakistan", endpoint_verified=True,
+                          endpoint_source="https://www.bankingmohtasib.gov.pk/Website/preComplaintForm.aspx")
         if department_id in ("wafaqi", "omb-kp"):
             law = researched["laws"][0]
             result.update(legal_provisions=[provision(law["citation"], law["purpose"], law["source"])],
@@ -37,7 +43,7 @@ def filing_profile(department_id, region, text, complaint_kind=None):
             law = researched["laws"][0]
             result.update(legal_provisions=[provision(law["citation"], law["purpose"], law["source"])],
                           legal_reviewed=REVIEWED, legal_status="Gas-complaint filing provisions sourced; eligibility and substantive grounds require review")
-        electricity = {"nepra", "lesco", "iesco", "fesco", "gepco", "pesco", "hesco", "sepco", "qesco", "ke"}
+        electricity = {"nepra", "lesco", "iesco", "fesco", "gepco", "pesco", "hesco", "sepco", "qesco", "mepco", "tesco", "hazeco", "ke"}
         if department_id in electricity:
             source = "https://nepra.org.pk/Legal.php"
             result.update(legal_reviewed=REVIEWED,

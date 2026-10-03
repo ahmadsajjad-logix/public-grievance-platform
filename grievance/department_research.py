@@ -183,7 +183,7 @@ def extend(profiles):
     profiles["pemra"]["channels"].append(route("phone", "0800-73672", "https://pemra.gov.pk/complaints/"))
     profiles["pemra"]["sources"].append("https://pemra.gov.pk/complaints/")
     profiles["sswmb"]["laws"].append(law("Sindh Solid Waste Management Act, 2021", "https://www.sindhlaws.gov.pk/setup/publications_SindhCode/PUB-NEW-23-000070.pdf", "Framework for solid-waste collection, disposal and boards; confirm the operating area."))
-    for id in ("lesco", "iesco", "fesco", "gepco", "pesco", "hesco", "sepco", "qesco", "ke"):
+    for id in ("lesco", "iesco", "fesco", "gepco", "pesco", "hesco", "sepco", "qesco", "mepco", "tesco", "hazeco", "ke"):
         profiles[id]["laws"] = deepcopy(profiles["nepra"]["laws"])
     additions = {
         "punjab-4": ("Punjab Food Authority Act, 2011", "https://pfa.gop.pk/wp-content/uploads/2023/02/The-Punjab-Food-Authority-Act-2011.pdf", "Food-safety regulation and enforcement; identify the product, conduct and applicable provision before alleging an offence."),

@@ -110,7 +110,7 @@ def service_profile(can, cannot, source, steps, requirements, channels, **extra)
                 limits="Issue-specific legal grounds, appeal routes and resolution deadlines are not yet verified.", **extra)
 
 
-for distributor in ("lesco", "iesco", "fesco", "gepco", "pesco", "hesco", "sepco", "qesco"):
+for distributor in ("lesco", "iesco", "fesco", "gepco", "pesco", "hesco", "sepco", "qesco", "mepco", "tesco", "hazeco"):
     PROFILES[distributor] = service_profile(
         "Register the selected electricity distributor's billing and service complaints through PITC CCMS.",
         "Verify the distributor on your bill. This is the supplier complaint stage, not a NEPRA decision or appeal.",
@@ -208,6 +208,8 @@ PROFILES["punjab-rts"]["laws"] = [dict(citation="Punjab Right to Public Services
 
 from .department_research import extend
 extend(PROFILES)
+from .sector_research import extend as extend_sectors
+extend_sectors(PROFILES)
 
 
 def department_guide(department_id, region="", legal_profile=None):
@@ -220,7 +222,7 @@ def department_guide(department_id, region="", legal_profile=None):
         limits=d.caveat or "Complaint and appeal procedures require verification.", sources=[d.url],
         channels=[dict(kind="directory", value=d.url, source=d.url, instructions="Directory starting point; filing channel not verified.", checked=None)], laws=[])
     guide.update(department_id=d.id, name=d.name, region=region,
-                 reviewed=CHECKED if known else None,
+                 reviewed=known.get("reviewed", CHECKED) if known else None,
                  status="Reviewed guidance; check provision-specific limitations" if known else "Directory only — research incomplete")
     profile = legal_profile or {}
     guide["recipient"] = profile.get("recipient") or "Exact receiving officer requires verification"
@@ -248,7 +250,7 @@ def research_documents():
         ]:
             documents.append(dict(name=d.name + " — " + title, text=text, source=source,
                                   department_id=id, category=d.category, region=d.regions,
-                                  trusted=True, reviewed=CHECKED, evidence_type="reviewed source summary"))
+                                  trusted=True, reviewed=p.get("reviewed", CHECKED), evidence_type="reviewed source summary"))
     return documents
 
 

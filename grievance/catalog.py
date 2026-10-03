@@ -37,7 +37,7 @@ def add(id, name, category, url, *, regions=(), aliases=(), escalation="", chann
 
 add("nepra", "NEPRA", "Electricity", "https://nepra.org.pk/CAD-Database/CMS-CAD/home.php", aliases=("nepra", "نیپرا"), channel="Complaint portal", scope="Electricity billing, connections, metering and supply complaints.", caveat="Keep the supplier's earlier complaint and response. Eligibility and procedural requirements must be checked on the portal.")
 add("pta", "PTA", "Telecom", "https://complaint.pta.gov.pk/userlogin.aspx", aliases=("pta", "پی ٹی اے"), channel="Complaint portal", scope="Telecom service, billing, SIM misuse and spam.", caveat="For a service dispute, retain the telecom operator's complaint reference. Online fraud/harassment also needs the cybercrime route; content-removal jurisdiction must be checked separately.")
-add("pemra", "PEMRA / Council of Complaints", "Broadcasting", "https://www.pemra.gov.pk/contact/", aliases=("pemra", "پیمرا"), scope="Broadcast content, cable operators and channel-distribution complaints.", caveat="Include channel/operator, programme, date and time. A broadcast complaint is distinct from a social-media complaint.")
+add("pemra", "PEMRA / Council of Complaints", "Electronic Media (Radio, TV, Cable TV, etc.)", "https://www.pemra.gov.pk/contact/", aliases=("pemra", "پیمرا"), scope="Broadcast content, cable operators and channel-distribution complaints.", caveat="Include channel/operator, programme, date and time. A broadcast complaint is distinct from a social-media complaint.")
 add("ogra", "OGRA", "Gas & petroleum", "https://complaint.ogra.org.pk/complaint", aliases=("ogra", "اوگرا"), channel="Complaint portal", scope="Gas billing/supply and regulated oil, LPG/CNG quality or quantity complaints.", caveat="For gas complaints, the portal requires an earlier attempt with the licensee and supporting records. Its filing window is not a promised resolution deadline.")
 add("wafaqi", "Wafaqi Mohtasib (Federal Ombudsman)", "Federal administration", "https://complaints.mohtasib.gov.pk/", aliases=("wafaqi mohtasib", "federal ombudsman", "وفاقی محتسب"), channel="Complaint portal", scope="Maladministration by federal agencies within the Ombudsman's jurisdiction.", caveat="Not a universal appellate court. Matters pending in court, service matters and other statutory exclusions need eligibility review.")
 add("fto", "Federal Tax Ombudsman (FTO)", "Tax administration", "https://fto.gov.pk/onlineComSys.aspx", aliases=("fto", "tax ombudsman", "ٹیکس محتسب"), channel="Official complaint gateway", scope="Tax-administration delay, harassment and maladministration.", caveat="Disputes over tax assessment, liability or customs valuation may belong in statutory tax appeals; FTO is not a substitute for those appeals.")
@@ -52,6 +52,9 @@ for code, area, regions, aliases in [
     ("HESCO", "Hyderabad", ("Sindh",), ("حیسکو", "ہیسکو")),
     ("SEPCO", "Sukkur", ("Sindh",), ("سیپکو",)),
     ("QESCO", "Quetta", ("Balochistan",), ("کیسکو",)),
+    ("MEPCO", "Multan / South Punjab", ("Punjab",), ("میپکو",)),
+    ("TESCO", "Tribal areas", ("Khyber Pakhtunkhwa",), ("ٹیسکو",)),
+    ("HAZECO", "Hazara", ("Khyber Pakhtunkhwa",), ("ہیزیکو", "ہزارہ الیکٹرک", "hazara electric")),
 ]:
     add(code.lower(), f"{code} - {area}", "Electricity", "https://ccms.pitc.com.pk/", regions=regions, aliases=(code.lower(), *aliases), escalation="nepra", channel="PITC complaint portal", scope="Billing, outages, meter and connection issues.", caveat="Confirm the distribution company printed on your bill; city examples are not complete service-area boundaries.")
 add("ke", "K-Electric - Karachi", "Electricity", "https://ke.com.pk/contact-us/", regions=("Sindh", "Balochistan"), aliases=("k electric", "kelectric", "کے الیکٹرک"), escalation="nepra", scope="K-Electric customer-service complaints.", caveat="Confirm the supplier on your bill. Do not send K-Electric cases to the PITC DISCO portal.")
@@ -127,11 +130,15 @@ add("cda-municipal", "CDA - Municipal / water services", "Municipal & sanitation
 add("kp-rts", "KP Right to Public Services Commission", "Public service delays", "https://www.kprts.gov.pk/online-complaints/", regions=("Khyber Pakhtunkhwa",), aliases=("kp rts", "kprts", "کے پی آر ٹی ایس"), channel="Complaint gateway", scope="Delay, refusal or deficient delivery of notified public services.", caveat="Only notified services qualify. Confirm the designated officer, complete application date and applicable notification; there is no single deadline for all services.")
 add("punjab-rts", "Punjab Right to Public Services - verification required", "Public service delays", "https://regulationswing.punjab.gov.pk/acts", regions=("Punjab",), aliases=("punjab rts",), scope="The Punjab Right to Public Services Act 2019 is listed in the official Acts directory.", caveat="A current operational Commission complaint portal and service notifications were not verified. Confirm these with the department before treating this as a statutory escalation route.", review_required=True)
 
+from .sector_research import register_departments
+register_departments(add)
+
 CATEGORIES = list(dict.fromkeys(d.category for d in DEPARTMENTS.values()))
 
 
 def available_departments(category, region):
-    return [d for d in DEPARTMENTS.values() if d.category == category and (not d.regions or region in d.regions)]
+    choices = [d for d in DEPARTMENTS.values() if d.category == category and (not d.regions or region in d.regions)]
+    return sorted(choices, key=lambda d: d.id in ("pta", "nepra"))
 
 
 def starter_documents():

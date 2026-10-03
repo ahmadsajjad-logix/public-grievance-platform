@@ -18,7 +18,7 @@ for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None
 
 st.sidebar.title("⚖️ Civic Access")
 st.sidebar.caption("Pak Angels • Pakistan National Impact Challenge")
-page = st.sidebar.radio("Workspace", ["Submit Grievance", "FIR & Offence Guide", "My drafts & filing records", "Analytics & Heatmap", "Department Directory", "Knowledge Base Admin"])
+page = st.sidebar.radio("Workspace", ["Submit Grievance", "FIR & Offence Guide", "Right to Information (RTI)", "My drafts & filing records", "Analytics & Heatmap", "Department Directory", "Knowledge Base Admin"])
 st.sidebar.info("Prepare here, submit to the authority yourself. Nothing is sent automatically. Private case details stay in this session on the app server; uploaded documents are not saved to disk.")
 st.title("Public Grievance & Statutory Escalation Platform")
 st.caption("A clearer path from a public service problem to a prepared complaint.")
@@ -185,6 +185,11 @@ if page == "Submit Grievance":
             except ValueError as exc:
                 st.warning(str(exc))
         category = st.selectbox("Service category", CATEGORIES, key="category")
+        if category == "Telecom":
+            st.caption("Choose your operator for the first complaint. Keep its ticket and response for an eligible unresolved complaint to PTA.")
+        elif category == "Banking":
+            st.info("Complain to your bank or financial institution first through Sunwai. Banking Mohtasib handles eligible commercial-bank complaints; SBP handles specified cases, including microfinance. SBP is not a general appeal from Banking Mohtasib.")
+            st.link_button("Open Sunwai — complain to your financial institution", "https://sunwai.sbp.org.pk/")
         departments = available_departments(category, region)
         ids = [None] + [d.id for d in departments]
         if st.session_state.get("department") not in ids:
@@ -338,6 +343,9 @@ elif page == "FIR & Offence Guide":
         st.write(explanation)
         st.markdown(f"[Procedure source]({source})")
     st.caption("CrPC provisions explain procedure; they are not the substantive offence charges. Obtain local legal assistance where facts, jurisdiction or registration are disputed.")
+elif page == "Right to Information (RTI)":
+    from grievance.rti import render
+    render(st)
 elif page == "My drafts & filing records":
     st.subheader("Your session's grievances")
     st.caption("Local preparation records. Status is not synchronized with government systems. Session records disappear when the session ends.")
