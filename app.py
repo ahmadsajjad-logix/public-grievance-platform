@@ -1,5 +1,4 @@
 """Run with: streamlit run app.py"""
-import base64
 import logging
 import streamlit as st
 from grievance import agents
@@ -33,8 +32,10 @@ def downloads(case):
         st.info(note)
     st.download_button("Download complaint text (Urdu supported)", case["intake"]["text"].encode("utf-8-sig"), "complaint.txt", "text/plain")
     with st.expander("Petition preview", expanded=True):
-        encoded = base64.b64encode(case["pdf"]).decode()
-        st.components.v1.html(f'<iframe title="Draft petition" src="data:application/pdf;base64,{encoded}" width="100%" height="650"></iframe>', height=660)
+        # Cloud's nested iframe blocks Chrome's PDF viewer. Render pages directly.
+        from grievance.petitions import preview_pages
+        for index, page_image in enumerate(preview_pages(case["pdf"])):
+            st.image(page_image, caption=f"Page {index + 1}", width="stretch")
     st.subheader("Submission guidance")
     if case["route"]["portal"]:
         st.link_button(case["route"].get("channel", "Open authority website / portal"), case["route"]["portal"])

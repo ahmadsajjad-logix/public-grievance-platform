@@ -6,7 +6,26 @@ from pathlib import Path
 from threading import Lock
 
 _FONT_LOCK = Lock()
+_RENDER_LOCK = Lock()
 ARABIC = re.compile(r"[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff\ufb50-\ufeff]")
+
+
+def preview_pages(pdf):
+    """PDFium is not thread-safe; serialize rendering across visitor sessions."""
+    import pypdfium2
+    images = []
+    with _RENDER_LOCK, pypdfium2.PdfDocument(pdf) as document:
+        for index in range(len(document)):
+            page = document[index]
+            bitmap = page.render(scale=1.3)
+            try:
+                output = io.BytesIO()
+                bitmap.to_pil().save(output, format="PNG")
+                images.append(output.getvalue())
+            finally:
+                bitmap.close()
+                page.close()
+    return images
 
 
 def register_fonts():
