@@ -25,8 +25,7 @@ def test_escalation_and_court_safeguards():
     result = route("Bill", "Electricity", [], **args)
     assert result["target_id"] == "iesco" and result["review_required"]
     args["prior_reference"] = ""
-    with pytest.raises(ValueError):
-        route("Bill", "Electricity", [], **args)
+    assert route("Bill", "Electricity", [], **args)["review_required"]
 
 
 def test_wrong_province_rejected():

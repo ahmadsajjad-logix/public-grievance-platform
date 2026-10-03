@@ -1,8 +1,8 @@
 """Run with: streamlit run app.py"""
-import logging
+from datetime import date
 import streamlit as st
 from grievance import agents
-from grievance.speech import readiness, transcribe_local
+from grievance.identity import validate_identity
 from grievance.knowledge import detect
 from grievance.catalog import CATEGORIES, DEPARTMENTS, REGIONS, STAGES, available_departments, REVIEW_DATE
 from grievance.storage import aggregates, save_aggregate
@@ -48,38 +48,8 @@ if page == "Submit Grievance":
     with intake_tab:
         st.subheader("Tell us what happened")
         region = st.selectbox("Province / territory of the complaint", REGIONS, key="region")
-        mode = st.radio("Input method", ["Text", "Voice"], horizontal=True)
-        if mode == "Voice":
-            ready, speech_status = readiness()
-            if ready:
-                st.success(speech_status)
-            else:
-                st.warning(speech_status)
-            language = st.selectbox("Recording language", ["Urdu", "English", "Detect automatically"])
-            recording = st.audio_input("Record in Urdu or English")
-            audio = st.file_uploader("Or upload audio", type=["wav", "mp3", "m4a"])
-            source = recording or audio
-            if source:
-                # Retain the recording across reruns/settings changes in this session.
-                st.session_state["pending_recording"] = {"bytes": source.getvalue(), "name": source.name}
-            pending = st.session_state.get("pending_recording")
-            st.caption("Audio is processed on the server running this app. No OpenAI account is needed. Keep recordings under 2 minutes / 10 MB. The first request downloads the speech model and may take a few minutes.")
-            if pending:
-                st.audio(pending["bytes"])
-                st.download_button("Save my recording", pending["bytes"], pending["name"], key="save_recording")
-                if not source:
-                    st.caption("Using the recording retained from this session.")
-            if st.button("Transcribe audio", disabled=not ready or not pending):
-                try:
-                    with st.spinner("Preparing the speech model and transcribing… The first request may take a few minutes."):
-                        transcript = transcribe_local(pending["bytes"], {"Urdu": "ur", "English": "en", "Detect automatically": None}[language])
-                    st.session_state["narrative"] = transcript
-                    st.success("Transcription is ready in the complaint box below. Please review it for accuracy.")
-                except Exception as exc:
-                    if not isinstance(exc, ValueError):
-                        logging.getLogger(__name__).exception("Speech transcription failed")
-                    st.error(str(exc) if isinstance(exc, ValueError) else "Transcription could not finish. Try a shorter WAV or MP3 recording. If it keeps failing, ask the app owner to check the server logs. Your recording has been retained.")
-        text = st.text_area("Complaint or transcript • English, Roman Urdu or Urdu", key="narrative", height=170, max_chars=12000)
+        st.caption("Write your complaint in Urdu, Roman Urdu or English. Select the department below or ask for a suggestion, then confirm it.")
+        text = st.text_area("Complaint • English, Roman Urdu or Urdu", key="narrative", height=170, max_chars=12000)
         if st.button("Suggest department from my complaint"):
             try:
                 suggested_category, suggested_id = detect(text, region)
@@ -109,35 +79,46 @@ if page == "Submit Grievance":
         with st.form("grievance"):
             left, right = st.columns(2)
             with left:
+                st.markdown("**Required identity and contact details**")
+                cnic = st.text_input("CNIC number (required)", placeholder="12345-1234567-1", max_chars=15, key="cnic")
+                cnic_expiry = st.date_input("CNIC expiry date (required)", value=None, min_value=date(1900, 1, 1), max_value=date(2200, 12, 31), key="cnic_expiry")
+                mobile = st.text_input("Mobile number (required)", placeholder="03001234567", max_chars=20, key="mobile")
+                st.caption("These details stay in this session and appear in your draft PDF. They are not included in aggregate analytics. Format checks do not verify identity or phone ownership.")
                 name = st.text_input("Applicant name (optional)", max_chars=120)
-                city = st.text_input("City / district and exact office or facility", max_chars=240)
+                city = st.text_input("City / district and exact office or facility (optional)", max_chars=240)
                 remedy = st.text_area("What resolution do you want?", value="Please investigate this complaint, correct the service issue, and provide a written response.", max_chars=3000)
                 reference = st.text_input("Service / consumer / application reference (optional)", max_chars=100)
-                prior_reference = st.text_input("Earlier complaint or decision reference / date", max_chars=160)
+                prior_reference = st.text_input("Earlier complaint or decision reference / date (optional)", max_chars=160)
                 in_court = st.checkbox("This matter is already before a court or tribunal")
                 payment_dispute = st.checkbox("This complaint disputes a payment or refund")
             with right:
-                st.markdown("**Supporting documents**")
+                st.markdown("**Supporting documents (all optional)**")
                 st.caption(agents.EVIDENCE[category])
                 uploads = {kind: st.file_uploader(label, type=["pdf", "png", "jpg", "jpeg", "txt"], key=kind) for kind, label in [
-                    ("Service evidence", "Service evidence / bill / application / incident record"),
-                    ("CNIC", "CNIC copy (if the receiving authority requires it)"),
-                    ("Payment proof", "Payment / fee receipt (if relevant)"),
-                    ("Earlier complaint / decision", "Earlier complaint, acknowledgment or decision") ]}
+                    ("Service evidence", "Service evidence / bill / application / incident record (optional)"),
+                    ("CNIC", "CNIC copy (optional)"),
+                    ("Payment proof", "Payment / fee receipt (optional)"),
+                    ("Earlier complaint / decision", "Earlier complaint, acknowledgment or decision (optional)") ]}
                 st.caption("Only upload relevant records. OCR assists extraction; document authenticity needs review.")
                 dispatch_mode = st.selectbox("Submission pathway", ["Offline guidance", "Electronic (simulation)"])
                 days = st.number_input("Personal follow-up in days", min_value=1, max_value=365, value=14)
                 consent = st.checkbox("Include this case in local aggregate analytics (category, province, date and demo status only)")
-                confirmed = st.checkbox("I authorize processing these documents to prepare my draft complaint")
+                st.caption("By selecting Prepare my grievance, you authorize processing the details and any optional files to create your draft.")
             run = st.form_submit_button("Prepare my grievance", type="primary")
         if run:
             st.session_state.pipeline = {stage: "Pending" for stage in agents.STAGES}
             st.session_state.current = None
-            if not text.strip() or not confirmed or not department_id:
-                st.error("Enter your complaint, choose the department/provider, and authorize document processing.")
-            else:
+            identity = None
+            try:
+                identity = validate_identity(cnic, cnic_expiry, mobile)
+            except ValueError as exc:
+                st.error(str(exc))
+            if not text.strip() or not department_id:
+                st.error("Enter your complaint and choose the department/provider.")
+            elif identity is not None:
                 files = {k: {"name": v.name, "bytes": v.getvalue()} if v else None for k, v in uploads.items()}
                 case = agents.new_case(name, region, remedy, reference, days)
+                case["identity"] = identity
                 case["city"] = city
                 case["attachments"] = [k for k, v in files.items() if v]
                 with st.status("Preparing your grievance", expanded=True) as status:
@@ -172,10 +153,7 @@ if page == "Submit Grievance":
                 st.write(f"{'✅' if state == 'Complete' else '◻️'} {stage} — {state}")
         if st.session_state.current:
             case = st.session_state.current
-            st.metric("Attachment readiness", f"{case['audit']['score']}%")
-            st.caption(case["audit"]["note"])
-            if case["audit"]["missing"]:
-                st.warning("Suggested supporting documents still missing: " + ", ".join(case["audit"]["missing"]))
+            st.caption("Attachments are optional. Your draft can be prepared without uploads.")
             for warning in case["intake"]["warnings"]:
                 st.warning(warning)
             with st.expander("Jurisdiction evidence"):

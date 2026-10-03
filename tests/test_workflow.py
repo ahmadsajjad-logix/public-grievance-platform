@@ -47,7 +47,10 @@ def test_streamlit_prepares_case():
     app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "app.py")).run()
     app.text_area[0].set_value("My electricity bill is incorrect; please investigate.")
     app.selectbox(key="department").set_value("iesco").run()
-    next(c for c in app.checkbox if c.label.startswith("I authorize")).check()
+    from datetime import date
+    app.text_input(key="cnic").set_value("12345-1234567-1")
+    app.date_input(key="cnic_expiry").set_value(date(2030, 1, 1))
+    app.text_input(key="mobile").set_value("03001234567")
     next(b for b in app.button if b.label == "Prepare my grievance").click().run(timeout=20)
     assert not app.exception
     assert app.session_state["current"]["route"]["stage"] == "First complaint"

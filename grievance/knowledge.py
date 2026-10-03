@@ -117,15 +117,16 @@ def route(text, category, documents, region="Punjab", department_id=None,
         raise ValueError("The selected department does not match the service category.")
     if department.regions and region not in department.regions:
         raise ValueError(f"{department.name} is not listed for {region}. Check the location of the complaint or choose the correct department.")
-    if department.review_required and not city.strip():
-        raise ValueError("Enter the district/city and office so the local jurisdiction can be checked.")
-    if stage != "First complaint" and not prior_reference.strip():
-        raise ValueError("For escalation/review, enter the earlier complaint or decision reference (or its date if no number was issued).")
     target = department
     escalation = DEPARTMENTS.get(department.escalation)
     notes = [department.caveat] if department.caveat else []
     review = department.review_required or in_court or stage == "Challenge a formal decision"
-    if stage == "Unresolved earlier complaint" and escalation and not in_court:
+    if department.review_required and not city.strip():
+        notes.append("District and exact office were not supplied. Confirm the local office before submission.")
+    if stage != "First complaint" and not prior_reference.strip():
+        review = True
+        notes.append("Earlier complaint or decision reference was not supplied. Add it before seeking escalation; the draft remains addressed to the selected office.")
+    if stage == "Unresolved earlier complaint" and escalation and not in_court and prior_reference.strip():
         target = escalation
         review = review or target.review_required
         notes.append("Suggested escalation for administrative redress, subject to the receiving forum's eligibility checks.")

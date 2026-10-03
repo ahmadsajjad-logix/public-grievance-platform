@@ -12,30 +12,17 @@ python -m venv .venv
 .\.venv\Scripts\python -m streamlit run app.py
 ```
 
-No API key is needed for typed English/Roman Urdu complaints. Select a category, enter a complaint, authorize document processing, and select **Prepare my grievance**. The PDF and calendar appear under **Petition & Downloads**. Missing attachments are explicitly reported, but do not prevent generating a draft.
+No API key is needed. Type your complaint in Urdu, Roman Urdu or English and confirm the department. CNIC number, CNIC expiry date and Pakistani mobile number are required identity fields. Name, location, reference details and all uploads are optional. Identity fields are checked for format only, without NADRA or phone-owner verification. They appear in the draft PDF and stay in session memory, outside aggregate analytics.
+
+Audio input has been withdrawn because Urdu transcription accuracy was insufficient. The archived speech module is not used by the app and no speech model downloads occur in the deployed workflow.
 
 ## Deploy on Streamlit Community Cloud
 
-Deploy `ahmadsajjad-logix/public-grievance-platform`, branch `main`, entrypoint `app.py`. Select Python **3.13** in Advanced settings (the version tested locally). The root `requirements.txt` includes the speech engine, so no separate audio installation or OpenAI secret is required. A private GitHub repository needs to be accessible to your Streamlit account.
+Deploy `ahmadsajjad-logix/public-grievance-platform`, branch `main`, entrypoint `app.py`, with Python **3.13**. No API secrets are needed. The live app is https://public-grievance-platform.streamlit.app/.
 
-On the first transcription request, the server downloads the public `Systran/faster-whisper-base` model into `data/models/`. The model is shared across sessions in memory; recordings and transcripts are not shared. A restart may require downloading/loading it again. Download failure leaves the recording available for retry. Each request is limited to two minutes and 10 MB, and only one transcription runs at a time. Visitors are told when the server is busy. In hosted use, audio travels from the visitor's browser to the Streamlit server and is processed there in memory; it is not sent to an external transcription API.
+Bundled Noto fonts provide Urdu PDF shaping; PDF previews render directly as images. OCR uses Tesseract, installed by `packages.txt` on Cloud. All attachments are optional. A missing local office or earlier reference produces review guidance without blocking the draft. An unresolved complaint without an earlier reference stays addressed to the selected office pending review.
 
-The multilingual `base` model uses CPU INT8 to reduce memory consumption. Its Urdu accuracy can be limited, especially with noise or mixed speech; transcripts must be reviewed. On a larger host, set `WHISPER_MODEL_SIZE=small` before startup for the larger model. No resource allocation or transcription latency is guaranteed on shared hosting. Verify a representative Urdu recording on the actual deployment before the hackathon.
-
-Community Cloud's local disk is ephemeral. The SQLite analytics database may be lost after restart/redeployment; use a hosted database before relying on durable records.
-
-## Integrations
-
-- Audio: the Voice screen uses multilingual Whisper on the app server's CPU. No API key or API billing is needed. The speech engine is installed by the main requirements. To pre-download the model locally (optional):
-
-  ```powershell
-  .\.venv\Scripts\python scripts/setup_audio.py
-  ```
-
-  First use needs internet access to download model weights into `data/models/` (excluded from Git). Once downloaded, transcription can work offline on that server. Choose **Voice → Urdu → Transcribe audio**. Recordings are processed in memory, retained only for the session, and can be downloaded with **Save my recording**. The optional `agents.transcribe` OpenAI adapter remains available to developers but is not called by the Voice screen.
-- Image OCR: install Tesseract separately and put it on PATH. Missing OCR produces a manual-review message, not fabricated extraction. Searchable PDFs use pypdf. OCR defaults to English.
-- Urdu PDF: bundled OFL-licensed Noto fonts, Arabic shaping and right-to-left line layout support Urdu and mixed English text without font configuration. Review the generated draft before submission.
-- Knowledge base: upload searchable PDF/text manuals and associate their jurisdiction. FAISS indexes normalized hashed lexical features; NumPy or keyword retrieval provides an offline fallback. This does not claim semantic embeddings or legally verified interpretations.
+Community Cloud's local disk is ephemeral; analytics may be lost after a redeployment. Case details remain session-local.
 
 ## Data and operating limits
 

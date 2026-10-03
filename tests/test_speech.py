@@ -41,7 +41,7 @@ def test_unconfigured_local_model_does_not_download(monkeypatch):
 
 
 def test_missing_weights_are_downloaded_on_first_use(tmp_path, monkeypatch):
-    import faster_whisper
+    faster_whisper = pytest.importorskip("faster_whisper")
     monkeypatch.setattr(speech, "MODEL_DIR", tmp_path)
     downloader = Mock()
     constructor = Mock()
@@ -72,6 +72,7 @@ def test_busy_server_keeps_recording_for_retry(monkeypatch):
 def test_duration_limit_rejects_audio_without_truncating(monkeypatch):
     import io
     import wave
+    pytest.importorskip("av")
     output = io.BytesIO()
     with wave.open(output, "wb") as wav:
         wav.setnchannels(1)
@@ -83,17 +84,3 @@ def test_duration_limit_rejects_audio_without_truncating(monkeypatch):
         speech.decode_recording(output.getvalue())
 
 
-def test_voice_screen_transcribes_retained_recording_without_api_key(monkeypatch):
-    from pathlib import Path
-    from streamlit.testing.v1 import AppTest
-    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
-    monkeypatch.setattr(speech, "readiness", lambda: (True, "Local speech recognition is ready."))
-    transcribe = Mock(return_value="میرا بجلی کا بل درست کریں۔")
-    monkeypatch.setattr(speech, "transcribe_local", transcribe)
-    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "app.py")).run()
-    app.session_state["pending_recording"] = {"bytes": b"test audio", "name": "recording.wav"}
-    next(r for r in app.radio if r.label == "Input method").set_value("Voice").run()
-    next(b for b in app.button if b.label == "Transcribe audio").click().run()
-    assert not app.exception
-    assert app.session_state["narrative"] == "میرا بجلی کا بل درست کریں۔"
-    transcribe.assert_called_once_with(b"test audio", "ur")

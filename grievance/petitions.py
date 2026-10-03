@@ -112,6 +112,9 @@ def build_petition(case):
         ("Normal", f"Concerning: {route.get('department', route['body'])}"),
         ("Normal", f"Date: {case['created'].date()} | Stage: {route.get('stage', 'First complaint')}"),
         ("Normal", f"Applicant: {case['name'] or 'To be supplied'}"),
+        *[("Normal", f"{label}: {case['identity'][key]}")
+          for key, label in (("cnic", "CNIC"), ("cnic_expiry", "CNIC expiry date"), ("mobile", "Mobile"))
+          if case.get("identity")],
         ("Normal", f"Location: {case.get('city', '')}, {case['region']}"),
         ("Heading2", "Statement of grievance / شکایت کی تفصیل"),
         ("Normal", case["intake"]["text"]),

@@ -12,9 +12,5 @@ pytesseract>=0.3.13,<1
 openai>=1.55,<3
 langchain-core>=0.3,<2
 pytest>=8,<10
-faster-whisper==1.2.1
-# Use a Python 3.13-compatible wheel; avoid an obsolete source build on Cloud.
-tokenizers==0.23.2
-huggingface-hub>=1.33,<2
 arabic-reshaper>=3,<4
 python-bidi>=0.6,<1
