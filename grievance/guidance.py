@@ -8,6 +8,7 @@ from urllib.parse import quote
 from .catalog import DEPARTMENTS
 
 CHECKED = "2026-10-03"
+from .offences import PECA, NCCIA
 WFAQ = "https://www.mohtasib.gov.pk/Detail/YmZhYzY4ODktNjNkMC00ZWNlLWI4YjAtYjViYzJmZjlkYjc2"
 WLAW = "https://mohtasib.gov.pk/SiteImage/Downloads/presidential_order_1983.pdf"
 NLAW = "https://nepra.org.pk/Legal.php"
@@ -22,6 +23,14 @@ def channel(kind, value, source, instructions=""):
 
 
 PROFILES = {
+    "nccia": dict(
+        can="Receive and investigate alleged electronic offences within PECA jurisdiction.",
+        cannot="An online complaint is not an FIR, finding of guilt or guaranteed recovery of money. Ordinary service complaints may belong to the provider or regulator.",
+        procedure=["Preserve original communications, URLs, dates and transaction references.", "Open NCCIA's complaint form and complete the identity, location, category and factual details. Use the field guidance below.", "Complete the declaration and verification yourself, submit and retain acknowledgment. Follow NCCIA's requests for evidence."],
+        requirements=["The official form marks name, CNIC, gender, mobile, city, crime category and details as required", "Preserve supporting digital evidence for investigators; do not share passwords or OTPs"],
+        limits="An acknowledgment is not FIR registration. Applicable PECA provisions, cognizability and investigation procedure depend on the facts and current law.",
+        sources=[NCCIA, PECA], channels=[channel("portal", NCCIA, NCCIA)],
+        laws=[dict(citation="Prevention of Electronic Crimes Act, 2016, as amended; section 29", source=PECA, purpose="NCCIA investigation framework. Select a cyber offence in the FIR guide to examine possible substantive sections.")]),
     "nepra": dict(
         can="Examine electricity supply, connection, metering and billing complaints against regulated licensees.",
         cannot="A regulator complaint is not automatically a statutory appeal or a finding that every disputed charge is unlawful. Identify the supplier and earlier complaint.",
@@ -38,9 +47,9 @@ PROFILES = {
         cannot="A telecom service complaint does not by itself establish the correct criminal-investigation or digital-content-removal route.",
         procedure=["Retain your operator complaint reference and response.", "Use PTA CMS and its official user manual to select the complaint type, complete the required fields and keep the acknowledgment.", "The manual describes operator investigation followed by PTA verification of the action taken."],
         requirements=["Operator and affected service/account", "Complaint facts, earlier reference and relevant evidence; verify mandatory CMS fields"],
-        limits="Exact applicable regulations, complaint-specific time limits and regional recipient are pending document review.",
+        limits="Exact applicable consumer regulations, complaint-specific time limits and regional recipient are pending document review.",
         sources=[PTA_MANUAL],
-        channels=[channel("portal", "https://complaint.pta.gov.pk/userlogin.aspx", PTA_MANUAL, "Sign in/register and use the complaint registration workflow in the manual.")], laws=[]),
+        channels=[channel("portal", "https://complaint.pta.gov.pk/userlogin.aspx", PTA_MANUAL, "Sign in/register and use the complaint registration workflow in the manual.")], laws=[dict(citation="Pakistan Telecommunication (Re-organization) Act, 1996, sections 3–6", source="https://pakistancode.gov.pk/pdffiles/administratorcf6de2451af9e9d016e5fef2ac7e1562.pdf", purpose="Establishes PTA and its regulatory functions and responsibilities; a specific consumer breach needs the relevant regulation and facts.")]),
     "pemra": dict(
         can="Receive complaints concerning licensed broadcast/distributed programmes; regional Councils examine content complaints.",
         cannot="A broadcaster-content complaint is different from a social-media complaint, employee-wage claim or cable billing dispute. The same provisions cannot be reused indiscriminately.",
@@ -197,6 +206,10 @@ PROFILES["punjab-rts"] = service_profile(
 PROFILES["punjab-rts"]["laws"] = [dict(citation="Punjab Right to Public Services Act 2019, sections 1(3), 4 and 6 (supplied PDF pages 3–6)", source="https://regulationswing.punjab.gov.pk/acts", purpose="Commencement, notified service conditions and appeals must be established before claiming a particular entitlement or deadline.")]
 
 
+from .department_research import extend
+extend(PROFILES)
+
+
 def department_guide(department_id, region="", legal_profile=None):
     d = DEPARTMENTS[department_id]
     known = PROFILES.get(department_id)
@@ -240,8 +253,20 @@ def research_documents():
 
 
 def guide_sections(guide):
+    from .rights import rights_for
+    from .forms import form_text
     sections = [("Title", "Department and filing guidance"), ("Heading2", guide["name"]),
                 ("Normal", guide["status"]), ("Normal", "Source review: " + (guide["reviewed"] or "Not completed")),
+                ("Heading2", "Legal framework")]
+    sections += [("Normal", p["citation"] + ": " + p["purpose"] + " Source: " + p["source"]) for p in guide["laws"] + guide["provisions"]]
+    if not guide["laws"] and not guide["provisions"]:
+        sections.append(("Normal", "Governing law and complaint-specific provisions have not yet been verified."))
+    rights = rights_for(guide["department_id"], guide["provisions"])
+    sections.append(("Heading2", "Your rights and available remedies"))
+    sections += [("Normal", r["text"] + " " + r["citation"] + " Source: " + r["source"]) for r in rights]
+    if not rights:
+        sections.append(("Normal", "Complaint-specific entitlements are pending review; filing information does not establish a breach or promise a remedy."))
+    sections += [
                 ("Heading2", "What this authority can help with"), ("Normal", guide["can"]),
                 ("Heading2", "Limits and exclusions"), ("Normal", guide["cannot"]),
                 ("Heading2", "How to file")]
@@ -251,9 +276,7 @@ def guide_sections(guide):
     sections += [("Normal", r) for r in guide["requirements"]]
     sections += [("Normal", "Uploads are optional in this app; the authority can require documents when you file."),
                  ("Normal", "Paste the prepared text into the authority's form. Attach the petition PDF only where accepted; otherwise retain it or use a confirmed paper route."),
-                 ("Heading2", "Legal framework and time limits"), ("Normal", guide["limits"])]
-    sections += [("Normal", p["citation"] + ": " + p["purpose"] + " Source: " + p["source"]) for p in guide["laws"]]
-    sections += [("Normal", p["citation"] + ": " + p["purpose"] + " Source: " + p["source"]) for p in guide["provisions"]]
+                 ("Heading2", "Time limits and procedure"), ("Normal", guide["limits"])]
     sections += [("Heading2", "Office and follow-up"), ("Normal", guide["recipient"]),
                  ("Normal", guide["address"] or "Office address not verified"), ("Normal", guide["hours"])]
     if guide["map"]:
@@ -261,6 +284,8 @@ def guide_sections(guide):
     sections += [("Normal", "Keep the authority's acknowledgment. The app does not submit, confirm receipt, calculate an unverified statutory deadline or monitor the authority's case status."),
                  ("Heading2", "Official sources")]
     sections += [("Normal", s) for s in dict.fromkeys(guide["sources"] + ([guide["address_source"]] if guide["address_source"] else []))]
+    sections.append(("Heading2", "Official form assistance"))
+    sections += [("Normal", paragraph) for paragraph in form_text(guide["department_id"]).split("\n\n")]
     if guide.get("local_documents"):
         sections.append(("Heading2", "Departmental documents consulted / indexed as references"))
         sections += [("Normal", f"{d['file']} ({d['pages']} PDF pages). {d['note']} Pages still requiring OCR: {d['missing_ocr']}.") for d in guide["local_documents"]]

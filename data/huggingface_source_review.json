@@ -1,0 +1,34 @@
+{
+  "source": "https://huggingface.co/datasets/AyeshaJadoon/Pakistan_Laws_Dataset",
+  "author": "AyeshaJadoon",
+  "license_declared": "ODC-BY",
+  "checked": "2026-10-03",
+  "sha256": "8556bdcc80fe496120c4f527e17d032dbaa699358026007a107545b9b71e2944",
+  "downloaded_records": 967,
+  "card_claimed_records": 969,
+  "actual_fields": [
+    "file_name",
+    "text"
+  ],
+  "decision": "Research discovery only. Not loaded as current law or a hosted LLM.",
+  "findings": [
+    "Dataset contains extracted legal text, not model weights or a hosted inference API.",
+    "Downloaded schema uses text rather than content as in the card example.",
+    "PECA record has 29 pages and lacks the current 39-page official consolidation; it is not suitable as a current-law authority.",
+    "The linked PakistaniLawPhi-3 is a LoRA adapter requiring a base model. Its card lists no hosted inference provider; no runtime integration was added."
+  ],
+  "selected_records": [
+    {
+      "file_name": "administrator6a061efe0ed5bd153fa8b79b8eb4cba7.pdf",
+      "characters": 74709
+    },
+    {
+      "file_name": "administratord5622ea3f15bfa00b17d2cf7770a8434.pdf",
+      "characters": 511562
+    }
+  ],
+  "current_primary_sources": [
+    "https://pakistancode.gov.pk/pdffiles/administratord5622ea3f15bfa00b17d2cf7770a8434.pdf",
+    "https://www.pakistancode.gov.pk/pdffiles/administrator6a061efe0ed5bd153fa8b79b8eb4cba7.pdf"
+  ]
+}

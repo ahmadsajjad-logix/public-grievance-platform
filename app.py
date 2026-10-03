@@ -8,6 +8,9 @@ from grievance.guidance import department_guide, guide_text, guide_sections, PRO
 from grievance.knowledge import detect
 from grievance.catalog import CATEGORIES, DEPARTMENTS, REGIONS, STAGES, available_departments, REVIEW_DATE
 from grievance.storage import aggregates, save_aggregate
+from grievance.forms import form_guide, form_values
+from grievance.rights import rights_for
+from grievance.channels import complaint_links
 
 st.set_page_config(page_title="Civic Access | Public Grievance", page_icon="⚖️", layout="wide")
 for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None}.items():
@@ -15,14 +18,51 @@ for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None
 
 st.sidebar.title("⚖️ Civic Access")
 st.sidebar.caption("Pak Angels • Pakistan National Impact Challenge")
-page = st.sidebar.radio("Workspace", ["Submit Grievance", "My drafts & filing records", "Analytics & Heatmap", "Department Directory", "Knowledge Base Admin"])
+page = st.sidebar.radio("Workspace", ["Submit Grievance", "FIR & Offence Guide", "My drafts & filing records", "Analytics & Heatmap", "Department Directory", "Knowledge Base Admin"])
 st.sidebar.info("Prepare here, submit to the authority yourself. Nothing is sent automatically. Private case details stay in this session on the app server; uploaded documents are not saved to disk.")
 st.title("Public Grievance & Statutory Escalation Platform")
 st.caption("A clearer path from a public service problem to a prepared complaint.")
 
 
+def show_form_help(department_id, values=None):
+    form = form_guide(department_id)
+    st.markdown("**Help with the official complaint form**")
+    st.caption(("Public form fields checked: " + form["reviewed"]) if form["verified"] else "Exact form fields not yet reviewed")
+    st.info(form["note"])
+    if form["url"]:
+        st.markdown(f"[Open the official form]({form['url']})")
+    for field in form["fields"]:
+        st.write(field["label"] + " — " + field["help"])
+        value = (values or {}).get(field["value_key"], "")
+        if value:
+            st.code(value, language=None, wrap_lines=True)
+    st.caption("Opening the form does not transfer your data. Copy reviewed text into matching fields; complete declarations, CAPTCHA/OTP and final submission yourself.")
+
+
 def show_guide(guide):
     st.caption(guide["status"] + " • Reviewed: " + (guide["reviewed"] or "not completed"))
+    st.markdown("**Where to lodge your complaint**")
+    links = complaint_links(guide)
+    for i, link in enumerate(links):
+        st.link_button(link["label"] + " — " + guide["name"], link["url"], type="primary" if i == 0 else "secondary")
+        st.caption(link["instructions"] or "Opens the authority's website in another tab.")
+    if not any(link["kind"] in ("form", "portal") for link in links):
+        st.caption("A direct online filing form has not been verified for this entry. Use the official instructions or contact route below.")
+    st.caption("You can open these links without entering CNIC details here. Complete and submit on the authority's site, then save its acknowledgment.")
+    st.markdown("**Legal framework**")
+    framework = guide["laws"] + guide.get("provisions", [])
+    if not framework:
+        st.warning("The governing law and complaint-specific provisions for this entry have not yet been verified.")
+    for law in framework:
+        st.write(law["citation"] + ": " + law["purpose"])
+        st.markdown(f"[Read the legal source]({law['source']})")
+    st.markdown("**Your rights and available remedies**")
+    rights = rights_for(guide["department_id"], guide.get("provisions", []))
+    for right in rights:
+        st.write(right["text"])
+        st.markdown(f"[{right['citation']}]({right['source']})")
+    if not rights:
+        st.caption("Complaint-specific legal entitlements are pending review. The scope and filing information below do not establish a breach or promise a remedy.")
     st.markdown("**What this department can help with**")
     st.write(guide["can"])
     st.markdown("**Limits and exclusions**")
@@ -34,7 +74,7 @@ def show_guide(guide):
         if c["kind"] == "whatsapp":
             st.write("Official WhatsApp:", c["value"])
             st.markdown("[Open WhatsApp — send the message yourself](https://wa.me/" + c["value"].lstrip("+") + ")")
-        elif c["kind"] in ("portal", "website", "directory"):
+        elif c["kind"] in ("form", "portal", "website", "directory"):
             st.markdown(f"[Open {c['kind']}]({c['value']})")
         else:
             st.write(c["kind"].title() + ":", c["value"])
@@ -44,9 +84,6 @@ def show_guide(guide):
         st.write("• " + item)
     st.caption("All uploads remain optional here. The receiving authority may require documents before accepting a filing.")
     st.write("Time limits and procedure:", guide["limits"])
-    for law in guide["laws"]:
-        st.write(law["citation"] + ": " + law["purpose"])
-        st.markdown(f"[Legal framework source]({law['source']})")
     if guide["address"]:
         st.write("Office:", guide["address"])
         st.markdown(f"[Find this office on a map — confirm the result]({guide['map']})")
@@ -56,6 +93,7 @@ def show_guide(guide):
         for document in guide["local_documents"]:
             st.caption(document["file"] + " — " + document["note"])
     st.caption("No complaint is transmitted when you open a link. Complete the official filing and retain its acknowledgment.")
+    show_form_help(guide["department_id"])
 
 
 def downloads(case):
@@ -79,6 +117,8 @@ def downloads(case):
     st.subheader("Use your prepared complaint")
     st.write("For an online form, copy the complaint text below into its complaint/details field and the requested resolution into its relief field if separate. Complete the portal's identity and other required fields yourself.")
     prepared_text = agents.filing_text(case)
+    with st.expander("Match my prepared text to the official form"):
+        show_form_help(case["route"]["target_id"], form_values(case))
     with st.expander("Copy complaint text for an official form", expanded=True):
         st.caption("Use the copy button in the text box. Review the wording and the portal's character limit; this app does not know each portal's current limits. Identity details are kept out of this copyable text.")
         st.code(prepared_text, language=None, wrap_lines=True)
@@ -264,6 +304,40 @@ if page == "Submit Grievance":
                         st.link_button("Official source: " + hit["name"], hit["source"])
     with output_tab:
         downloads(st.session_state.current)
+elif page == "FIR & Offence Guide":
+    from grievance.offences import OFFENCES, PROCEDURE, LIMITATION, NCCIA, CHECKED, assess, report
+    st.subheader("Understand a possible offence and prepare to report it")
+    st.write("Select what happened, check the required facts and read the possible provisions. You can use this guide without supplying CNIC or uploading documents.")
+    st.info(LIMITATION)
+    st.caption(f"{len(OFFENCES)} common offence scenarios • References checked {CHECKED}. Other offences and special laws need individual research.")
+    region = st.selectbox("Incident province / territory", REGIONS, key="fir_region")
+    incident = st.date_input("Incident date (optional)", value=None, min_value=date(1900, 1, 1), max_value=date.today(), key="fir_date")
+    chosen = st.selectbox("Offence / what happened", [None, *OFFENCES], format_func=lambda x: OFFENCES[x]["label"] if x else "Select an incident type", key="offence")
+    if region in ("Azad Jammu and Kashmir", "Gilgit-Baltistan"):
+        st.warning("The application/adaptation of these laws in this territory requires specific verification; no local-law conclusion is made here.")
+    if chosen:
+        item = OFFENCES[chosen]
+        st.markdown("**Possible provision: " + item["citation"] + "**")
+        st.markdown(f"[Read the law]({item['source']})")
+        st.warning(item["caution"])
+        st.markdown("**Facts needed before applying this provision**")
+        answers = [st.radio(q, ["Not sure", "Yes", "No"], horizontal=True, key=f"fact-{chosen}-{i}") for i, q in enumerate(item["questions"])]
+        st.info(assess(chosen, answers) if region not in ("Azad Jammu and Kashmir", "Gilgit-Baltistan") else "Territorial application needs verification before suggesting this provision for your incident.")
+        st.write("Records to preserve:", item["evidence"])
+        facts = st.text_area("Your factual account (optional; Urdu, Roman Urdu or English)", max_chars=12000, key="fir_facts")
+        st.caption("Include time/place, what happened, people involved if known, loss/injury and evidence. Separate what you saw from what you suspect. Details stay in this session and are not added to analytics.")
+        if item["cyber"]:
+            show_form_help("nccia", {"narrative": facts})
+        else:
+            st.write("Take the factual account to the police station with territorial jurisdiction. Obtain an acknowledgment; a portal ticket alone is not an FIR.")
+        guidance = report(chosen, answers, region, incident, facts)
+        st.download_button("Download offence & reporting guide", guidance.encode("utf-8-sig"), "offence-reporting-guide.txt", "text/plain")
+    st.subheader("FIR procedure and your reporting options")
+    for title, explanation, source in PROCEDURE:
+        st.markdown("**" + title + "**")
+        st.write(explanation)
+        st.markdown(f"[Procedure source]({source})")
+    st.caption("CrPC provisions explain procedure; they are not the substantive offence charges. Obtain local legal assistance where facts, jurisdiction or registration are disputed.")
 elif page == "My drafts & filing records":
     st.subheader("Your session's grievances")
     st.caption("Local preparation records. Status is not synchronized with government systems. Session records disappear when the session ends.")
@@ -292,6 +366,7 @@ elif page == "Department Directory":
     st.subheader("Departments and complaint routes")
     st.warning("Research coverage varies by department. Reviewed filing guidance, verified petition provisions and directory-only entries are distinct. Check each entry's research status and sources.")
     st.caption(f"{len(DEPARTMENTS)} directory entries; {len(PROFILES)} reviewed guidance profiles; {len(research_documents())} source summaries available for retrieval. A reviewed guide does not mean all legal provisions or regional offices are verified.")
+    st.info("Filing guidance is available for all listed entries. Exact regional recipients, issue-specific legal grounds and some public form fields still require confirmation. Field-by-field help is reviewed for NCCIA, NEPRA and KWSC; other entries provide general preparation help.")
     st.caption(f"Directory review: {REVIEW_DATE}. A listed office is not a promise of admissibility. Local offices and statutory appeal routes may need verification.")
     region_filter = st.selectbox("Filter by province / territory", ["All", *REGIONS])
     category_filter = st.selectbox("Filter by service", ["All", *CATEGORIES])
@@ -319,6 +394,15 @@ else:
     indexed = library()
     st.write(f"Bundled departmental library: {len(indexed['documents'])} PDFs inventoried; {len(indexed['chunks'])} page-cited reference chunks.")
     st.caption("Supplied documents are reference evidence, not automatically current law. Scanned pages awaiting OCR and historical/out-of-scope documents are explicitly listed below.")
+    with st.expander("Hugging Face legal dataset review"):
+        import json
+        from pathlib import Path
+        review = json.loads((Path(__file__).parent / "data" / "huggingface_source_review.json").read_text(encoding="utf-8"))
+        st.markdown(f"[Dataset supplied by you]({review['source']})")
+        st.write(review["decision"])
+        st.caption(f"{review['downloaded_records']} downloaded records • Declared licence: {review['license_declared']} • Reviewed {review['checked']}")
+        for finding in review["findings"]:
+            st.write("• " + finding)
     with st.expander("Departmental document inventory and research gaps"):
         for document in indexed["documents"]:
             st.write(document["file"])
