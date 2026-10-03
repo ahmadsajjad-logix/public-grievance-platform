@@ -34,7 +34,7 @@ Community Cloud's local disk is ephemeral. The SQLite analytics database may be 
 
   First use needs internet access to download model weights into `data/models/` (excluded from Git). Once downloaded, transcription can work offline on that server. Choose **Voice → Urdu → Transcribe audio**. Recordings are processed in memory, retained only for the session, and can be downloaded with **Save my recording**. The optional `agents.transcribe` OpenAI adapter remains available to developers but is not called by the Voice screen.
 - Image OCR: install Tesseract separately and put it on PATH. Missing OCR produces a manual-review message, not fabricated extraction. Searchable PDFs use pypdf. OCR defaults to English.
-- Urdu PDF: set `PETITION_FONT_PATH` to a Unicode TrueType font. Arabic shaping and right-to-left layout need further validation before Urdu petitions are suitable for submission. Without a configured font, enter an English/Roman Urdu transcript to generate a readable PDF. Urdu intake and keyword routing work independently.
+- Urdu PDF: bundled OFL-licensed Noto fonts, Arabic shaping and right-to-left line layout support Urdu and mixed English text without font configuration. Review the generated draft before submission.
 - Knowledge base: upload searchable PDF/text manuals and associate their jurisdiction. FAISS indexes normalized hashed lexical features; NumPy or keyword retrieval provides an offline fallback. This does not claim semantic embeddings or legally verified interpretations.
 
 ## Data and operating limits
@@ -46,6 +46,8 @@ Electronic submissions are **simulated**, never sent to an authority. Reminder d
 Before production: add authentication and administrator authorization, secure retention/deletion controls, independently validated multilingual OCR/PDF rendering, legally reviewed jurisdiction rules, verified deadline metadata, contracted dispatch integrations, durable private case storage and status reconciliation. This implementation is a working demo foundation, not a production certification.
 
 ## Verification
+
+The department directory covers federal regulators, electricity and gas providers, provincial service departments, ombudsmen and public-service-delay routes. Select the actual provider and province; local entries require the district/office. Unresolved complaints can suggest an eligible escalation forum. Court matters and formal decisions require individual review. Directory links are distinguished from complaint portals, and unverified operational routes are labelled in the app.
 
 ```powershell
 .\.venv\Scripts\python -m pytest -q

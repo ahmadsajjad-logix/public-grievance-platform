@@ -4,7 +4,8 @@ import logging
 import streamlit as st
 from grievance import agents
 from grievance.speech import readiness, transcribe_local
-from grievance.knowledge import AUTHORITIES
+from grievance.knowledge import detect
+from grievance.catalog import CATEGORIES, DEPARTMENTS, REGIONS, STAGES, available_departments, REVIEW_DATE
 from grievance.storage import aggregates, save_aggregate
 
 st.set_page_config(page_title="Civic Access | Public Grievance", page_icon="⚖️", layout="wide")
@@ -13,7 +14,7 @@ for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None
 
 st.sidebar.title("⚖️ Civic Access")
 st.sidebar.caption("Pak Angels • Pakistan National Impact Challenge")
-page = st.sidebar.radio("Workspace", ["Submit Grievance", "Live Tracker", "Analytics & Heatmap", "Knowledge Base Admin"])
+page = st.sidebar.radio("Workspace", ["Submit Grievance", "Live Tracker", "Analytics & Heatmap", "Department Directory", "Knowledge Base Admin"])
 st.sidebar.info("Demo workspace. Electronic dispatch is simulated. Private case details stay in this session on the app server; uploaded documents are not saved to disk.")
 st.title("Public Grievance & Statutory Escalation Platform")
 st.caption("A clearer path from a public service problem to a prepared complaint.")
@@ -25,13 +26,18 @@ def downloads(case):
     st.success(f"{case['route']['body']} • {case['dispatch']['tracking_id']} • {case['dispatch']['status']}")
     st.download_button("Download draft petition", case["pdf"], f"petition-{case['id'][:8]}.pdf", "application/pdf")
     st.download_button("Download calendar reminder", case["ics"], "follow-up.ics", "text/calendar")
-    st.caption(f"Personal follow-up: {case['due'].date()}. Statutory deadline: not verified. Appellate forum: requires eligibility review.")
+    st.caption(f"Personal follow-up: {case['due'].date()}. This is not a statutory or appeal deadline.")
+    st.write("Complaint concerns:", case["route"].get("department", case["route"]["body"]))
+    st.write("Suggested next forum:", case["route"].get("escalation", "Review required"))
+    for note in case["route"].get("notes", []):
+        st.info(note)
+    st.download_button("Download complaint text (Urdu supported)", case["intake"]["text"].encode("utf-8-sig"), "complaint.txt", "text/plain")
     with st.expander("Petition preview", expanded=True):
         encoded = base64.b64encode(case["pdf"]).decode()
         st.components.v1.html(f'<iframe title="Draft petition" src="data:application/pdf;base64,{encoded}" width="100%" height="650"></iframe>', height=660)
     st.subheader("Submission guidance")
     if case["route"]["portal"]:
-        st.link_button("Open authority website / portal", case["route"]["portal"])
+        st.link_button(case["route"].get("channel", "Open authority website / portal"), case["route"]["portal"])
     for i, step in enumerate(case["dispatch"]["steps"], 1):
         st.write(f"{i}. {step}")
     st.caption("Local office addresses, maps and hours must be confirmed on the authority website before travel.")
@@ -40,6 +46,7 @@ if page == "Submit Grievance":
     intake_tab, output_tab = st.tabs(["Submit Grievance", "Petition & Downloads"])
     with intake_tab:
         st.subheader("Tell us what happened")
+        region = st.selectbox("Province / territory of the complaint", REGIONS, key="region")
         mode = st.radio("Input method", ["Text", "Voice"], horizontal=True)
         if mode == "Voice":
             ready, speech_status = readiness()
@@ -71,20 +78,53 @@ if page == "Submit Grievance":
                     if not isinstance(exc, ValueError):
                         logging.getLogger(__name__).exception("Speech transcription failed")
                     st.error(str(exc) if isinstance(exc, ValueError) else "Transcription could not finish. Try a shorter WAV or MP3 recording. If it keeps failing, ask the app owner to check the server logs. Your recording has been retained.")
+        text = st.text_area("Complaint or transcript • English, Roman Urdu or Urdu", key="narrative", height=170, max_chars=12000)
+        if st.button("Suggest department from my complaint"):
+            try:
+                suggested_category, suggested_id = detect(text, region)
+                st.session_state["category"] = suggested_category
+                options = available_departments(suggested_category, region)
+                st.session_state["department"] = suggested_id if suggested_id in [d.id for d in options] else None
+                if not suggested_id:
+                    st.info("Service category suggested. Choose the exact provider or district office below.")
+            except ValueError as exc:
+                st.warning(str(exc))
+        category = st.selectbox("Service category", CATEGORIES, key="category")
+        departments = available_departments(category, region)
+        ids = [None] + [d.id for d in departments]
+        if st.session_state.get("department") not in ids:
+            st.session_state["department"] = None
+        department_id = st.selectbox("Department / provider", ids, key="department",
+                                     format_func=lambda id: DEPARTMENTS[id].name if id else "Choose department / provider")
+        if not departments:
+            st.info("This region has no verified directory entry for this category yet. Choose a listed federal forum where applicable; local jurisdiction needs verification.")
+        if department_id:
+            department = DEPARTMENTS[department_id]
+            st.caption(department.scope)
+            if department.review_required:
+                st.info("The district office or channel needs verification. Enter its name and location below.")
+        complaint_stage = st.selectbox("Complaint stage", STAGES)
+        st.caption("First complaint goes to the selected office. An unresolved complaint may go to its regulator or eligible ombudsman. A formal appeal requires review of the decision and law.")
         with st.form("grievance"):
             left, right = st.columns(2)
             with left:
                 name = st.text_input("Applicant name (optional)", max_chars=120)
-                region = st.selectbox("Province / territory", ["Punjab", "Sindh", "Khyber Pakhtunkhwa", "Balochistan", "Islamabad", "Gilgit-Baltistan", "Azad Jammu and Kashmir"])
-                category = st.selectbox("Service category", ["Detect automatically", *AUTHORITIES])
-                text = st.text_area("Complaint or transcript • English, Roman Urdu or Urdu", key="narrative", height=170, max_chars=12000)
+                city = st.text_input("City / district and exact office or facility", max_chars=240)
                 remedy = st.text_area("What resolution do you want?", value="Please investigate this complaint, correct the service issue, and provide a written response.", max_chars=3000)
-                reference = st.text_input("Reference / consumer ID (optional)", max_chars=80)
+                reference = st.text_input("Service / consumer / application reference (optional)", max_chars=100)
+                prior_reference = st.text_input("Earlier complaint or decision reference / date", max_chars=160)
+                in_court = st.checkbox("This matter is already before a court or tribunal")
+                payment_dispute = st.checkbox("This complaint disputes a payment or refund")
             with right:
                 st.markdown("**Supporting documents**")
-                uploads = {kind: st.file_uploader(label, type=["pdf", "png", "jpg", "jpeg", "txt"], key=kind) for kind, label in [("CNIC", "CNIC copy"), ("Service evidence", "Bill or service evidence"), ("Payment proof", "Payment receipt") ]}
-                st.caption("OCR requires Tesseract for images. Uploaded files count toward completeness, not authenticity.")
-                dispatch_mode = st.selectbox("Submission pathway", ["Electronic (simulation)", "Offline guidance"])
+                st.caption(agents.EVIDENCE[category])
+                uploads = {kind: st.file_uploader(label, type=["pdf", "png", "jpg", "jpeg", "txt"], key=kind) for kind, label in [
+                    ("Service evidence", "Service evidence / bill / application / incident record"),
+                    ("CNIC", "CNIC copy (if the receiving authority requires it)"),
+                    ("Payment proof", "Payment / fee receipt (if relevant)"),
+                    ("Earlier complaint / decision", "Earlier complaint, acknowledgment or decision") ]}
+                st.caption("Only upload relevant records. OCR assists extraction; document authenticity needs review.")
+                dispatch_mode = st.selectbox("Submission pathway", ["Offline guidance", "Electronic (simulation)"])
                 days = st.number_input("Personal follow-up in days", min_value=1, max_value=365, value=14)
                 consent = st.checkbox("Include this case in local aggregate analytics (category, province, date and demo status only)")
                 confirmed = st.checkbox("I authorize processing these documents to prepare my draft complaint")
@@ -92,11 +132,12 @@ if page == "Submit Grievance":
         if run:
             st.session_state.pipeline = {stage: "Pending" for stage in agents.STAGES}
             st.session_state.current = None
-            if not text.strip() or not confirmed:
-                st.error("Enter your complaint and authorize document processing.")
+            if not text.strip() or not confirmed or not department_id:
+                st.error("Enter your complaint, choose the department/provider, and authorize document processing.")
             else:
                 files = {k: {"name": v.name, "bytes": v.getvalue()} if v else None for k, v in uploads.items()}
                 case = agents.new_case(name, region, remedy, reference, days)
+                case["city"] = city
                 case["attachments"] = [k for k, v in files.items() if v]
                 with st.status("Preparing your grievance", expanded=True) as status:
                     try:
@@ -106,9 +147,9 @@ if page == "Submit Grievance":
                             if stage == agents.STAGES[0]:
                                 case["intake"] = agents.intake(text, files)
                             elif stage == agents.STAGES[1]:
-                                case["route"] = agents.route(text, category, st.session_state.manuals)
+                                case["route"] = agents.route(text, category, st.session_state.manuals, region, department_id, complaint_stage, city, prior_reference, in_court)
                             elif stage == agents.STAGES[2]:
-                                case["audit"] = agents.audit(files, case["route"]["category"])
+                                case["audit"] = agents.audit(files, case["route"]["category"], complaint_stage, payment_dispute)
                             elif stage == agents.STAGES[3]:
                                 case["pdf"] = agents.petition(case)
                             elif stage == agents.STAGES[4]:
@@ -133,7 +174,7 @@ if page == "Submit Grievance":
             st.metric("Attachment readiness", f"{case['audit']['score']}%")
             st.caption(case["audit"]["note"])
             if case["audit"]["missing"]:
-                st.warning("Missing documents: " + ", ".join(case["audit"]["missing"]))
+                st.warning("Suggested supporting documents still missing: " + ", ".join(case["audit"]["missing"]))
             for warning in case["intake"]["warnings"]:
                 st.warning(warning)
             with st.expander("Jurisdiction evidence"):
@@ -142,6 +183,8 @@ if page == "Submit Grievance":
                 for hit in case["route"]["matches"]:
                     st.write(f"{hit['name']} • relevance {hit['score']}")
                     st.text(hit["text"][:1500])
+                    if hit.get("source"):
+                        st.link_button("Official source: " + hit["name"], hit["source"])
     with output_tab:
         downloads(st.session_state.current)
 elif page == "Live Tracker":
@@ -168,10 +211,34 @@ elif page == "Analytics & Heatmap":
         matrix = df.pivot_table(index="region", columns="category", values="count", aggfunc="sum", fill_value=0)
         st.dataframe(matrix.style.background_gradient(cmap="YlGnBu"), use_container_width=True)
         st.caption("Coarse local aggregates of demo preparations; these are not official complaint statistics.")
+elif page == "Department Directory":
+    st.subheader("Departments and complaint routes")
+    st.caption(f"Directory review: {REVIEW_DATE}. A listed office is not a promise of admissibility. Local offices and statutory appeal routes may need verification.")
+    region_filter = st.selectbox("Filter by province / territory", ["All", *REGIONS])
+    category_filter = st.selectbox("Filter by service", ["All", *CATEGORIES])
+    search = st.text_input("Search department, acronym or scope")
+    for department in DEPARTMENTS.values():
+        if region_filter != "All" and department.regions and region_filter not in department.regions:
+            continue
+        if category_filter != "All" and department.category != category_filter:
+            continue
+        if search and search.casefold() not in (department.name + " " + department.scope + " " + " ".join(department.aliases)).casefold():
+            continue
+        with st.expander(department.name):
+            st.write(department.scope)
+            st.caption("Regions: " + (", ".join(department.regions) or "Federal / nationwide"))
+            st.write(department.caveat)
+            if department.escalation:
+                st.write("Possible escalation, subject to eligibility:", DEPARTMENTS[department.escalation].name)
+            if department.review_required:
+                st.warning("Local office / current operational channel requires confirmation.")
+            st.link_button(department.channel, department.url)
 else:
     st.subheader("Knowledge base workspace")
     st.caption("Session-local reference ingestion. This is a single-user demo, without administrator authentication. Manuals inform retrieval; they do not establish verified deadlines automatically.")
-    category = st.selectbox("Manual jurisdiction", list(AUTHORITIES))
+    category = st.selectbox("Manual jurisdiction", CATEGORIES)
+    manual_region = st.selectbox("Manual applies in", ["All", *REGIONS])
+    manual_department = st.selectbox("Manual department", [None] + [d.id for d in DEPARTMENTS.values() if d.category == category], format_func=lambda id: DEPARTMENTS[id].name if id else "Category-wide reference")
     manuals = st.file_uploader("Upload regulatory manuals", type=["pdf", "txt"], accept_multiple_files=True)
     if st.button("Index manuals") and manuals:
         for manual in manuals:
@@ -180,7 +247,7 @@ else:
                 if not text.strip():
                     st.warning(f"{manual.name}: no text found. Use a searchable PDF or text file.")
                     continue
-                chunks = [{"name": manual.name, "category": category, "text": text[i:i+1500]} for i in range(0, len(text), 1200)]
+                chunks = [{"name": manual.name, "category": category, "department_id": manual_department, "region": () if manual_region == "All" else (manual_region,), "trusted": False, "text": text[i:i+1500]} for i in range(0, len(text), 1200)]
                 st.session_state.manuals = [d for d in st.session_state.manuals if not (d["name"] == manual.name and d["category"] == category)] + chunks
                 st.success(f"Indexed {manual.name}: {len(chunks)} chunks")
             except Exception:

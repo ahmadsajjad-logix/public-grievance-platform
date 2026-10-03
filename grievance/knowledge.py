@@ -5,6 +5,8 @@ Uploaded manuals are reference material, never executable instructions.
 """
 import hashlib
 import re
+import unicodedata
+from .catalog import CATEGORIES, DEPARTMENTS, STAGES, available_departments, starter_documents, REVIEW_DATE
 
 AUTHORITIES = {
     "Electricity": ("NEPRA", "https://nepra.org.pk/CAD-Database/CMS-CAD/home.php", "NEPRA Complaint Handling & Dispute Resolution Procedure Rules, 2015", "https://nepra.org.pk/"),
@@ -14,12 +16,50 @@ AUTHORITIES = {
     "Municipal services": ("Local municipal authority", "", "Local jurisdiction and provincial service rules require verification", ""),
 }
 KEYWORDS = {
-    "Electricity": "electricity electric bill iesco k-electric kelectric nepra bijli light wapda بجلی بل",
-    "Telecom": "telecom internet mobile sim pta signal network انٹرنیٹ موبائل",
-    "Broadcasting": "pemra television broadcast tv channel نشریات",
-    "Federal administration": "federal pension passport nadra mohtasib وفاقی پنشن",
-    "Municipal services": "municipal garbage sewer water sanitation pani kachra street پانی کچرا",
+    "Electricity": "electricity|electric|load shedding|loadshedding|bijli|wapda|بجلی|لوڈ شیڈنگ",
+    "Gas & petroleum": "gas|petrol|petroleum|lpg|cng|گیس|پٹرول",
+    "Telecom": "telecom|internet|mobile network|sim|spam|انٹرنیٹ|سم|اسپیم",
+    "Broadcasting": "broadcast|television|tv channel|cable|نشریات|کیبل|ٹی وی",
+    "Federal administration": "federal|pension|passport|nadra|وفاقی|پنشن|پاسپورٹ|نادرا",
+    "Tax administration": "tax refund|income tax|customs|fbr|tax|ٹیکس|کسٹمز",
+    "Cybercrime": "cybercrime|hacking|hacked|online harassment|online fraud|identity theft|blackmail|فراڈ|ہیک|بلیک میل|آن لائن ہراسانی",
+    "Municipal & sanitation": "garbage|kachra|sanitation|manhole|street light|کچرا|کوڑا|صفائی|مین ہول",
+    "Water & sewerage": "water|sewer|sewage|pani|gutter|پانی|سیوریج|گٹر",
+    "Police & public safety": "police|fir|thana|پولیس|تھانہ|ایف آئی آر",
+    "Traffic & safe cities": "traffic|parking|signal|safe city|ٹریفک|پارکنگ|چالان",
+    "Food safety": "food|adulterated|expired|restaurant|milawat|کھانا|ملاوٹ|ریسٹورنٹ|زائد المیعاد",
+    "Consumer rights & pricing": "consumer|overpricing|rate list|defective|refund product|صارف|مہنگا|ناقص سامان",
+    "Revenue & land": "land|fard|patwari|tehsildar|encroachment|housing scheme|zameen|زمین|فرد|پٹواری|تجاوزات",
+    "Health": "hospital|doctor|medicine|sehat|ہسپتال|اسپتال|ڈاکٹر|دوائی|ادویات",
+    "Education": "school|teacher|school fees|taleem|سکول|اسکول|استاد|تعلیم",
+    "Public service delays": "domicile|birth certificate|driving license|rts|ڈومیسائل|پیدائش کا سرٹیفکیٹ|ڈرائیونگ لائسنس",
+    "Provincial maladministration": "provincial ombudsman|subai mohtasib|صوبائی محتسب",
 }
+
+
+def normalize(text):
+    text = unicodedata.normalize("NFKC", text).casefold().translate(str.maketrans({"ي": "ی", "ك": "ک", "ى": "ی", "أ": "ا", "إ": "ا"}))
+    return " ".join(re.findall(r"\w+", text))
+
+
+def contains(text, phrase):
+    return f" {normalize(phrase)} " in f" {normalize(text)} "
+
+
+def detect(text, region):
+    """Return candidates instead of silently choosing between competing scopes."""
+    named = [d for d in DEPARTMENTS.values() if any(contains(text, a) for a in d.aliases)]
+    categories = list(dict.fromkeys(d.category for d in named))
+    if len(categories) == 1:
+        return categories[0], named[0].id if len(named) == 1 else None
+    if len(categories) > 1:
+        raise ValueError("More than one department is mentioned. Choose one service category and department for this complaint.")
+    scores = {k: sum(1 + len(term.split()) for term in terms.split("|") if contains(text, term)) for k, terms in KEYWORDS.items()}
+    best = max(scores.values(), default=0)
+    winners = [k for k, score in scores.items() if score == best and score > 0]
+    if len(winners) != 1:
+        raise ValueError("Jurisdiction is unclear. Select the service category and department.")
+    return winners[0], None
 
 def tokens(text):
     return re.findall(r"\w+", text.casefold())
@@ -54,18 +94,63 @@ def retrieve(query, documents, limit=3):
         ranked = sorted(documents, key=lambda d: len(q & set(tokens(d["text"]))), reverse=True)
         return [dict(d, score=len(q & set(tokens(d["text"])))) for d in ranked[:limit] if q & set(tokens(d["text"]))], "Keyword fallback"
 
-def route(text, category, documents):
+def route(text, category, documents, region="Punjab", department_id=None,
+          stage="First complaint", city="", prior_reference="", in_court=False):
+    if stage not in STAGES:
+        raise ValueError("Choose a valid complaint stage.")
+    inferred = None
     if category == "Detect automatically":
-        words = set(tokens(text))
-        scores = {k: len(words & set(tokens(v))) for k, v in KEYWORDS.items()}
-        maximum = max(scores.values())
-        winners = [k for k, v in scores.items() if v == maximum]
-        if maximum == 0 or len(winners) != 1:
-            raise ValueError("Jurisdiction is unclear. Select the service category and retry.")
-        category = winners[0]
-    body, portal, guidance, source = AUTHORITIES[category]
-    hits, backend = retrieve(text, [d for d in documents if d["category"] == category])
-    return {"category": category, "body": body, "portal": portal, "guidance": guidance,
-            "source": source, "matches": hits, "backend": backend,
-            "appellate_forum": "Requires review of jurisdiction and the original decision",
-            "statutory_deadline": None}
+        category, inferred = detect(text, region)
+    if category not in CATEGORIES:
+        raise ValueError("Choose a supported service category.")
+    department_id = department_id or inferred
+    if not department_id:
+        named = [d for d in available_departments(category, region) if any(contains(text, a) for a in d.aliases)]
+        if len(named) == 1:
+            department_id = named[0].id
+        else:
+            raise ValueError(f"Choose the department for {category}; the app will not guess your provider or district office.")
+    if department_id not in DEPARTMENTS:
+        raise ValueError("The selected department is not in the directory.")
+    department = DEPARTMENTS[department_id]
+    if department.category != category:
+        raise ValueError("The selected department does not match the service category.")
+    if department.regions and region not in department.regions:
+        raise ValueError(f"{department.name} is not listed for {region}. Check the location of the complaint or choose the correct department.")
+    if department.review_required and not city.strip():
+        raise ValueError("Enter the district/city and office so the local jurisdiction can be checked.")
+    if stage != "First complaint" and not prior_reference.strip():
+        raise ValueError("For escalation/review, enter the earlier complaint or decision reference (or its date if no number was issued).")
+    target = department
+    escalation = DEPARTMENTS.get(department.escalation)
+    notes = [department.caveat] if department.caveat else []
+    review = department.review_required or in_court or stage == "Challenge a formal decision"
+    if stage == "Unresolved earlier complaint" and escalation and not in_court:
+        target = escalation
+        review = review or target.review_required
+        notes.append("Suggested escalation for administrative redress, subject to the receiving forum's eligibility checks.")
+        if target.caveat:
+            notes.append(target.caveat)
+    if in_court:
+        notes.append("This matter is already before a court/tribunal. Obtain advice on the proper forum; no automatic ombudsman escalation is selected.")
+    if stage == "Challenge a formal decision":
+        notes.append("A formal appeal needs the decision, applicable law and appeal deadline. This draft requests review; it does not identify or file a statutory appeal.")
+    if department.locality:
+        notes.append(f"Service-area check: {department.locality}. Confirm the address lies within the authority's jurisdiction.")
+    if category == "Gas & petroleum" and any(contains(text, s) for s in ("leak", "leakage", "گیس لیک", "gas leak")):
+        notes.append("For a current gas leak, move away from the hazard and contact the utility's emergency service immediately. Do not wait for a complaint draft.")
+    allowed_ids = {department.id, target.id}
+    scoped = [d for d in [*starter_documents(), *documents]
+              if d["category"] == category or d.get("department_id") in allowed_ids]
+    scoped = [d for d in scoped if (not d.get("region") or region in d["region"])
+              and (not d.get("department_id") or d["department_id"] in allowed_ids)]
+    hits, backend = retrieve(text + " " + department.name, scoped)
+    return {"category": category, "body": target.name, "portal": target.url,
+            "department_id": department.id, "department": department.name, "target_id": target.id,
+            "guidance": target.scope, "source": target.url, "channel": target.channel,
+            "matches": hits, "backend": backend, "stage": stage, "notes": notes,
+            "escalation": escalation.name if escalation else "Requires case-specific review",
+            "escalation_url": escalation.url if escalation else "",
+            "appellate_forum": "Formal appellate forum requires the decision and applicable law",
+            "statutory_deadline": None, "review_required": review,
+            "reviewed": REVIEW_DATE, "prior_reference": prior_reference}

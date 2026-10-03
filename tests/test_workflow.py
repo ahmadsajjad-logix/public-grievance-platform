@@ -2,11 +2,14 @@ from datetime import timedelta
 import pytest
 from pathlib import Path
 from grievance import agents
-from grievance.knowledge import route, retrieve
+from grievance.knowledge import route, retrieve, detect
 
 def test_routing_and_ambiguity():
-    assert route("Mera bijli bill ghalat hai", "Detect automatically", [])["body"] == "NEPRA"
-    assert route("بجلی کا بل", "Detect automatically", [])["body"] == "NEPRA"
+    assert detect("Mera bijli bill ghalat hai", "Punjab")[0] == "Electricity"
+    assert detect("بجلی کا بل", "Punjab")[0] == "Electricity"
+    assert route("IESCO bill", "Detect automatically", [])["department_id"] == "iesco"
+    with pytest.raises(ValueError):
+        route("بجلی کا بل", "Detect automatically", [])
     with pytest.raises(ValueError):
         route("Please help", "Detect automatically", [])
 
@@ -17,7 +20,7 @@ def test_audit_does_not_count_empty_uploads():
 def test_pdf_calendar_and_simulation():
     case = agents.new_case("Applicant <safe>", "Sindh", "Correct the bill", "12345678", 14)
     case["intake"] = agents.intake("Excessive electricity bill", {})
-    case["route"] = route(case["intake"]["text"], "Electricity", [])
+    case["route"] = route(case["intake"]["text"], "Electricity", [], region="Sindh", department_id="ke")
     case["attachments"] = []
     assert agents.petition(case).startswith(b"%PDF")
     result = agents.dispatch(case, "Electronic (simulation)")
@@ -43,17 +46,19 @@ def test_streamlit_prepares_case():
     from streamlit.testing.v1 import AppTest
     app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "app.py")).run()
     app.text_area[0].set_value("My electricity bill is incorrect; please investigate.")
-    app.checkbox[1].check()
-    app.button[0].click().run(timeout=20)
+    app.selectbox(key="department").set_value("iesco").run()
+    next(c for c in app.checkbox if c.label.startswith("I authorize")).check()
+    next(b for b in app.button if b.label == "Prepare my grievance").click().run(timeout=20)
     assert not app.exception
-    assert app.session_state["current"]["dispatch"]["status"] == "Demo dispatch"
+    assert app.session_state["current"]["route"]["stage"] == "First complaint"
+    assert app.session_state["current"]["pdf"].startswith(b"%PDF")
     assert all(state == "Complete" for state in app.session_state["pipeline"].values())
 
 def test_analytics_privacy_and_idempotency(tmp_path, monkeypatch):
     from grievance import storage
     monkeypatch.setattr(storage, "DB", tmp_path / "analytics.sqlite3")
     case = agents.new_case("Private Name", "Punjab", "Private remedy", "private-id", 7)
-    case["route"] = route("internet", "Telecom", [])
+    case["route"] = route("internet", "Telecom", [], department_id="pta")
     case["dispatch"] = agents.dispatch(case, "Electronic (simulation)")
     storage.save_aggregate(case)
     storage.save_aggregate(case)
@@ -63,5 +68,5 @@ def test_analytics_privacy_and_idempotency(tmp_path, monkeypatch):
     assert "private-id" not in str(rows)
 
 def test_manuals_stay_in_jurisdiction():
-    result = route("billing", "Telecom", [{"category": "Electricity", "text": "billing", "name": "wrong-manual"}])
-    assert result["matches"] == []
+    result = route("billing", "Telecom", [{"category": "Electricity", "text": "billing", "name": "wrong-manual"}], department_id="pta")
+    assert all(hit["name"] != "wrong-manual" for hit in result["matches"])

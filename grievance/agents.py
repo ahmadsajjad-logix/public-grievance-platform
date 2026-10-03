@@ -4,7 +4,6 @@ import os
 import re
 import uuid
 from datetime import datetime, timedelta, timezone
-from html import escape
 from .knowledge import route
 
 STAGES = ["Intake & OCR", "Jurisdiction RAG", "Audit Readiness", "Petition Builder", "Dispatch & Router", "Tracker & Analytics"]
@@ -42,48 +41,46 @@ def transcribe(content, name):
     return OpenAI(timeout=45, max_retries=1).audio.transcriptions.create(
         model=os.getenv("TRANSCRIPTION_MODEL", "whisper-1"), file=(name, content)).text
 
-def audit(files, category):
-    required = ["CNIC", "Service evidence"]
-    if category == "Electricity":
+EVIDENCE = {
+    "Electricity": "Bill, meter/reference number, outage dates or connection application",
+    "Gas & petroleum": "Gas bill/application or fuel receipt, supplier and issue dates",
+    "Telecom": "Operator ticket, disputed bill/SIM details, spam screenshots",
+    "Broadcasting": "Channel/operator, programme, date, time and relevant clip reference",
+    "Federal administration": "Application, acknowledgment and agency correspondence",
+    "Tax administration": "Refund/tax reference, correspondence and relevant order",
+    "Cybercrime": "Original messages, URLs, transaction IDs and dated screenshots",
+    "Municipal & sanitation": "Dated photos and exact street/landmark",
+    "Water & sewerage": "Consumer reference if applicable, photos and exact location",
+    "Police & public safety": "Station, incident date, application/diary/FIR reference",
+    "Traffic & safe cities": "Location/time and challan or incident reference",
+    "Food safety": "Shop address, receipt, batch/expiry details and photos",
+    "Consumer rights & pricing": "Receipt, product/service details, rate list or warranty",
+    "Revenue & land": "Property/khasra details, application and revenue-office receipt",
+    "Health": "Facility, dates, service record and earlier complaint (if available)",
+    "Education": "School, dates, fee receipts or earlier written complaint",
+    "Public service delays": "Complete service application, acknowledgment date and notified-service details",
+    "Provincial maladministration": "Department application, earlier complaint and response",
+}
+
+
+def audit(files, category, stage="First complaint", payment_dispute=False):
+    required = ["Service evidence"]
+    if category in ("Federal administration", "Tax administration", "Provincial maladministration", "Public service delays"):
+        required.append("CNIC")
+    if stage != "First complaint":
+        required.append("Earlier complaint / decision")
+    if payment_dispute:
         required.append("Payment proof")
     present = [k for k in required if files.get(k) and files[k]["bytes"]]
     return {"score": round(100 * len(present) / len(required)), "missing": [k for k in required if k not in present],
-            "note": "Attachment completeness only; authenticity and legal sufficiency require review."}
+            "recommended": required, "evidence_hint": EVIDENCE[category],
+            "note": "Preparation checklist only. The receiving authority may require different documents; file presence does not establish authenticity."}
+
 
 def petition(case):
-    from reportlab.lib.styles import getSampleStyleSheet
-    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-    from reportlab.pdfbase import pdfmetrics
-    from reportlab.pdfbase.ttfonts import TTFont
-    buf = io.BytesIO()
-    styles = getSampleStyleSheet()
-    font_path = os.getenv("PETITION_FONT_PATH")
-    if font_path:
-        pdfmetrics.registerFont(TTFont("PetitionUnicode", font_path))
-        for style in styles.byName.values():
-            style.fontName = "PetitionUnicode"
-    narrative = case["intake"]["text"]
-    if any(ord(c) > 127 for c in narrative) and not font_path:
-        raise ValueError("For an Urdu PDF, configure PETITION_FONT_PATH or provide an English/Roman Urdu petition transcript. Original text is retained in the intake box.")
-    sections = [
-        ("Title", "DRAFT — Public service grievance"),
-        ("Normal", f"To: {case['route']['body']} | Date: {case['created'].date()}"),
-        ("Normal", f"Applicant: {case['name'] or 'Name to be supplied'} | Province/territory: {case['region']}"),
-        ("Heading2", "Statement of grievance"), ("Normal", narrative),
-        ("Heading2", "Requested remedy"), ("Normal", case["remedy"]),
-        ("Heading2", "Service reference"), ("Normal", case["reference"] or ", ".join(case["intake"]["references"]) or "To be supplied"),
-        ("Heading2", "Procedural reference"), ("Normal", case["route"]["guidance"]),
-        ("Normal", f"Source for review: {case['route']['source'] or 'Local authority rules must be supplied'}"),
-        ("Normal", "No statutory section or binding deadline has been verified for this case. The calendar date is a personal follow-up reminder."),
-        ("Heading2", "Attachments and declaration"),
-        ("Normal", "Attached: " + (", ".join(case["attachments"]) or "None")),
-        ("Normal", "I confirm that the facts and supporting documents are accurate to the best of my knowledge. Signature: ____________________"),
-    ]
-    flow = []
-    for style, value in sections:
-        flow.extend([Paragraph(escape(value).replace("\n", "<br/>"), styles[style]), Spacer(1, 10)])
-    SimpleDocTemplate(buf, title="Draft grievance petition").build(flow)
-    return buf.getvalue()
+    from .petitions import build_petition
+    return build_petition(case)
+
 
 def dispatch(case, mode):
     return {"status": "Demo dispatch" if mode == "Electronic (simulation)" else "Ready for offline submission",
