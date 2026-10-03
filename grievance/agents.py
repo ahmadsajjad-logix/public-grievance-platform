@@ -6,7 +6,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from .knowledge import route
 
-STAGES = ["Intake & OCR", "Jurisdiction RAG", "Audit Readiness", "Petition Builder", "Filing guidance", "Reminder & Analytics"]
+STAGES = ["Agent 01 · Intake & OCR", "Agent 02 · Jurisdiction RAG", "Agent 03 · Audit Readiness", "Agent 04 · Petition Builder", "Agent 05 · Dispatch & Router", "Agent 06 · Tracker & Analytics"]
 
 def extract_document(name, content):
     if name.lower().endswith(".pdf"):

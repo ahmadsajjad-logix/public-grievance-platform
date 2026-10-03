@@ -141,16 +141,22 @@ def route(text, category, documents, region="Punjab", department_id=None,
     if category == "Gas & petroleum" and any(contains(text, s) for s in ("leak", "leakage", "گیس لیک", "gas leak")):
         notes.append("For a current gas leak, move away from the hazard and contact the utility's emergency service immediately. Do not wait for a complaint draft.")
     allowed_ids = {department.id, target.id}
-    scoped = [d for d in [*starter_documents(), *documents]
+    from .guidance import research_documents, department_guide
+    from .reference_library import scoped_references
+    scoped = [d for d in [*research_documents(), *starter_documents(), *documents]
               if d["category"] == category or d.get("department_id") in allowed_ids]
     scoped = [d for d in scoped if (not d.get("region") or region in d["region"])
               and (not d.get("department_id") or d["department_id"] in allowed_ids)]
-    hits, backend = retrieve(text + " " + department.name, scoped)
+    scoped.extend(scoped_references(allowed_ids, region))
+    hits, backend = retrieve(text + " " + department.name, scoped, limit=5)
     from .legal import filing_profile
     profile = filing_profile(target.id, region, text, complaint_kind)
     if stage == "Challenge a formal decision":
         profile.update(endpoint_verified=False, legal_provisions=[], legal_status="Formal appeal recipient, provisions and limitation period require decision-specific review")
-    return {**profile, "category": category, "body": profile["recipient"] or target.name, "portal": target.url,
+    if in_court and target.id in ("wafaqi", "omb-kp"):
+        profile.update(endpoint_verified=False, legal_provisions=[], legal_status="Pending court proceedings: ombudsman admissibility requires individual review")
+    guide = department_guide(target.id, region, profile)
+    return {**profile, "filing_guide": guide, "category": category, "body": profile["recipient"] or target.name, "portal": target.url,
             "department_id": department.id, "department": department.name, "target_id": target.id,
             "guidance": target.scope, "source": target.url, "channel": target.channel,
             "matches": hits, "backend": backend, "stage": stage, "notes": notes,

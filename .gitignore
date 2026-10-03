@@ -6,5 +6,8 @@ __pycache__/
 data/*.sqlite*
 data/uploads/
 data/models/
+data/research_candidates.json
+data/research_followup.json
+Relevant Departmental Downloads/
 pytest-cache-files-*/
 github-proof.png

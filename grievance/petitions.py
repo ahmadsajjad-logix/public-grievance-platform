@@ -77,7 +77,7 @@ def rtl_lines(text, width, size=12):
     return lines
 
 
-def build_petition(case):
+def build_petition(case, sections_override=None):
     from reportlab.lib.styles import getSampleStyleSheet
     from reportlab.lib.colors import HexColor
     from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Flowable
@@ -139,8 +139,10 @@ def build_petition(case):
         ("Normal", "Supporting files supplied: " + (", ".join(case["attachments"]) or "None")),
         ("Normal", "I confirm that the facts and supporting documents are accurate to the best of my knowledge. Signature: ____________________"),
     ]
+    if sections_override is not None:
+        sections = sections_override
     buffer = io.BytesIO()
-    doc = SimpleDocTemplate(buffer, title="Draft grievance petition", leftMargin=48, rightMargin=48, topMargin=48, bottomMargin=48)
+    doc = SimpleDocTemplate(buffer, title="Department and filing guidance" if sections_override is not None else "Draft grievance petition", leftMargin=48, rightMargin=48, topMargin=48, bottomMargin=48)
     flow = []
     for style, value in sections:
         if ARABIC.search(value):
@@ -152,7 +154,7 @@ def build_petition(case):
     def footer(canvas, document):
         canvas.setFont("CivicLatin", 8)
         canvas.setFillColor(HexColor("#64748b"))
-        canvas.drawString(48, 28, "Prepared draft - review and sign before official submission")
+        canvas.drawString(48, 28, "Department guidance - verify current filing requirements" if sections_override is not None else "Prepared draft - review and sign before official submission")
         canvas.drawRightString(document.pagesize[0] - 48, 28, str(document.page))
     doc.build(flow, onFirstPage=footer, onLaterPages=footer)
     return buffer.getvalue()

@@ -1,0 +1,4484 @@
+{
+  "checked_at": "2026-10-03T10:36:17.461523+00:00",
+  "records": [
+    {
+      "url": "https://complaint.pta.gov.pk/userlogin.aspx",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>",
+      "department_ids": [
+        "pta"
+      ]
+    },
+    {
+      "url": "https://complaint.pta.gov.pk/Usermanual/User_Manual_CMS_Web.pdf",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>",
+      "department_ids": [
+        "pta"
+      ]
+    },
+    {
+      "url": "https://nepra.org.pk/Legal.php",
+      "status": "fetched_unreviewed",
+      "sha256": "583ae0cb52403042af13a0b26762f192243e0008b8fe34bbe21e1f66b915fb86",
+      "links": [
+        {
+          "url": "https://nepra.org.pk/Legal.php",
+          "title": "Legal"
+        },
+        {
+          "url": "https://nepra.org.pk/Legal.php",
+          "title": "Consumer Affairs"
+        },
+        {
+          "url": "https://nepra.org.pk/consumer affairs/cad/NEPRA Asaan Approach1.jpg",
+          "title": "NEPRA Asaan Approach"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregister.php",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/tcomplaint.php",
+          "title": "Track a Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/consumer affairs/Appellate Board.php",
+          "title": "Appellate Board"
+        },
+        {
+          "url": "https://nepra.org.pk/consumer affairs/Understand Your Electricity Bill.php",
+          "title": "Understand Electricity Bill"
+        },
+        {
+          "url": "https://nepra.org.pk/Contact.php",
+          "title": "contact"
+        },
+        {
+          "url": "https://nepra.org.pk/consumer affairs/Electricity Bill.php",
+          "title": "Applicable Tariff"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/1-Act/2022/1.%20[Updated]%20NEPRA%20Act%20All%20Amendments%20incorporated%20upto%20december%202021.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/1-Act/NEPRA%20Act.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/1-Act/2.%20NEPRA%20ACT%20(amendment)%20XVIII%20of%202011.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/1-Act/3.%20NEPRA%20ACT%20(amendment)%20XII%20of%202018.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/1-Act/4.%20NEPRA%20ACT%20(amendment)%20XIV%20of%202021.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/1-Act/5.%20NEPRA%20ACT%20(amendment)%20LIV%20of%202021.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/2-Rules/2.1%20NEPRA%20Tariff%20Standards%20and%20Procedure%20Rules,%201998/NEPRA%20(Tariff%20Standards%20and%20Procedure)%20Rules%201998%20along%20with%20all%20amendments.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/2-Rules/2.1%20NEPRA%20Tariff%20Standards%20and%20Procedure%20Rules,%201998/2nd%20Amendment%20(NOTIFICATIONS%20SRO%20732).pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/2-Rules/2.10%20NEPRA%20(Market%20Operator%20Registration,%20Standards%20and%20Procedure)%20Rules,%20%202015/Market%20operator%20Registration,%20Standards%20and%20Procedure%20Rules,2015.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/2-Rules/2.10%20NEPRA%20(Market%20Operator%20Registration,%20Standards%20and%20Procedure)%20Rules,%20%202015/1st%20Amendment%20(Market%20operator%20Registration,%20Standards%20and%20Procedure%20Rules,2015).pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/2-Rules/2.11%20NEPRA%20Complaint%20Handling%20and%20Dispute%20Resolution%20(Procedure)%20Rules,%202015/NEPRA's%20Compalint%20Handling%20and%20Dispute%20Resolution%20(Procedure)%20Rules%202105.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.19%20NEPRA%20Fees%20Regulations%202021/D-27947-A%20SRO%20660%2002-06-2021.PDF",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.19%20NEPRA%20Fees%20Regulations%202021/S.R.O%20444(I)2022%20dated%2028-03-2022.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.19%20NEPRA%20Fees%20Regulations%202021/Amendment%20in%20FEES%20regarding%20EPT%2019-05-2022.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.19%20NEPRA%20Fees%20Regulations%202021/Amendment%20in%20NEPRA%20Fee%20Regulations%202021%20SRO%20567%20dated%2009-04-2024.PDF",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/Applicable%20Fees/2026/10%20Oct/04%20-%20Row%20No.3.1.3%20NEPRA%20Fees%20Regulations%202021%20(with%20ammendment)%20-%20Applicable%20Fee%20wef%2001%20Oct%202026.pdf",
+          "title": "Applicable Fees"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.2%20NEPRA%20(Fees%20Pertaining%20to%20Tariff%20Standards%20&%20Procedure)%20Regulations,%202002/NEPRA%20(Fees%20pertaining%20to%20Tariff%20Standards%20and%20Procedure)%20Regulations%202002%20along%20with%20all%20amendments.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.2%20NEPRA%20(Fees%20Pertaining%20to%20Tariff%20Standards%20&%20Procedure)%20Regulations,%202002/Row%20No.3.2%20NEPRA%20Fees%20Pertaining%20to%20Tariff%20Standards%20and%20Procedures%20Regulations%202002%20-%20Applicable%20Fee%20wef%2001%20July%202020.pdf",
+          "title": "Applicable Fees"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.2%20NEPRA%20(Fees%20Pertaining%20to%20Tariff%20Standards%20&%20Procedure)%20Regulations,%202002/S.R.O%20995%20(I)-2022%20dated%2005-07-2022.PDF",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.3%20NEPRA%20Consumer%20Eligibility%20Criteria%202003/NEPRA%20Eligibility%20Criteria%20for%20Consumer%20of%20Distribution%20Companies%20Regulations%202003%20along%20with%20all%20amendments.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.4%20NEPRA%20(Resolution%20of%20Disputes%20between%20Independent%20Power%20Producers%20and%20other%20Licensees)%20Regulations,%202003/Resolution%20of%20Disputes,%202003.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.6%20NEPRA%20Interim%20Power%20Procurement%20(Procedure%20&%20Standards)%20Regulations,%202005/NEPRA%20Interim%20Power%20Procurement%20(Procedure%20and%20Standards)%20Regulations%202005%20along%20with%20all%20amendments.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.7%20NEPRA%20Competitive%20Bidding%20Tariff%20(Approval%20Procedure)%20Regulations,%202008/NEPRA%20Competitive%20Bidding%20Tariff%20Regulations%202008%20along%20with%20amendments.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.7%20NEPRA%20Competitive%20Bidding%20Tariff%20(Approval%20Procedure)%20Regulations,%202008/3rd%20Amendment%20(1101(1)2014-05-12-2014-NEPRA).pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.7%20NEPRA%20Competitive%20Bidding%20Tariff%20(Approval%20Procedure)%20Regulations,%202008/NOTIFICATION%20S%20R%20O%20%2047%20(I)%202016%20.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.7%20NEPRA%20Competitive%20Bidding%20Tariff%20(Approval%20Procedure)%20Regulations,%202008/NCBT-01%2003-05-2017%206072.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.7%20NEPRA%20Competitive%20Bidding%20Tariff%20(Approval%20Procedure)%20Regulations,%202008/Row%20No.3.7.2%20NEPRA%20Competitive%20Bidding%20Tariff%20Approval%20Procedure%20Regulations%202017%20-%20Applicable%20Fee%20wef%2001%20July%202020.pdf",
+          "title": "Applicable Fees"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.7%20NEPRA%20Competitive%20Bidding%20Tariff%20(Approval%20Procedure)%20Regulations,%202008/SRO%20314%2006-03-2018.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.7%20NEPRA%20Competitive%20Bidding%20Tariff%20(Approval%20Procedure)%20Regulations,%202008/S.R.O%20259%2028-02-2019.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.8%20NEPRA%20(Review%20Procedure)%20Regulations,%202009/SRO%201144-1-2009%20Review%20Procedure%20Regs%202009.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.8%20NEPRA%20(Review%20Procedure)%20Regulations,%202009/1st%20Amendment%20(SRO%201036(I)%202014).pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.8%20NEPRA%20(Review%20Procedure)%20Regulations,%202009/Ammendments%20in%20Review%20Procedure%20Regulations%202009.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.8%20NEPRA%20(Review%20Procedure)%20Regulations,%202009/SRO%20833%20amendment%20NEPRA%20Review%20Procedure%20Regulations%202009%20%20Sept%202020.PDF",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.8%20NEPRA%20(Review%20Procedure)%20Regulations,%202009/S.R.O%20531%20(I)%202021%2003-05-2021.PDF",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.8%20NEPRA%20(Review%20Procedure)%20Regulations,%202009/Form%20for%20Review%20Procedure.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.10%20NEPRA%20Up-front%20Tariff%20(Approval%20&%20Procedure)%20Regulations,%202011/NEPRA%20Up-front%20Tariff%20(Approval%20%20Procedure)%20Regulations%202011%20along%20with%20all%20amendments.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.10%20NEPRA%20Up-front%20Tariff%20(Approval%20&%20Procedure)%20Regulations,%202011/2nd%20Amendment%20(S.R.O.920(I)2012).pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.10 NEPRA Up-front Tariff (Approval & Procedure) Regulations, 2011/D-8477-06-06-2016-NEPRA.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.10 NEPRA Up-front Tariff (Approval & Procedure) Regulations, 2011/Notification regarding Amendment in the NEPRA Regulation 2011.PDF",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.10%20NEPRA%20Up-front%20Tariff%20(Approval%20&%20Procedure)%20Regulations,%202011/Notification%20SRO%20548I2017%20Upfront%20Tariff%20Regulation%202011%20Modification.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.10 NEPRA Up-front Tariff (Approval & Procedure) Regulations, 2011/Notification regarding Amendment in the NEPRA Regulation 2011.PDF",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.10%20NEPRA%20Up-front%20Tariff%20(Approval%20&%20Procedure)%20Regulations,%202011/Notification%20SRO%20548I2017%20Upfront%20Tariff%20Regulation%202011%20Modification.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.10%20NEPRA%20Up-front%20Tariff%20(Approval%20&%20Procedure)%20Regulations,%202011/Amendment%20Notification%20SRO%20236-I18%202018.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.11%20NEPRA%20(Procedure%20for%20filing%20appeal%20before%20the%20Authority)%20Regulations,%202012/Notification%20NEPRA%20Procedure%20for%20Filing%20of%20Appeal%20Regulations%202012.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.11%20NEPRA%20(Procedure%20for%20filing%20appeal%20before%20the%20Authority)%20Regulations,%202012/1st%20Amendment%20(NEPRA%20Licensing%20(Procedure%20for%20Filing%20Appeals)%20Regulations,%202012).pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.11%20NEPRA%20(Procedure%20for%20filing%20appeal%20before%20the%20Authority)%20Regulations,%202012/SRO%20863(I)-2026%20Dated%2012-05-2026.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.13%20NEPRA%20(Alternative%20&%20Renewable%20Energy)%20Distributed%20Generation%20and%20Net%20Metering%20Regulations,%202015/NOTIFICATION%20SRO%20892%20-2015.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.13%20NEPRA%20(Alternative%20&%20Renewable%20Energy)%20Distributed%20Generation%20and%20Net%20Metering%20Regulations,%202015/SRO%201025(I)2017%2010-10-2017.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.13%20NEPRA%20(Alternative%20&%20Renewable%20Energy)%20Distributed%20Generation%20and%20Net%20Metering%20Regulations,%202015/Amendments%20in%20Net%20Metering.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.13%20NEPRA%20(Alternative%20&%20Renewable%20Energy)%20Distributed%20Generation%20and%20Net%20Metering%20Regulations,%202015/S.R.O%201135(I)-2018%2013-09-2018.pdf",
+          "title": "View"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.13%20NEPRA%20(Alternative%20&%20Renewable%20Energy)%20Distributed%20Generation%20and%20Net%20Metering%20Regulations,%202015/S.R.O%201175(1)2019%20dated%2003-11-2020.PDF",
+          "title": "View"
+        }
+      ],
+      "department_ids": [
+        "nepra"
+      ]
+    },
+    {
+      "url": "https://nepra.org.pk/consumer affairs/cad/NEPRA Asaan Approach1.jpg",
+      "status": "unavailable",
+      "error": "InvalidURL: URL can't contain control characters. '/consumer affairs/cad/NEPRA Asaan Approach1.jpg' (found at least ' ')",
+      "department_ids": [
+        "nepra"
+      ]
+    },
+    {
+      "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/home.php",
+      "status": "fetched_unreviewed",
+      "sha256": "5cd201515eae9a679bf62381a320e24bb4620edf4b132c182152d2bd3e12616c",
+      "links": [
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregister.php",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/tcomplaint.php",
+          "title": "Track Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregister.php",
+          "title": "Launch Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/tcomplaint.php",
+          "title": "Track Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/2-Rules/2.11%20NEPRA%20Complaint%20Handling%20and%20Dispute%20Resolution%20(Procedure)%20Rules,%202015/NEPRA's%20Compalint%20Handling%20and%20Dispute%20Resolution%20(Procedure)%20Rules%202105.PDF",
+          "title": "View details \u00bb"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/7-Manuals/7.1.2%20Consumer%20Service%20Manual%20-%20January%202021%20with%20clarification.PDF",
+          "title": "View details \u00bb"
+        },
+        {
+          "url": "https://nepra.org.pk/Legislation/3-Reg/3.3%20NEPRA%20Consumer%20Eligibility%20Criteria%202003/NEPRA%20Eligibility%20Criteria%20for%20Consumer%20of%20Distribution%20Companies%20Regulations%202003%20along%20with%20all%20amendments.pdf",
+          "title": "View details \u00bb"
+        }
+      ],
+      "department_ids": [
+        "nepra"
+      ]
+    },
+    {
+      "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregister.php",
+      "status": "fetched_unreviewed",
+      "sha256": "aecbcad898486f7a2246f24f10eccab2247140fb93d172efc330b2d3d8911f6b",
+      "links": [
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregister.php",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregistern.php",
+          "title": "Register Net Metering Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/tcomplaint.php",
+          "title": "Track Complaint"
+        }
+      ],
+      "department_ids": [
+        "nepra"
+      ]
+    },
+    {
+      "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/tcomplaint.php",
+      "status": "fetched_unreviewed",
+      "sha256": "0e82dee4b0001eaf913e2ea9ce2923af9089fe6d996da52adaf476528aeb2339",
+      "links": [
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregister.php",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregistern.php",
+          "title": "Register Net Metering Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/tcomplaint.php",
+          "title": "Track Complaint"
+        }
+      ],
+      "department_ids": [
+        "nepra"
+      ]
+    },
+    {
+      "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregister.php",
+      "status": "fetched_unreviewed",
+      "sha256": "48c613f5b7ccce70707d70a89fb247b43c18283d5e66b6e627ad1bddde883eaf",
+      "links": [
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregister.php",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/cregistern.php",
+          "title": "Register Net Metering Complaint"
+        },
+        {
+          "url": "https://nepra.org.pk/CAD-Database/CMS-CAD/tcomplaint.php",
+          "title": "Track Complaint"
+        }
+      ],
+      "department_ids": [
+        "nepra"
+      ]
+    },
+    {
+      "url": "https://www.pemra.gov.pk/contact/",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>",
+      "department_ids": [
+        "pemra"
+      ]
+    },
+    {
+      "url": "https://www.pemra.gov.pk/coc/",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>",
+      "department_ids": [
+        "pemra"
+      ]
+    },
+    {
+      "url": "https://complaint.ogra.org.pk/complaint",
+      "status": "fetched_unreviewed",
+      "sha256": "fa744cc2910ae7dcc2a335ea927034b3facf576cf9aeec5c0fdb551c188822d8",
+      "links": [
+        {
+          "url": "https://complaint.ogra.org.pk/track",
+          "title": "Track Complaint"
+        }
+      ],
+      "department_ids": [
+        "ogra"
+      ]
+    },
+    {
+      "url": "https://complaint.ogra.org.pk/track",
+      "status": "fetched_unreviewed",
+      "sha256": "34ef35e9f09de0d1bb1e4dc2a980e44d8dd2bce9229d9576f89be7dd6ef06d05",
+      "links": [
+        {
+          "url": "https://complaint.ogra.org.pk/complaint",
+          "title": "File New Complaint"
+        }
+      ],
+      "department_ids": [
+        "ogra"
+      ]
+    },
+    {
+      "url": "https://www.pemra.gov.pk/isb/",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>",
+      "department_ids": [
+        "pemra"
+      ]
+    },
+    {
+      "url": "https://complaints.mohtasib.gov.pk/",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error timed out>",
+      "department_ids": [
+        "wafaqi"
+      ]
+    },
+    {
+      "url": "https://mohtasib.gov.pk/SiteImage/Downloads/presidential_order_1983.pdf",
+      "status": "fetched_unreviewed",
+      "sha256": "742514ad0189195a679951739b34b963c8783209e22954d8e1a6fcda404296f2",
+      "links": [],
+      "department_ids": [
+        "wafaqi"
+      ]
+    },
+    {
+      "url": "https://www.nccia.gov.pk/",
+      "status": "unavailable",
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "department_ids": [
+        "nccia"
+      ]
+    },
+    {
+      "url": "https://ccms.pitc.com.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "37d5e8dd8eecc3c146efe5bce1a6eb18cf6725828bef12d80066edfa92dc01f4",
+      "links": [
+        {
+          "url": "https://ccms.pitc.com.pk/complaint",
+          "title": "Register Your Complaint"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complainthistory",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/contact",
+          "title": "Contact"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complaint",
+          "title": "Register Your Complaint"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complainthistory",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/contact",
+          "title": "Contact"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/Matrix.pdf",
+          "title": "Complaint Matrix Download"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complaint",
+          "title": "Register Your Complaint >>"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complainthistory",
+          "title": "Track Your Complaint >>"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complaint",
+          "title": "Register Your Complaint >>"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complainthistory",
+          "title": "Track Your Complaint >>"
+        }
+      ],
+      "department_ids": [
+        "lesco",
+        "iesco",
+        "fesco",
+        "gepco",
+        "pesco",
+        "hesco",
+        "sepco",
+        "qesco"
+      ]
+    },
+    {
+      "url": "https://ccms.pitc.com.pk/complaint",
+      "status": "fetched_unreviewed",
+      "sha256": "eb9de8472431c91d490d9e6607c8a8660337c3f6c2062b160ce54fcc8283a3c0",
+      "links": [
+        {
+          "url": "https://ccms.pitc.com.pk/complaint",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complainthistory",
+          "title": "Track by Reference"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/contact",
+          "title": "Contact"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complaint",
+          "title": "Consumer Info"
+        }
+      ],
+      "department_ids": [
+        "lesco",
+        "iesco",
+        "fesco",
+        "gepco",
+        "pesco",
+        "hesco",
+        "sepco",
+        "qesco"
+      ]
+    },
+    {
+      "url": "https://ccms.pitc.com.pk/complainthistory",
+      "status": "fetched_unreviewed",
+      "sha256": "f0c51ab46f4d77bfae65d25488a7206253f44f4c8cc2a779911f9205fd0f4ce6",
+      "links": [
+        {
+          "url": "https://ccms.pitc.com.pk/complaint",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complainthistory",
+          "title": "Track by Reference"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/contact",
+          "title": "Contact"
+        }
+      ],
+      "department_ids": [
+        "lesco",
+        "iesco",
+        "fesco",
+        "gepco",
+        "pesco",
+        "hesco",
+        "sepco",
+        "qesco"
+      ]
+    },
+    {
+      "url": "https://ccms.pitc.com.pk/contact",
+      "status": "fetched_unreviewed",
+      "sha256": "4036e9a743c63bf9d63c123172c3b1317f010ef353dda572edaa47e584b68324",
+      "links": [
+        {
+          "url": "https://ccms.pitc.com.pk/complaint",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/complainthistory",
+          "title": "Track by Reference"
+        },
+        {
+          "url": "https://ccms.pitc.com.pk/contact",
+          "title": "Contact"
+        }
+      ],
+      "department_ids": [
+        "lesco",
+        "iesco",
+        "fesco",
+        "gepco",
+        "pesco",
+        "hesco",
+        "sepco",
+        "qesco"
+      ]
+    },
+    {
+      "url": "https://ke.com.pk/contact-us/",
+      "status": "fetched_unreviewed",
+      "sha256": "a67291c2d6fc6bb0be6fa058f41d71a04dc0429af7efddc54ca3d5204e1f06b8",
+      "links": [
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us",
+          "title": "Customer Experience Centers"
+        }
+      ],
+      "department_ids": [
+        "ke"
+      ]
+    },
+    {
+      "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+      "status": "fetched_unreviewed",
+      "sha256": "f12ded343f44029dcd3e919dfb810e1516e04b3418cd29ae730cdd751f5a636b",
+      "links": [
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us",
+          "title": "Customer Experience Centers"
+        }
+      ],
+      "department_ids": [
+        "ke"
+      ]
+    },
+    {
+      "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+      "status": "fetched_unreviewed",
+      "sha256": "f12ded343f44029dcd3e919dfb810e1516e04b3418cd29ae730cdd751f5a636b",
+      "links": [
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ke.com.pk/nepra-consumer-services-manual-ke/",
+          "title": "NEPRA CSM (KE)"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ke.com.pk/contact-us",
+          "title": "Customer Experience Centers"
+        }
+      ],
+      "department_ids": [
+        "ke"
+      ]
+    },
+    {
+      "url": "https://www.sngpl.com.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "79ff1abd1558f150d87fad3948a3ec9eb70af041ca636754989c3a0162df2b48",
+      "links": [
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Domestic RLNG Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Commercial Gas Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4365&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Companies Act 2017"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3865&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "SOE Act 2023"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Legal Advisors"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=921&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "New Connection Procedure"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Domestic RLNG Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Commercial Gas Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4365&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Companies Act 2017"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3865&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "SOE Act 2023"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Legal Advisors"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": ""
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3525&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Establishment of PM - CJ Fund for Diamer Basha and Mohmand Dam"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/pdf/Bill_Proforma.pdf",
+          "title": "Consumer Feedback"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/UploadFolder/others/disconnected_defaulters.pdf",
+          "title": "Defaulted Disconnected Industrial and Commercial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=1561&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Company Offices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=0&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "sngpl"
+      ]
+    },
+    {
+      "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+      "status": "fetched_unreviewed",
+      "sha256": "be2c0aa905d5148281ebdf8690b50caf6650d3ba9161805171d9ec5f0117b35a",
+      "links": [
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Domestic RLNG Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Commercial Gas Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4365&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Companies Act 2017"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3865&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "SOE Act 2023"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Legal Advisors"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=921&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "New Connection Procedure"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Domestic RLNG Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Commercial Gas Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4365&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Companies Act 2017"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3865&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "SOE Act 2023"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Legal Advisors"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Domestic & Special Domestic Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/Complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Domestic & Special Domestic Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Domestic & Special Domestic"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Commercial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Commercial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Houseline Installation - by Prospective Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Deposit Of Security and Service Line Charges by Prospective Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3525&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Establishment of PM - CJ Fund for Diamer Basha and Mohmand Dam"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/pdf/Bill_Proforma.pdf",
+          "title": "Consumer Feedback"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/UploadFolder/others/disconnected_defaulters.pdf",
+          "title": "Defaulted Disconnected Industrial and Commercial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=1561&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Company Offices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=0&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "sngpl"
+      ]
+    },
+    {
+      "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+      "status": "fetched_unreviewed",
+      "sha256": "b46c304fc5df2111df159800ce273f7bb81095e001fb96938995692e71c244d3",
+      "links": [
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Domestic RLNG Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Commercial Gas Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4365&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Companies Act 2017"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3865&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "SOE Act 2023"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Legal Advisors"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=921&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "New Connection Procedure"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Domestic RLNG Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Commercial Gas Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4365&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Companies Act 2017"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3865&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "SOE Act 2023"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Legal Advisors"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Domestic & Special Domestic Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/Complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Domestic & Special Domestic Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Domestic & Special Domestic"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Commercial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Commercial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Houseline Installation - by Prospective Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Deposit Of Security and Service Line Charges by Prospective Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3525&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Establishment of PM - CJ Fund for Diamer Basha and Mohmand Dam"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/pdf/Bill_Proforma.pdf",
+          "title": "Consumer Feedback"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/UploadFolder/others/disconnected_defaulters.pdf",
+          "title": "Defaulted Disconnected Industrial and Commercial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=1561&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Company Offices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=0&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "sngpl"
+      ]
+    },
+    {
+      "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+      "status": "fetched_unreviewed",
+      "sha256": "6b8278a0ffe28ba99503d24a2d86ed85d5e6677a0324421ac86cd6f103c08b8c",
+      "links": [
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Domestic RLNG Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Commercial Gas Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4365&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Companies Act 2017"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3865&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "SOE Act 2023"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Legal Advisors"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=921&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "New Connection Procedure"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Domestic RLNG Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Commercial Gas Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Brief Procedure For New Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure For Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4365&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Companies Act 2017"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3865&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "SOE Act 2023"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Legal Advisors"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Commercial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4265&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Guidelines For Submission Of Feedback/Complaints"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaints.jsp?mdids=89",
+          "title": "Lodge Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/complaintshistory.jsp?mdids=90",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Domestic & Special Domestic Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=861&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Domestic & Special Domestic"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Commercial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Commercial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4146&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Procedure for Industrial Connection"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/indapp.jsp?mdids=97",
+          "title": "Services For Industrial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/domrecon.jsp?mdids=286",
+          "title": "Reconnection Of Domestic Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=981&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Services"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=2205&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Consumer Gas Prices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Houseline Installation - by Prospective Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=4145&pgname=PAGES_NAME_a&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Deposit of Security and Service Line Charges by Prospective Consumer"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=3525&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Establishment of PM - CJ Fund for Diamer Basha and Mohmand Dam"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/pdf/Bill_Proforma.pdf",
+          "title": "Consumer Feedback"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/UploadFolder/others/disconnected_defaulters.pdf",
+          "title": "Defaulted Disconnected Industrial and Commercial Consumers"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=1561&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Company Offices"
+        },
+        {
+          "url": "https://www.sngpl.com.pk/page.jsp?pgids=0&pgname=contact us&secs=ss7xa852op845&cats=ct456712337&artcl=artuyh709123465",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "sngpl"
+      ]
+    },
+    {
+      "url": "https://www.ssgc.com.pk/web/?page_id=111824",
+      "status": "fetched_unreviewed",
+      "sha256": "0f649a7ba99ca5ac5f8afda22ef202d31cfe702b52ff7db3b391dd351f7c5587",
+      "links": [
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Consumer Service Manual"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/?page_id=111824",
+          "title": "Compliance of SOE Act"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/compliance-with-soe-act/",
+          "title": "Statement of Corporate Intent"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/?page_id=111824",
+          "title": "Helpline& Complaints"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/?page_id=111824",
+          "title": "Q22: Where do a customer contact in case of gas disconnection?"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Consumer Service Manual"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/?page_id=111824",
+          "title": "Compliance of SOE Act"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/compliance-with-soe-act/",
+          "title": "Statement of Corporate Intent"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/115618/",
+          "title": "SSGC Disconnects 3,276 Illegal Gas Connections in Sindh and Balochistan"
+        }
+      ],
+      "department_ids": [
+        "ssgc"
+      ]
+    },
+    {
+      "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+      "status": "fetched_unreviewed",
+      "sha256": "37cf9a0c1bace362a45585b44fa858d575b8fa4977a1f5b1dc5f032dcbbd6e41",
+      "links": [
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Consumer Service Manual"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Compliance of SOE Act"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/compliance-with-soe-act/",
+          "title": "Statement of Corporate Intent"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Helpline& Complaints"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Consumer Service Manual"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Compliance of SOE Act"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/compliance-with-soe-act/",
+          "title": "Statement of Corporate Intent"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/115618/",
+          "title": "SSGC Disconnects 3,276 Illegal Gas Connections in Sindh and Balochistan"
+        }
+      ],
+      "department_ids": [
+        "ssgc"
+      ]
+    },
+    {
+      "url": "https://www.ssgc.com.pk/web/4470-2/",
+      "status": "fetched_unreviewed",
+      "sha256": "2dace95e3001fe270f88ea95a4aa3b5a37eaf26e78d9e801bb47264db32d44f6",
+      "links": [
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Consumer Service Manual"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Compliance of SOE Act"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/compliance-with-soe-act/",
+          "title": "Statement of Corporate Intent"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Helpline& Complaints"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Consumer Service Manual"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/4470-2/",
+          "title": "Compliance of SOE Act"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/compliance-with-soe-act/",
+          "title": "Statement of Corporate Intent"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/contact-for-investment-assistance-grievances/",
+          "title": "Contact for Investment Assistance / Grievances"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaint-types-and-estimated-resolution-timelines/",
+          "title": "Complaint Types and Estimated Resolution Timelines"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/public-complaints-resolution-mechanism/",
+          "title": "Public Complaints Resolution Mechanism"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/complaints-feedback/",
+          "title": "Complaints/Feedback"
+        },
+        {
+          "url": "https://www.ssgc.com.pk/web/115618/",
+          "title": "SSGC Disconnects 3,276 Illegal Gas Connections in Sindh and Balochistan"
+        }
+      ],
+      "department_ids": [
+        "ssgc"
+      ]
+    },
+    {
+      "url": "https://www.fbr.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "38bb1625b36edb729369e28f7083df738d6136ff2e21aace710664cc171f4b70",
+      "links": [
+        {
+          "url": "https://www.fbr.gov.pk/legal/142251/131290",
+          "title": "Legal"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/di-legal-provisions/173967/173968",
+          "title": "Digital Initiatives"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/legal-accounting-customs/142255/131295",
+          "title": "Legal & Accounting - Customs"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/di-legal-provisions/173967/173968",
+          "title": ""
+        },
+        {
+          "url": "https://www.fbr.gov.pk/act-rules-ordinances/131226",
+          "title": "Acts"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/act-rules-ordinances/131226",
+          "title": "Ordinance"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/act-rules-ordinances/131226",
+          "title": "Rules"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/pos-legal-provisions/163085/163086",
+          "title": "Point Of Sale (POS)"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/contact-fbr-online/142250/131208",
+          "title": "Contact FBR Online"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/act-rules-ordinances/131226",
+          "title": "Acts"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/act-rules-ordinances/131226",
+          "title": "Ordinance"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/act-rules-ordinances/131226",
+          "title": "Rules"
+        }
+      ],
+      "department_ids": [
+        "fbr"
+      ]
+    },
+    {
+      "url": "https://www.fbr.gov.pk/legal/142251/131290",
+      "status": "fetched_unreviewed",
+      "sha256": "8bdec912b5fda8db1b73e1d08eefeca184018fe07839e3e1d459fff3de2430a7",
+      "links": [
+        {
+          "url": "https://www.fbr.gov.pk/legal/142251/131290",
+          "title": ""
+        },
+        {
+          "url": "https://www.fbr.gov.pk/introduction-legal/142251/131290",
+          "title": "Introduction"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/performance-legal-wing/142251/174262",
+          "title": "Performance of Legal Wing"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/legal/142251/152911",
+          "title": "Advocates on the panel of FBR"
+        }
+      ],
+      "department_ids": [
+        "fbr"
+      ]
+    },
+    {
+      "url": "https://www.fbr.gov.pk/di-legal-provisions/173967/173968",
+      "status": "fetched_unreviewed",
+      "sha256": "40fc87e2f41c7207aa8f32cedefbb1b6c665af082148709b1990475339be30bf",
+      "links": [
+        {
+          "url": "https://www.fbr.gov.pk/di-legal-provisions/173967/173968",
+          "title": "Digital Invoicing Legal Provisions"
+        }
+      ],
+      "department_ids": [
+        "fbr"
+      ]
+    },
+    {
+      "url": "https://www.fbr.gov.pk/legal-accounting-customs/142255/131295",
+      "status": "fetched_unreviewed",
+      "sha256": "bb01b6b91848462a938cc00bb9bc3662f29e491112bb29c383e641902a64fd32",
+      "links": [
+        {
+          "url": "https://www.fbr.gov.pk/legal-accounting-customs/142255/131295",
+          "title": ""
+        },
+        {
+          "url": "https://www.fbr.gov.pk/legal-accounting-customs/142255/131295",
+          "title": "Introduction"
+        },
+        {
+          "url": "https://www.fbr.gov.pk/legal-accounting-customs/142255/174309",
+          "title": "Supreme Court Judgment regarding Jurisdiction of Customs Authorities in recovery of Sales Tax and Advance Income Tax of Post Clearance Stage"
+        }
+      ],
+      "department_ids": [
+        "fbr"
+      ]
+    },
+    {
+      "url": "https://www.ombudsmanpunjab.gov.pk/",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>",
+      "department_ids": [
+        "omb-punjab"
+      ]
+    },
+    {
+      "url": "https://www.mohtasibsindh.gov.pk/",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.mohtasibsindh.gov.pk'. (_ssl.c:1032)>",
+      "department_ids": [
+        "omb-sindh"
+      ]
+    },
+    {
+      "url": "https://ombudsmankp.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "2c063a15c556ac1cb5a4b51a2318640804a1e225d44958574bcc0b0a2f5c4953",
+      "links": [
+        {
+          "url": "https://ombudsmankp.gov.pk/",
+          "title": "Jurisdiction"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/mandate",
+          "title": "Mandate"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/What_We_Can_Do",
+          "title": "What\n                            We Can Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/how-we-do",
+          "title": "How\n                            We Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/what-we-can-not-do",
+          "title": "What\n                            We Can Not Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/",
+          "title": "E-Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/complaint-management-process",
+          "title": "Complaint\n                            Management Process"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/who-can-lodge-compplaint",
+          "title": "Who Can Lodge a\n                            Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/register-complaint",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/cause-list",
+          "title": "Cause List"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/track-your-complaint",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus",
+          "title": "Provincial Ombudsman Secretariat\n                            Peshawar"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/di-khan",
+          "title": "Regional Office D.I.\n                            Khan"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/swat",
+          "title": "Regional Office Swat"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/abbottabad",
+          "title": "Regional Office\n                            Abbottabad"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/register-complaint",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/track-your-complaint",
+          "title": "Track Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/who-can-lodge-compplaint",
+          "title": "Who Can Lodge Complaint\n                                    Learn about eligibility criteria and requirements for\n                                        filing complaints"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/how-to-make-complaint",
+          "title": "How To Make Complaint\n                                    Step-by-step guide to file your complaint effectively"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/register-complaint",
+          "title": "Register Complaint\n                                    Submit your complaint online quickly and securely\n                                \n                                \n                                    \n                                \n                                Popular"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/complaint-management-process",
+          "title": "Complaint Management Process\n                                    Understand how we handle and resolve complaints"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/cause-list",
+          "title": "Cause List\n                                    View scheduled hearings and case proceedings"
+        }
+      ],
+      "department_ids": [
+        "omb-kp"
+      ]
+    },
+    {
+      "url": "https://ombudsmankp.gov.pk/jurisdiction/mandate",
+      "status": "fetched_unreviewed",
+      "sha256": "d1a2fa9e09be8b69e980851636e2ad22491c4f9cfd13f039fec588eb4db1015a",
+      "links": [
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/mandate",
+          "title": "Jurisdiction"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/mandate",
+          "title": "Mandate"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/What_We_Can_Do",
+          "title": "What\n                            We Can Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/how-we-do",
+          "title": "How\n                            We Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/what-we-can-not-do",
+          "title": "What\n                            We Can Not Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/mandate",
+          "title": "E-Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/complaint-management-process",
+          "title": "Complaint\n                            Management Process"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/who-can-lodge-compplaint",
+          "title": "Who Can Lodge a\n                            Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/register-complaint",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/cause-list",
+          "title": "Cause List"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/track-your-complaint",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/mandate",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus",
+          "title": "Provincial Ombudsman Secretariat\n                            Peshawar"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/di-khan",
+          "title": "Regional Office D.I.\n                            Khan"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/swat",
+          "title": "Regional Office Swat"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/abbottabad",
+          "title": "Regional Office\n                            Abbottabad"
+        }
+      ],
+      "department_ids": [
+        "omb-kp"
+      ]
+    },
+    {
+      "url": "https://ombudsmankp.gov.pk/jurisdiction/What_We_Can_Do",
+      "status": "fetched_unreviewed",
+      "sha256": "194fb96880bccdb4fe2a78e8ef4bebf701b0bbd9a41ff624019080a222a23d56",
+      "links": [
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/What_We_Can_Do",
+          "title": "Jurisdiction"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/mandate",
+          "title": "Mandate"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/What_We_Can_Do",
+          "title": "What\n                            We Can Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/how-we-do",
+          "title": "How\n                            We Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/what-we-can-not-do",
+          "title": "What\n                            We Can Not Do"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/What_We_Can_Do",
+          "title": "E-Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/complaint-management-process",
+          "title": "Complaint\n                            Management Process"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/who-can-lodge-compplaint",
+          "title": "Who Can Lodge a\n                            Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/register-complaint",
+          "title": "Register Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/cause-list",
+          "title": "Cause List"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/e-complaint/track-your-complaint",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/jurisdiction/What_We_Can_Do",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus",
+          "title": "Provincial Ombudsman Secretariat\n                            Peshawar"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/di-khan",
+          "title": "Regional Office D.I.\n                            Khan"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/swat",
+          "title": "Regional Office Swat"
+        },
+        {
+          "url": "https://ombudsmankp.gov.pk/contactus/abbottabad",
+          "title": "Regional Office\n                            Abbottabad"
+        }
+      ],
+      "department_ids": [
+        "omb-kp"
+      ]
+    },
+    {
+      "url": "https://www.pta.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "ea4a6c3a1667ca9df684436f2027738d2910a2053535f54e123556230042e07e",
+      "links": [
+        {
+          "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+          "title": "Legislation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/complaints",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+          "title": "Legislation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/complaints",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/implementation-of-telecom-equipment-standards-regulations-1149711125-2026-09-09",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/implementation-of-telecom-equipment-standards-regulations-1149711125-2026-09-09",
+          "title": "Implementation of Telecom Equipment Standards Regulations\r\n                                                \r\n                                                \r\n                                                    \r\n                                                        \r\n                                                    \r\n                                                    \r\n                                                        September 08, 2026"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/pta-and-nccia-conduct-joint-raid-against-illegal-sim-based-recharging-setup-in-gilgit-64784149-2026-08-31",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/pta-and-nccia-conduct-joint-raid-against-illegal-sim-based-recharging-setup-in-gilgit-64784149-2026-08-31",
+          "title": "PTA and NCCIA Conduct Joint Raid Against Illegal SIM-Based Recharging Setup in Gilgit\r\n                                                \r\n                                                \r\n                                                    \r\n                                                        \r\n                                                    \r\n                                                    \r\n                                                        August 28, 2026"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/pta-intensifies-crackdown-on-illegal-provisioning-of-internet-services-518149726-2026-08-25",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/pta-intensifies-crackdown-on-illegal-provisioning-of-internet-services-518149726-2026-08-25",
+          "title": "PTA Intensifies Crackdown on Illegal Provisioning of Internet Services\r\n                                                \r\n                                                \r\n                                                    \r\n                                                        \r\n                                                    \r\n                                                    \r\n                                                        August 24, 2026"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/guidelines-1251819379-2023-05-30",
+          "title": "Consumer Facilitation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/public-complaints-resolution-mechanism-407381753-2023-05-30",
+          "title": "Public Complaint Mechanism"
+        }
+      ],
+      "department_ids": [
+        "pta"
+      ]
+    },
+    {
+      "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+      "status": "fetched_unreviewed",
+      "sha256": "ad43feea34a062be0e9754de15e3fda65c62318f8b220382b5b18d348e925091",
+      "links": [
+        {
+          "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+          "title": "Legislation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/complaints",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+          "title": "Legislation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/complaints",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2026-03-05-PTA-Act,-1996-Amended-up-to-2024.pdf",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2026-03-05-PTA-Act,-1996-Amended-up-to-2024.zip",
+          "title": "Download"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2025-04-07-Appellate-Tribunal-Act-2024.pdf",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2025-04-07-Appellate-Tribunal-Act-2024.zip",
+          "title": "Download"
+        },
+        {
+          "url": "https://www.pta.gov.pk/assets/media/ajk-adaption-act-121015.pdf",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/assets/media/ajk-adaption-act-121015-2.zip",
+          "title": "Download"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2025-04-07-The-Prevention-of-Electonic-Crimes-Amendment-Act-2025--Act-No-II-of-2025-29th-January-2025-2.pdf",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2025-04-07-The-Prevention-of-Electonic-Crimes-Amendment-Act-2025--Act-No-II-of-2025-29th-January-2025-2.zip",
+          "title": "Download"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/guidelines-1251819379-2023-05-30",
+          "title": "Consumer Facilitation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/public-complaints-resolution-mechanism-407381753-2023-05-30",
+          "title": "Public Complaint Mechanism"
+        }
+      ],
+      "department_ids": [
+        "pta"
+      ]
+    },
+    {
+      "url": "https://www.pta.gov.pk/category/complaints",
+      "status": "fetched_unreviewed",
+      "sha256": "331362008714967dbd7c00af79d8e92c9785b68cff99d2532b1dc0ecca1d150d",
+      "links": [
+        {
+          "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+          "title": "Legislation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/complaints",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+          "title": "Legislation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/complaints",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/guidelines-1251819379-2023-05-30",
+          "title": "Consumer Facilitation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/public-complaints-resolution-mechanism-407381753-2023-05-30",
+          "title": "Public Complaint Mechanism"
+        }
+      ],
+      "department_ids": [
+        "pta"
+      ]
+    },
+    {
+      "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+      "status": "fetched_unreviewed",
+      "sha256": "91243d61d7cd676aaba8ec8ce60bec23f702b753bc4d28ce64d13b28ae170156",
+      "links": [
+        {
+          "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+          "title": "Legislation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/complaints",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/act-1397047816-2023-05-30",
+          "title": "Legislation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/complaints",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2026-03-05-PTA-Act,-1996-Amended-up-to-2024.pdf",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2026-03-05-PTA-Act,-1996-Amended-up-to-2024.zip",
+          "title": "Download"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2025-04-07-Appellate-Tribunal-Act-2024.pdf",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2025-04-07-Appellate-Tribunal-Act-2024.zip",
+          "title": "Download"
+        },
+        {
+          "url": "https://www.pta.gov.pk/assets/media/ajk-adaption-act-121015.pdf",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/assets/media/ajk-adaption-act-121015-2.zip",
+          "title": "Download"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2025-04-07-The-Prevention-of-Electonic-Crimes-Amendment-Act-2025--Act-No-II-of-2025-29th-January-2025-2.pdf",
+          "title": ""
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/assets/media/2025-04-07-The-Prevention-of-Electonic-Crimes-Amendment-Act-2025--Act-No-II-of-2025-29th-January-2025-2.zip",
+          "title": "Download"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/guidelines-1251819379-2023-05-30",
+          "title": "Consumer Facilitation"
+        },
+        {
+          "url": "https://www.pta.gov.pk/category/public-complaints-resolution-mechanism-407381753-2023-05-30",
+          "title": "Public Complaint Mechanism"
+        }
+      ],
+      "department_ids": [
+        "pta"
+      ]
+    },
+    {
+      "url": "https://balochistan.gov.pk/citizen-services/",
+      "status": "fetched_unreviewed",
+      "sha256": "746a1b826281b457e49763f6ac3bc47e9e85df8cc35ae6b5bf89ecec17c56374",
+      "links": [
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "Acts,Rules and Regulations"
+        },
+        {
+          "url": "https://balochistan.gov.pk/citizen-services/",
+          "title": "Contact"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://balochistan.gov.pk/citizen-services/",
+          "title": "CONTACT US"
+        },
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "Acts,Rules and Regulations"
+        },
+        {
+          "url": "https://balochistan.gov.pk/citizen-services/",
+          "title": "Contact"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "omb-balochistan",
+        "balochistan-0",
+        "balochistan-1",
+        "balochistan-5",
+        "balochistan-6",
+        "balochistan-7",
+        "balochistan-8"
+      ]
+    },
+    {
+      "url": "https://balochistan.gov.pk/departments-acts/",
+      "status": "fetched_unreviewed",
+      "sha256": "2fedb9a470a011bf98dcbaacd5edd65a1db3afdf66d2d8d059672789dc700e62",
+      "links": [
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "Acts,Rules and Regulations"
+        },
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "Contact"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "CONTACT US"
+        },
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "Acts,Rules and Regulations"
+        },
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "Contact"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "omb-balochistan",
+        "balochistan-0",
+        "balochistan-1",
+        "balochistan-5",
+        "balochistan-6",
+        "balochistan-7",
+        "balochistan-8"
+      ]
+    },
+    {
+      "url": "https://balochistan.gov.pk/contact-us/",
+      "status": "fetched_unreviewed",
+      "sha256": "587317cadf8ac98f969a300a92b79e2b5d0d217e370c5c1c4032470515dfb19b",
+      "links": [
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "Acts,Rules and Regulations"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "CONTACT US"
+        },
+        {
+          "url": "https://balochistan.gov.pk/departments-acts/",
+          "title": "Acts,Rules and Regulations"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://balochistan.gov.pk:443/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://balochistan.gov.pk/contact-us/",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "omb-balochistan",
+        "balochistan-0",
+        "balochistan-1",
+        "balochistan-5",
+        "balochistan-6",
+        "balochistan-7",
+        "balochistan-8"
+      ]
+    },
+    {
+      "url": "https://www.punjabpolice.gov.pk/igp_complaint_center_8787",
+      "status": "fetched_unreviewed",
+      "sha256": "10f71771bc887857782271bb7103afca186b7edeb039982cd9cc89d4d0a828fa",
+      "links": [
+        {
+          "url": "https://www.punjabpolice.gov.pk/IGP-Complaint-Cell",
+          "title": "IGP Complaint Center"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/igp_complaint_center_8787",
+          "title": "About 1787"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/IGP-Complaint-Cell",
+          "title": "IGP Complaint Center"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/contact_details",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "punjab-2",
+        "punjab-3"
+      ]
+    },
+    {
+      "url": "https://www.punjabpolice.gov.pk/IGP-Complaint-Cell",
+      "status": "fetched_unreviewed",
+      "sha256": "e624667c08d7ad3455112e65060af4cecbbbda09704c6b1a510eb1391690f606",
+      "links": [
+        {
+          "url": "https://www.punjabpolice.gov.pk/IGP-Complaint-Cell",
+          "title": "IGP Complaint Center"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/igp_complaint_center_8787",
+          "title": "About 1787"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/igp_complaint_center_8787",
+          "title": "About 1787"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/contact_details",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "punjab-2",
+        "punjab-3"
+      ]
+    },
+    {
+      "url": "https://www.punjabpolice.gov.pk/IGP-Complaint-Cell",
+      "status": "fetched_unreviewed",
+      "sha256": "e624667c08d7ad3455112e65060af4cecbbbda09704c6b1a510eb1391690f606",
+      "links": [
+        {
+          "url": "https://www.punjabpolice.gov.pk/IGP-Complaint-Cell",
+          "title": "IGP Complaint Center"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/igp_complaint_center_8787",
+          "title": "About 1787"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/igp_complaint_center_8787",
+          "title": "About 1787"
+        },
+        {
+          "url": "https://www.punjabpolice.gov.pk/contact_details",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "punjab-2",
+        "punjab-3"
+      ]
+    },
+    {
+      "url": "https://www.punjab.gov.pk/complaints",
+      "status": "fetched_unreviewed",
+      "sha256": "b40187c98b41e63c5100f9e13a9ddc7c50e40c74402c869bc24c8a208685d8fa",
+      "links": [
+        {
+          "url": "https://www.punjab.gov.pk/government_contacts",
+          "title": "Government Contacts"
+        }
+      ],
+      "department_ids": [
+        "punjab-0",
+        "punjab-1",
+        "punjab-5",
+        "punjab-6",
+        "punjab-7",
+        "punjab-8"
+      ]
+    },
+    {
+      "url": "https://www.punjab.gov.pk/government_contacts",
+      "status": "fetched_unreviewed",
+      "sha256": "0fb9c015a2e3269c157e537a2c59f2bdd957644ed04a6ef0f792926593c33ec9",
+      "links": [
+        {
+          "url": "https://www.punjab.gov.pk/index.php/government_contacts",
+          "title": "Government Contacts"
+        },
+        {
+          "url": "https://www.punjab.gov.pk/government_contacts",
+          "title": "Government Contacts"
+        }
+      ],
+      "department_ids": [
+        "punjab-0",
+        "punjab-1",
+        "punjab-5",
+        "punjab-6",
+        "punjab-7",
+        "punjab-8"
+      ]
+    },
+    {
+      "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+      "status": "fetched_unreviewed",
+      "sha256": "65e25a4fd74ae20bafa4837eec89c3b75fe63682ea35c828cd9c51e0ee34fba4",
+      "links": [
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Consumer Guidance"
+        },
+        {
+          "url": "https://pfa.gop.pk/track-your-complaint/",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/food-testing-service/",
+          "title": "Food Testing Service"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Consumer Guidance"
+        },
+        {
+          "url": "https://pfa.gop.pk/track-your-complaint/",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/food-testing-service/",
+          "title": "Food Testing Service"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": ""
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "ContactUs"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        }
+      ],
+      "department_ids": [
+        "punjab-4"
+      ]
+    },
+    {
+      "url": "https://pfa.gop.pk/contact-us/",
+      "status": "fetched_unreviewed",
+      "sha256": "d39abb0b78bbdeac68477164491de7ecafd47f9236c60011548a38444005cedc",
+      "links": [
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Consumer Guidance"
+        },
+        {
+          "url": "https://pfa.gop.pk/track-your-complaint/",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/food-testing-service/",
+          "title": "Food Testing Service"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Consumer Guidance"
+        },
+        {
+          "url": "https://pfa.gop.pk/track-your-complaint/",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/food-testing-service/",
+          "title": "Food Testing Service"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "For Complaints; pfa.complaints@pfa.gop.pk"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        }
+      ],
+      "department_ids": [
+        "punjab-4"
+      ]
+    },
+    {
+      "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+      "status": "fetched_unreviewed",
+      "sha256": "cb1c58e6df5db05844acacdac3ba39e3c459392f2cd1b4570e97231ff691c762",
+      "links": [
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Consumer Guidance"
+        },
+        {
+          "url": "https://pfa.gop.pk/track-your-complaint/",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/food-testing-service/",
+          "title": "Food Testing Service"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Consumer Guidance"
+        },
+        {
+          "url": "https://pfa.gop.pk/track-your-complaint/",
+          "title": "Track Your Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/food-testing-service/",
+          "title": "Food Testing Service"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/nutrition-clinic-services/",
+          "title": "Nutrition Services"
+        },
+        {
+          "url": "https://pfa.gop.pk/contact-us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/report-a-complaint/",
+          "title": "Report a Complaint"
+        },
+        {
+          "url": "https://pfa.gop.pk/for-consumer/home-based-test/",
+          "title": "Home Based Tests"
+        }
+      ],
+      "department_ids": [
+        "punjab-4"
+      ]
+    },
+    {
+      "url": "https://igpcms.sindhpolice.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "278dedbcc8326565089103eb45ceca9e3e31d3f6ab23553c0da2f428ff56f07d",
+      "links": [
+        {
+          "url": "https://igpcms.sindhpolice.gov.pk/assets/guide/IGP_CMS_Guide.pdf",
+          "title": "complaint\r\n                            guide"
+        },
+        {
+          "url": "https://igpcms.sindhpolice.gov.pk/tracking-complaint",
+          "title": "Track"
+        }
+      ],
+      "department_ids": [
+        "sindh-2",
+        "sindh-3"
+      ]
+    },
+    {
+      "url": "https://igpcms.sindhpolice.gov.pk/assets/guide/IGP_CMS_Guide.pdf",
+      "status": "unavailable",
+      "error": "ValueError: Document exceeds research download limit",
+      "department_ids": [
+        "sindh-2",
+        "sindh-3"
+      ]
+    },
+    {
+      "url": "https://igpcms.sindhpolice.gov.pk/tracking-complaint",
+      "status": "fetched_unreviewed",
+      "sha256": "a356c280f458fc626327b85dce6272f030555f83356907489d594549f2e71675",
+      "links": [
+        {
+          "url": "https://igpcms.sindhpolice.gov.pk/assets/guide/IGP_CMS_Guide.pdf",
+          "title": "complaint\r\n                            guide"
+        },
+        {
+          "url": "https://igpcms.sindhpolice.gov.pk/tracking-complaint",
+          "title": "Track"
+        }
+      ],
+      "department_ids": [
+        "sindh-2",
+        "sindh-3"
+      ]
+    },
+    {
+      "url": "https://sfa.gos.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "a2b4fbe2fca3238a565d555ee3885528439366bdf76790a16219cd448875ae59",
+      "links": [
+        {
+          "url": "https://sfa.gos.pk/rules-regulations.php",
+          "title": "SFA Rules & Regulations"
+        },
+        {
+          "url": "https://sfa.gos.pk/legal-wing.php",
+          "title": "Legal Wing"
+        },
+        {
+          "url": "https://sfa.gos.pk/",
+          "title": "SFA Act 2016 \u00bb"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/Sindh Act No.XIV of 2017.pdf",
+          "title": "English"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/SFA-Act-No.XIV-of-2017 - Urdu.pdf",
+          "title": "Urdu"
+        },
+        {
+          "url": "https://sfa.gos.pk/",
+          "title": "Food Safety Regulations\t\u00bb"
+        },
+        {
+          "url": "https://sfa.gos.pk/contact.php",
+          "title": "Contact"
+        },
+        {
+          "url": "https://sfa.gos.pk/complaint/users",
+          "title": "Complaint Cell"
+        },
+        {
+          "url": "https://sfa.gos.pk/regulation-monitoring.php",
+          "title": "REGULATION & MONITORING"
+        },
+        {
+          "url": "https://sfa.gos.pk/contact.php",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://sfa.gos.pk/complaint/users",
+          "title": "Complaint"
+        }
+      ],
+      "department_ids": [
+        "sindh-4"
+      ]
+    },
+    {
+      "url": "https://sfa.gos.pk/rules-regulations.php",
+      "status": "fetched_unreviewed",
+      "sha256": "4ef365c57045cbeef0c30c7e3400003d0cf6d9d17a9f91774889420cd1d9176e",
+      "links": [
+        {
+          "url": "https://sfa.gos.pk/rules-regulations.php",
+          "title": "SFA Rules & Regulations"
+        },
+        {
+          "url": "https://sfa.gos.pk/legal-wing.php",
+          "title": "Legal Wing"
+        },
+        {
+          "url": "https://sfa.gos.pk/rules-regulations.php",
+          "title": "SFA Act 2016 \u00bb"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/Sindh Act No.XIV of 2017.pdf",
+          "title": "English"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/SFA-Act-No.XIV-of-2017 - Urdu.pdf",
+          "title": "Urdu"
+        },
+        {
+          "url": "https://sfa.gos.pk/rules-regulations.php",
+          "title": "Food Safety Regulations\t\u00bb"
+        },
+        {
+          "url": "https://sfa.gos.pk/contact.php",
+          "title": "Contact"
+        },
+        {
+          "url": "https://sfa.gos.pk/complaint/users",
+          "title": "Complaint Cell"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/SFA Employee service rules.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/SFA Appeal rules.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/Sfa Conduct Regulation 2023.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/SFA Employee E D Rules.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/SFA Food Product Regulation 2023.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/SFA Leave Rules 2023.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/Sindh Food Authority Rules of Business 2023.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/SFA business establishment Rules 2023.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/rules-regulations/Sindh Food Fortification Act, 2021.pdf",
+          "title": "Download"
+        },
+        {
+          "url": "https://sfa.gos.pk/contact.php",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://sfa.gos.pk/complaint/users",
+          "title": "Complaint"
+        }
+      ],
+      "department_ids": [
+        "sindh-4"
+      ]
+    },
+    {
+      "url": "https://sfa.gos.pk/legal-wing.php",
+      "status": "fetched_unreviewed",
+      "sha256": "6adb41be7d9cf07546233e5da38ed15d3b05b91595ef519f8d9d624d11d937c6",
+      "links": [
+        {
+          "url": "https://sfa.gos.pk/rules-regulations.php",
+          "title": "SFA Rules & Regulations"
+        },
+        {
+          "url": "https://sfa.gos.pk/legal-wing.php",
+          "title": "Legal Wing"
+        },
+        {
+          "url": "https://sfa.gos.pk/legal-wing.php",
+          "title": "SFA Act 2016 \u00bb"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/Sindh Act No.XIV of 2017.pdf",
+          "title": "English"
+        },
+        {
+          "url": "https://sfa.gos.pk/documents/SFA-Act-No.XIV-of-2017 - Urdu.pdf",
+          "title": "Urdu"
+        },
+        {
+          "url": "https://sfa.gos.pk/legal-wing.php",
+          "title": "Food Safety Regulations\t\u00bb"
+        },
+        {
+          "url": "https://sfa.gos.pk/contact.php",
+          "title": "Contact"
+        },
+        {
+          "url": "https://sfa.gos.pk/complaint/users",
+          "title": "Complaint Cell"
+        },
+        {
+          "url": "https://sfa.gos.pk/contact.php",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://sfa.gos.pk/complaint/users",
+          "title": "Complaint"
+        }
+      ],
+      "department_ids": [
+        "sindh-4"
+      ]
+    },
+    {
+      "url": "https://kp.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "f63d6815fc8f85f3b713d734bce90fd9a87ee1d09a47e03da14a2885612e9c7a",
+      "links": [],
+      "department_ids": [
+        "kp-0",
+        "kp-1",
+        "kp-5",
+        "kp-6",
+        "kp-7",
+        "kp-8"
+      ]
+    },
+    {
+      "url": "https://fto.gov.pk/onlineComSys.aspx",
+      "status": "fetched_unreviewed",
+      "sha256": "23bbcdd62245c34a00166400789da224fb5e2b1547bdc2b6f97f946576eb201c",
+      "links": [
+        {
+          "url": "https://fto.gov.pk/assets/img/Jurisdiction-FINAL2.pdf",
+          "title": "FTO Territorial Jurisdiction"
+        },
+        {
+          "url": "https://fto.gov.pk/onlineComSys.aspx",
+          "title": "Legal Frame Work"
+        },
+        {
+          "url": "https://fto.gov.pk/legalFramework.aspx",
+          "title": "Legal Frame Work Details"
+        },
+        {
+          "url": "https://fto.gov.pk/assets/img/fto_Ordinance_2000-_4th_draft_a.pdf",
+          "title": "Establishment of the Office of FTO Ordinance, 2000"
+        },
+        {
+          "url": "https://fto.gov.pk/assets/img/FOInstitutionalReformsAct2013.pdf",
+          "title": "Federal Ombudsmen Institutional Reforms Act, 2013"
+        },
+        {
+          "url": "https://fto.gov.pk/assets/img/Regulations2001.pdf",
+          "title": "FTO Investigation & Disposal of Complaints Regulations, 2001"
+        },
+        {
+          "url": "https://fto.gov.pk/onlineComSys.aspx",
+          "title": "Complaint"
+        },
+        {
+          "url": "https://fto.gov.pk/logComplaint.aspx",
+          "title": "What is maladministration"
+        },
+        {
+          "url": "https://fto.gov.pk/compManag.aspx",
+          "title": "Complaint Management"
+        },
+        {
+          "url": "https://fto.gov.pk/comFileProce.aspx",
+          "title": "Complaint Filing Procedure"
+        },
+        {
+          "url": "https://fto.gov.pk/onlineComSys.aspx",
+          "title": "Online Complaint System"
+        },
+        {
+          "url": "https://fto.gov.pk/contactUs.aspx",
+          "title": "Contact"
+        }
+      ],
+      "department_ids": [
+        "fto"
+      ]
+    },
+    {
+      "url": "https://fto.gov.pk/assets/img/Jurisdiction-FINAL2.pdf",
+      "status": "fetched_unreviewed",
+      "sha256": "bf374d5e3b6af082641c0a06da2612c57a23beb04592c0bf0788017358199b83",
+      "links": [],
+      "department_ids": [
+        "fto"
+      ]
+    },
+    {
+      "url": "https://fto.gov.pk/legalFramework.aspx",
+      "status": "fetched_unreviewed",
+      "sha256": "afdfe7a0878124749db2ce44fcc48da07c516224eef91f66c7a4eda1dc1aefbc",
+      "links": [
+        {
+          "url": "https://fto.gov.pk/assets/img/Jurisdiction-FINAL2.pdf",
+          "title": "FTO Territorial Jurisdiction"
+        },
+        {
+          "url": "https://fto.gov.pk/legalFramework.aspx",
+          "title": "Legal Frame Work"
+        },
+        {
+          "url": "https://fto.gov.pk/legalFramework.aspx",
+          "title": "Legal Frame Work Details"
+        },
+        {
+          "url": "https://fto.gov.pk/assets/img/fto_Ordinance_2000-_4th_draft_a.pdf",
+          "title": "Establishment of the Office of FTO Ordinance, 2000"
+        },
+        {
+          "url": "https://fto.gov.pk/assets/img/FOInstitutionalReformsAct2013.pdf",
+          "title": "Federal Ombudsmen Institutional Reforms Act, 2013"
+        },
+        {
+          "url": "https://fto.gov.pk/assets/img/Regulations2001.pdf",
+          "title": "FTO Investigation & Disposal of Complaints Regulations, 2001"
+        },
+        {
+          "url": "https://fto.gov.pk/legalFramework.aspx",
+          "title": "Complaint"
+        },
+        {
+          "url": "https://fto.gov.pk/logComplaint.aspx",
+          "title": "What is maladministration"
+        },
+        {
+          "url": "https://fto.gov.pk/compManag.aspx",
+          "title": "Complaint Management"
+        },
+        {
+          "url": "https://fto.gov.pk/comFileProce.aspx",
+          "title": "Complaint Filing Procedure"
+        },
+        {
+          "url": "https://fto.gov.pk/onlineComSys.aspx",
+          "title": "Online Complaint System"
+        },
+        {
+          "url": "https://fto.gov.pk/contactUs.aspx",
+          "title": "Contact"
+        },
+        {
+          "url": "https://fto.gov.pk/assets/img/fto_Ordinance_2000-_4th_draft_a.pdf",
+          "title": "DOWNLOAD"
+        },
+        {
+          "url": "https://fto.gov.pk/assets/img/Regulations2001.pdf",
+          "title": "DOWNLOAD"
+        }
+      ],
+      "department_ids": [
+        "fto"
+      ]
+    },
+    {
+      "url": "https://e.kpfsa.gov.pk/contact",
+      "status": "fetched_unreviewed",
+      "sha256": "9876608abe571969dc3d83082a487f336e30b4249c7963e36fe34b881b90d0ca",
+      "links": [
+        {
+          "url": "https://e.kpfsa.gov.pk/contact",
+          "title": "Contact"
+        },
+        {
+          "url": "https://e.kpfsa.gov.pk/contact",
+          "title": "Contact"
+        },
+        {
+          "url": "https://e.kpfsa.gov.pk/contact",
+          "title": "Contact"
+        }
+      ],
+      "department_ids": [
+        "kp-4"
+      ]
+    },
+    {
+      "url": "https://www.mohtasib.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "5c936e948092570dbb3c287628e15b60af470c33f2e7cc35374d7bf31f51ee27",
+      "links": [
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGM4YzViMzItYzUzMS00MDVjLWJkZjAtZTEyMjBmMWY3NWVm",
+          "title": "Legal  Framework"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NWRkZDJmMTYtZmRiOC00MTAyLTk2ZDItZGVlNTkxMTdmNTEz",
+          "title": "Online Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NDE1YTBmODYtN2MzMC00ZGU0LTlkOWYtNzNmZTg4OThmYTFi",
+          "title": "Who Can Lodge a Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ODE2MWM4M2QtNDM5NS00OTc2LThlZmEtYzQ0NzViYWFmMTgz",
+          "title": "Making a Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ZGRjN2MxYjMtMTM1Yi00MmZmLWI2M2MtOTAxNjc4MGYxNWQ2",
+          "title": "Complaint About Us"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGMxZmE4ZjUtYTM2OC00MGEwLWI4YTQtY2VkM2Y2MzJlZDUw",
+          "title": "Complaint Management Information  System"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/YzYwMmQxZTItMjk0NC00MjA2LWFjMWMtOWVmNmYzNWNhZGUy",
+          "title": "Public Complaint Resolution"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGVhMGVlN2MtZjlmZS00YjY1LWFiNjQtOGE4NmIzMGQwODFk",
+          "title": "Complaints Received & Resolved"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ODE2MWM4M2QtNDM5NS00OTc2LThlZmEtYzQ0NzViYWFmMTgz",
+          "title": "How to make a complaint  \u0634\u06a9\u0627\u06cc\u062a \u06a9\u06cc\u0633\u06d2 \u06a9\u06cc \u062c\u0627\u0626\u06d2"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NWRkZDJmMTYtZmRiOC00MTAyLTk2ZDItZGVlNTkxMTdmNTEz",
+          "title": "Online Complaint \u0622\u0646 \u0644\u0627\u0626\u0646 \u0634\u06a9\u0627\u06cc\u062a"
+        }
+      ],
+      "department_ids": [
+        "wafaqi",
+        "federal-office"
+      ]
+    },
+    {
+      "url": "https://www.mohtasib.gov.pk/Detail/OGM4YzViMzItYzUzMS00MDVjLWJkZjAtZTEyMjBmMWY3NWVm",
+      "status": "fetched_unreviewed",
+      "sha256": "93d5539253fb5075abb68efbaec07e9cada3b6d87cf44c26f141a61b21a92c2f",
+      "links": [
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGM4YzViMzItYzUzMS00MDVjLWJkZjAtZTEyMjBmMWY3NWVm",
+          "title": "Legal  Framework"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NWRkZDJmMTYtZmRiOC00MTAyLTk2ZDItZGVlNTkxMTdmNTEz",
+          "title": "Online Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NDE1YTBmODYtN2MzMC00ZGU0LTlkOWYtNzNmZTg4OThmYTFi",
+          "title": "Who Can Lodge a Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ODE2MWM4M2QtNDM5NS00OTc2LThlZmEtYzQ0NzViYWFmMTgz",
+          "title": "Making a Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ZGRjN2MxYjMtMTM1Yi00MmZmLWI2M2MtOTAxNjc4MGYxNWQ2",
+          "title": "Complaint About Us"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGMxZmE4ZjUtYTM2OC00MGEwLWI4YTQtY2VkM2Y2MzJlZDUw",
+          "title": "Complaint Management Information  System"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/YzYwMmQxZTItMjk0NC00MjA2LWFjMWMtOWVmNmYzNWNhZGUy",
+          "title": "Public Complaint Resolution"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGVhMGVlN2MtZjlmZS00YjY1LWFiNjQtOGE4NmIzMGQwODFk",
+          "title": "Complaints Received & Resolved"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/SiteImage/Downloads/disposal_regulation_2013.pdf",
+          "title": "Wafaqi Mohtasib (Ombudsman)'s Investigation and Disposal of Complaints Regulations 2013"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/SiteImage/Downloads/cricular_16_8_2019.pdf",
+          "title": "Processing of complaints relating to service matter 16.08.2019"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/SiteImage/Downloads/circular%2013-11-2023.pdf",
+          "title": "Processing of complaints relating to service matter 10.11.2023"
+        }
+      ],
+      "department_ids": [
+        "wafaqi",
+        "federal-office"
+      ]
+    },
+    {
+      "url": "https://www.mohtasib.gov.pk/Detail/NWRkZDJmMTYtZmRiOC00MTAyLTk2ZDItZGVlNTkxMTdmNTEz",
+      "status": "fetched_unreviewed",
+      "sha256": "0a5bf11f8ac94688ecd8eba4bad8ab778602deaced7dfe64cff855a8410a8b45",
+      "links": [
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGM4YzViMzItYzUzMS00MDVjLWJkZjAtZTEyMjBmMWY3NWVm",
+          "title": "Legal  Framework"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NWRkZDJmMTYtZmRiOC00MTAyLTk2ZDItZGVlNTkxMTdmNTEz",
+          "title": "Online Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NDE1YTBmODYtN2MzMC00ZGU0LTlkOWYtNzNmZTg4OThmYTFi",
+          "title": "Who Can Lodge a Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ODE2MWM4M2QtNDM5NS00OTc2LThlZmEtYzQ0NzViYWFmMTgz",
+          "title": "Making a Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ZGRjN2MxYjMtMTM1Yi00MmZmLWI2M2MtOTAxNjc4MGYxNWQ2",
+          "title": "Complaint About Us"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGMxZmE4ZjUtYTM2OC00MGEwLWI4YTQtY2VkM2Y2MzJlZDUw",
+          "title": "Complaint Management Information  System"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/YzYwMmQxZTItMjk0NC00MjA2LWFjMWMtOWVmNmYzNWNhZGUy",
+          "title": "Public Complaint Resolution"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGVhMGVlN2MtZjlmZS00YjY1LWFiNjQtOGE4NmIzMGQwODFk",
+          "title": "Complaints Received & Resolved"
+        }
+      ],
+      "department_ids": [
+        "wafaqi",
+        "federal-office"
+      ]
+    },
+    {
+      "url": "https://www.mohtasib.gov.pk/Detail/NDE1YTBmODYtN2MzMC00ZGU0LTlkOWYtNzNmZTg4OThmYTFi",
+      "status": "fetched_unreviewed",
+      "sha256": "79eeb7de70595176d9666ca9da9815a01c539fe279d89bfdf2bff3164a3874f6",
+      "links": [
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGM4YzViMzItYzUzMS00MDVjLWJkZjAtZTEyMjBmMWY3NWVm",
+          "title": "Legal  Framework"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NWRkZDJmMTYtZmRiOC00MTAyLTk2ZDItZGVlNTkxMTdmNTEz",
+          "title": "Online Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/NDE1YTBmODYtN2MzMC00ZGU0LTlkOWYtNzNmZTg4OThmYTFi",
+          "title": "Who Can Lodge a Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ODE2MWM4M2QtNDM5NS00OTc2LThlZmEtYzQ0NzViYWFmMTgz",
+          "title": "Making a Complaint"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/ZGRjN2MxYjMtMTM1Yi00MmZmLWI2M2MtOTAxNjc4MGYxNWQ2",
+          "title": "Complaint About Us"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGMxZmE4ZjUtYTM2OC00MGEwLWI4YTQtY2VkM2Y2MzJlZDUw",
+          "title": "Complaint Management Information  System"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/YzYwMmQxZTItMjk0NC00MjA2LWFjMWMtOWVmNmYzNWNhZGUy",
+          "title": "Public Complaint Resolution"
+        },
+        {
+          "url": "https://www.mohtasib.gov.pk/Detail/OGVhMGVlN2MtZjlmZS00YjY1LWFiNjQtOGE4NmIzMGQwODFk",
+          "title": "Complaints Received & Resolved"
+        }
+      ],
+      "department_ids": [
+        "wafaqi",
+        "federal-office"
+      ]
+    },
+    {
+      "url": "https://pkm.balochistanpolice.gov.pk/",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>",
+      "department_ids": [
+        "balochistan-2",
+        "balochistan-3"
+      ]
+    },
+    {
+      "url": "https://bfa.gob.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "f405ceb41e71863c9531e4da703f858bfaa43e69db0639955d03093dcef5d52a",
+      "links": [
+        {
+          "url": "https://bfa.gob.pk/contact_us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://bfa.gob.pk/contact_us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://bfa.gob.pk/cms/",
+          "title": "Register Food Safety Complaint"
+        },
+        {
+          "url": "https://bfa.gob.pk/",
+          "title": "Consumer Guidance"
+        },
+        {
+          "url": "https://bfa.gob.pk/contact_us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://bfa.gob.pk/",
+          "title": "Consumer Guidance"
+        },
+        {
+          "url": "https://bfa.gob.pk/contact_us/",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://bfa.gob.pk/cms/",
+          "title": "Register a Complaint"
+        },
+        {
+          "url": "https://bfa.gob.pk/cms/track-your-complaint.php",
+          "title": "Track your Complaint"
+        },
+        {
+          "url": "https://bfa.gob.pk/cms/track-your-complaint.php",
+          "title": ""
+        },
+        {
+          "url": "https://bfa.gob.pk/cms/track-your-complaint.php",
+          "title": "Check complaint status"
+        },
+        {
+          "url": "https://bfa.gob.pk/legal-framework/",
+          "title": "Click here"
+        }
+      ],
+      "department_ids": [
+        "balochistan-4"
+      ]
+    },
+    {
+      "url": "https://bfa.gob.pk/contact_us/",
+      "status": "fetched_unreviewed",
+      "sha256": "15b7008d123a6d7a5ad91b60a199da3469c9fd298c0bc6a7cbbfa941cca12d12",
+      "links": [],
+      "department_ids": [
+        "balochistan-4"
+      ]
+    },
+    {
+      "url": "https://bfa.gob.pk/contact_us/",
+      "status": "fetched_unreviewed",
+      "sha256": "755eae9313076fee6a7c979fb696e123e3c5cc968427e2ecd24a9a19418f2420",
+      "links": [],
+      "department_ids": [
+        "balochistan-4"
+      ]
+    },
+    {
+      "url": "https://bfa.gob.pk/cms/",
+      "status": "fetched_unreviewed",
+      "sha256": "678c0967872d0a3d75cffaba746c72c8e2a9ec6d07951a41af4ae0dddaeae4c0",
+      "links": [],
+      "department_ids": [
+        "balochistan-4"
+      ]
+    },
+    {
+      "url": "https://rwmc.org.pk/RWMC-files/Submit-Complaint.php",
+      "status": "fetched_unreviewed",
+      "sha256": "af4c27c2962ddc36b652a9782b1e50e0870764d4042dde7636ed1283f41bee5d",
+      "links": [
+        {
+          "url": "https://rwmc.org.pk/RWMC-files/Contact",
+          "title": "Contact"
+        },
+        {
+          "url": "https://rwmc.org.pk/RWMC-files/RWMC-files/Contact",
+          "title": "Contact"
+        }
+      ],
+      "department_ids": [
+        "rwmc"
+      ]
+    },
+    {
+      "url": "https://rwmc.org.pk/RWMC-files/Contact",
+      "status": "unavailable",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "department_ids": [
+        "rwmc"
+      ]
+    },
+    {
+      "url": "https://rwmc.org.pk/RWMC-files/RWMC-files/Contact",
+      "status": "unavailable",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "department_ids": [
+        "rwmc"
+      ]
+    },
+    {
+      "url": "https://www.sindh.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "3524d8a610ffe12d723b1ed11dd9d32aa0c13e4074d4ce5ec1b0cced7b39852b",
+      "links": [
+        {
+          "url": "https://www.sindh.gov.pk/complains",
+          "title": "Complaint Form"
+        },
+        {
+          "url": "https://www.sindh.gov.pk/",
+          "title": "Rules & Ordinance"
+        },
+        {
+          "url": "https://www.sindh.gov.pk/",
+          "title": "Rules & Ordinance"
+        },
+        {
+          "url": "https://www.sindh.gov.pk/",
+          "title": "Emergency Contacts"
+        },
+        {
+          "url": "https://www.sindh.gov.pk/",
+          "title": "Emergency Contacts"
+        }
+      ],
+      "department_ids": [
+        "sindh-0",
+        "sindh-1",
+        "sindh-5",
+        "sindh-6",
+        "sindh-7",
+        "sindh-8"
+      ]
+    },
+    {
+      "url": "https://www.sindh.gov.pk/complains",
+      "status": "fetched_unreviewed",
+      "sha256": "54d75405b2648dc19774e6204a523d28fc2d15c4703ffd9b63aac13f3e20f6bc",
+      "links": [],
+      "department_ids": [
+        "sindh-0",
+        "sindh-1",
+        "sindh-5",
+        "sindh-6",
+        "sindh-7",
+        "sindh-8"
+      ]
+    },
+    {
+      "url": "https://www.kppolice.gov.pk/detail.php?pid=45",
+      "status": "fetched_unreviewed",
+      "sha256": "91571abe2d2d192e39f5820069ff0c0aa50ecb56e0da3878c30943e99149d5db",
+      "links": [
+        {
+          "url": "https://www.kppolice.gov.pk/contact.php?pid=56",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "KP Police Act 2017"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=115",
+          "title": "KP Police Act 2017"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Rental Building Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=83",
+          "title": "Khyber Pakhtunkhwa Restriction of Rented Buildings (Security) Act, 2014"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Hotel Restriction Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=87",
+          "title": "Khyber Pakhtunkhwa Hotels Restriction (Security) Act, 2014"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Vulnerable EST & Places Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=93",
+          "title": "Vulnerable Act 2015"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Rules & Regulations"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=120",
+          "title": "Uniform Regulations 2026"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=121",
+          "title": "Explosives Regulations 2026 -English"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=122",
+          "title": "Explosives Regulations 2026. Urdu"
+        }
+      ],
+      "department_ids": [
+        "kp-2",
+        "kp-3"
+      ]
+    },
+    {
+      "url": "https://www.kppolice.gov.pk/contact.php?pid=56",
+      "status": "fetched_unreviewed",
+      "sha256": "f556a606328d341020587e074aa1deec2f2053e75d41136d7572eef37b27b7d2",
+      "links": [
+        {
+          "url": "https://www.kppolice.gov.pk/contact.php?pid=56",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "KP Police Act 2017"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=115",
+          "title": "KP Police Act 2017"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Rental Building Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=83",
+          "title": "Khyber Pakhtunkhwa Restriction of Rented Buildings (Security) Act, 2014"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Hotel Restriction Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=87",
+          "title": "Khyber Pakhtunkhwa Hotels Restriction (Security) Act, 2014"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Vulnerable EST & Places Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=93",
+          "title": "Vulnerable Act 2015"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Rules & Regulations"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=120",
+          "title": "Uniform Regulations 2026"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=121",
+          "title": "Explosives Regulations 2026 -English"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=122",
+          "title": "Explosives Regulations 2026. Urdu"
+        }
+      ],
+      "department_ids": [
+        "kp-2",
+        "kp-3"
+      ]
+    },
+    {
+      "url": "https://www.kppolice.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "1bbde0b77b2b51dee674cbf3b7f813d6234f26748096b2f242228c374b24776e",
+      "links": [
+        {
+          "url": "https://www.kppolice.gov.pk/contact.php?pid=56",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "KP Police Act 2017"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=115",
+          "title": "KP Police Act 2017"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Rental Building Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=83",
+          "title": "Khyber Pakhtunkhwa Restriction of Rented Buildings (Security) Act, 2014"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Hotel Restriction Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=87",
+          "title": "Khyber Pakhtunkhwa Hotels Restriction (Security) Act, 2014"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Vulnerable EST & Places Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=93",
+          "title": "Vulnerable Act 2015"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Rules & Regulations"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=120",
+          "title": "Uniform Regulations 2026"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=121",
+          "title": "Explosives Regulations 2026 -English"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=122",
+          "title": "Explosives Regulations 2026. Urdu"
+        }
+      ],
+      "department_ids": [
+        "kp-2",
+        "kp-3"
+      ]
+    },
+    {
+      "url": "https://www.kppolice.gov.pk/viewer.php?pid=115",
+      "status": "fetched_unreviewed",
+      "sha256": "0f3d9497985c282139b82a0c405c564c16e1ec2ce767487182d88da32d0483a1",
+      "links": [
+        {
+          "url": "https://www.kppolice.gov.pk/contact.php?pid=56",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "KP Police Act 2017"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=115",
+          "title": "KP Police Act 2017"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Rental Building Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=83",
+          "title": "Khyber Pakhtunkhwa Restriction of Rented Buildings (Security) Act, 2014"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Hotel Restriction Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=87",
+          "title": "Khyber Pakhtunkhwa Hotels Restriction (Security) Act, 2014"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Vulnerable EST & Places Act"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=93",
+          "title": "Vulnerable Act 2015"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/",
+          "title": "Rules & Regulations"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=120",
+          "title": "Uniform Regulations 2026"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=121",
+          "title": "Explosives Regulations 2026 -English"
+        },
+        {
+          "url": "https://www.kppolice.gov.pk/viewer.php?pid=122",
+          "title": "Explosives Regulations 2026. Urdu"
+        }
+      ],
+      "department_ids": [
+        "kp-2",
+        "kp-3"
+      ]
+    },
+    {
+      "url": "https://www.lwmc.com.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "ba0b6a3199d503d505ee2960a447624c9b454032b39d77c97caf0c2a8216e1ec",
+      "links": [
+        {
+          "url": "https://www.lwmc.com.pk/legal.php",
+          "title": "Legal & Coporate Affairs"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/contact.php",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/complaint.php",
+          "title": "Request a Bin"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/complaint.php",
+          "title": "Complaint Redressal"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/complaint.php",
+          "title": "Feedback"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/contact.php",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "lwmc"
+      ]
+    },
+    {
+      "url": "https://www.lwmc.com.pk/legal.php",
+      "status": "fetched_unreviewed",
+      "sha256": "6eed4d987e1c55e2a6e1d169c28f9c2c11be960b086d647bb7f49a67193e5ae4",
+      "links": [
+        {
+          "url": "https://www.lwmc.com.pk/legal.php",
+          "title": "Legal & Coporate Affairs"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/contact.php",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/complaint.php",
+          "title": "Feedback"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/contact.php",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "lwmc"
+      ]
+    },
+    {
+      "url": "https://www.lwmc.com.pk/contact.php",
+      "status": "fetched_unreviewed",
+      "sha256": "790763604e82773676ad554ade019f7e99ddce9c431c69fb8f623acf58e20f91",
+      "links": [
+        {
+          "url": "https://www.lwmc.com.pk/legal.php",
+          "title": "Legal & Coporate Affairs"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/contact.php",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/complaint.php",
+          "title": "Feedback"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/contact.php",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "lwmc"
+      ]
+    },
+    {
+      "url": "https://www.lwmc.com.pk/complaint.php",
+      "status": "fetched_unreviewed",
+      "sha256": "9facc5a0a3d8cf0750d2fe5312e7350a46322593af65296fed60d3f7d9da565d",
+      "links": [
+        {
+          "url": "https://www.lwmc.com.pk/legal.php",
+          "title": "Legal & Coporate Affairs"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/contact.php",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/complaint.php",
+          "title": "Feedback"
+        },
+        {
+          "url": "https://www.lwmc.com.pk/contact.php",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "lwmc"
+      ]
+    },
+    {
+      "url": "https://lda.gop.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "75d6d043ad9cdb2ee177e4a876c7332db3a287083c1e305fcab073b007a15556",
+      "links": [
+        {
+          "url": "https://lda.gop.pk/illegal-schemes",
+          "title": "Illegal\r\n                      Schemes"
+        },
+        {
+          "url": "https://lda.gop.pk/contact-us",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://lda.gop.pk/resource-center/laws-rules-policies-procedures",
+          "title": "Laws, Rules, Policies,& Procedures"
+        },
+        {
+          "url": "https://lda.gop.pk/illegal-schemes",
+          "title": "Illegal Schemes"
+        },
+        {
+          "url": "https://lda.gop.pk/contact-us",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "lda"
+      ]
+    },
+    {
+      "url": "https://lda.gop.pk/illegal-schemes",
+      "status": "fetched_unreviewed",
+      "sha256": "5810c84c4cbfa2086fd840c423bfc3c06727404b848eaa1676666520c06a3554",
+      "links": [],
+      "department_ids": [
+        "lda"
+      ]
+    },
+    {
+      "url": "https://lda.gop.pk/contact-us",
+      "status": "fetched_unreviewed",
+      "sha256": "28e9909d2dc5e72d426af0ffa9cc7226af3a59c911d663f6ca0334ef7e4f80c5",
+      "links": [],
+      "department_ids": [
+        "lda"
+      ]
+    },
+    {
+      "url": "https://lda.gop.pk/resource-center/laws-rules-policies-procedures",
+      "status": "fetched_unreviewed",
+      "sha256": "0a545c7150745b243dab4a02a8ec7161bd0c815b26f42532cd84e161d32c9bf7",
+      "links": [],
+      "department_ids": [
+        "lda"
+      ]
+    },
+    {
+      "url": "https://rda.gop.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "0c63f570caa1d0f1b79e1ec12acc96d4021a0fbf10d7febf4d7923ed4a2ef6c1",
+      "links": [],
+      "department_ids": [
+        "rda"
+      ]
+    },
+    {
+      "url": "https://complain.kwsc.gos.pk/add/complaint",
+      "status": "fetched_unreviewed",
+      "sha256": "f27822f742fbe6ff5b2ca3c999ea6d018b92a0cd73ac0a3c79153d45d8c47bd6",
+      "links": [
+        {
+          "url": "https://complain.kwsc.gos.pk/add/complaint/",
+          "title": "English"
+        },
+        {
+          "url": "https://complain.kwsc.gos.pk/add/complaint/",
+          "title": "Urdu"
+        }
+      ],
+      "department_ids": [
+        "kwsc"
+      ]
+    },
+    {
+      "url": "https://complain.kwsc.gos.pk/add/complaint/",
+      "status": "fetched_unreviewed",
+      "sha256": "77a10cba80e734cc4dacf681823daf843187aeb5da15f082df1a42c546ac5085",
+      "links": [
+        {
+          "url": "https://complain.kwsc.gos.pk/add/complaint/",
+          "title": "English"
+        },
+        {
+          "url": "https://complain.kwsc.gos.pk/add/complaint/",
+          "title": "Urdu"
+        }
+      ],
+      "department_ids": [
+        "kwsc"
+      ]
+    },
+    {
+      "url": "https://complain.kwsc.gos.pk/add/complaint/",
+      "status": "fetched_unreviewed",
+      "sha256": "aa99fc96f022d0e15f3570aa588f12a62a1a3e7f978d2755e3f10a8f98811373",
+      "links": [
+        {
+          "url": "https://complain.kwsc.gos.pk/add/complaint/",
+          "title": "English"
+        },
+        {
+          "url": "https://complain.kwsc.gos.pk/add/complaint/",
+          "title": "Urdu"
+        }
+      ],
+      "department_ids": [
+        "kwsc"
+      ]
+    },
+    {
+      "url": "https://complaints.cda.gov.pk/",
+      "status": "fetched_unreviewed",
+      "sha256": "b9f62186a42f7d7a89fbf161df8888dc0870d6deccd16ffa51aa66beb5a31b60",
+      "links": [
+        {
+          "url": "https://complaints.cda.gov.pk",
+          "title": "Capital Development Authority\n                    Complaint Management System"
+        },
+        {
+          "url": "https://complaints.cda.gov.pk/register",
+          "title": "Sign up"
+        }
+      ],
+      "department_ids": [
+        "cda",
+        "cda-municipal"
+      ]
+    },
+    {
+      "url": "https://complaints.cda.gov.pk",
+      "status": "fetched_unreviewed",
+      "sha256": "b9f62186a42f7d7a89fbf161df8888dc0870d6deccd16ffa51aa66beb5a31b60",
+      "links": [
+        {
+          "url": "https://complaints.cda.gov.pk",
+          "title": "Capital Development Authority\n                    Complaint Management System"
+        },
+        {
+          "url": "https://complaints.cda.gov.pk/register",
+          "title": "Sign up"
+        }
+      ],
+      "department_ids": [
+        "cda",
+        "cda-municipal"
+      ]
+    },
+    {
+      "url": "https://complaints.cda.gov.pk/register",
+      "status": "fetched_unreviewed",
+      "sha256": "8d47f2fab9307d39156a550094d620749a22217cac9fd1db058bcaa175ed04c6",
+      "links": [
+        {
+          "url": "https://complaints.cda.gov.pk/auth/google",
+          "title": "Register with Google"
+        }
+      ],
+      "department_ids": [
+        "cda",
+        "cda-municipal"
+      ]
+    },
+    {
+      "url": "https://www.kda.gos.pk/",
+      "status": "unavailable",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>",
+      "department_ids": [
+        "kda"
+      ]
+    },
+    {
+      "url": "https://erts.kprts.gov.pk/complaint/public_complaint",
+      "status": "fetched_unreviewed",
+      "sha256": "6b1ea22450fc2a64b2b875d5067e5e4e8a3a724b266c222b2afd3682a6765696",
+      "links": [
+        {
+          "url": "https://erts.kprts.gov.pk/complaint/public_complaint",
+          "title": "Create Complaint"
+        }
+      ],
+      "department_ids": [
+        "kp-rts"
+      ]
+    },
+    {
+      "url": "https://www.kprts.gov.pk/online-complaints/",
+      "status": "unavailable",
+      "error": "HTTPError: HTTP Error 500: Internal Server Error",
+      "department_ids": [
+        "kp-rts"
+      ]
+    },
+    {
+      "url": "https://www.kprts.gov.pk/",
+      "status": "unavailable",
+      "error": "HTTPError: HTTP Error 500: Internal Server Error",
+      "department_ids": [
+        "kp-rts"
+      ]
+    },
+    {
+      "url": "https://sswmb.gos.pk/portal/",
+      "status": "fetched_unreviewed",
+      "sha256": "16b8dd89096dcda23464be2128c966e247303e058a7a8500ad9450298bbec63e",
+      "links": [
+        {
+          "url": "https://sswmb.gos.pk/contact-us/",
+          "title": "Contact us"
+        },
+        {
+          "url": "https://sswmb.gos.pk/contact-us/",
+          "title": "Contact us"
+        }
+      ],
+      "department_ids": [
+        "sswmb"
+      ]
+    },
+    {
+      "url": "https://sswmb.gos.pk/contact-us/",
+      "status": "fetched_unreviewed",
+      "sha256": "2fcf574c570250ec6966265af4bb7bcde42a9054b564ea82cca759c58540161a",
+      "links": [
+        {
+          "url": "https://sswmb.gos.pk/contact-us/",
+          "title": "Contact us"
+        },
+        {
+          "url": "https://sswmb.gos.pk/contact-us/",
+          "title": "Contact us"
+        }
+      ],
+      "department_ids": [
+        "sswmb"
+      ]
+    },
+    {
+      "url": "https://sswmb.gos.pk/contact-us/",
+      "status": "fetched_unreviewed",
+      "sha256": "2fcf574c570250ec6966265af4bb7bcde42a9054b564ea82cca759c58540161a",
+      "links": [
+        {
+          "url": "https://sswmb.gos.pk/contact-us/",
+          "title": "Contact us"
+        },
+        {
+          "url": "https://sswmb.gos.pk/contact-us/",
+          "title": "Contact us"
+        }
+      ],
+      "department_ids": [
+        "sswmb"
+      ]
+    },
+    {
+      "url": "https://regulationswing.punjab.gov.pk/acts",
+      "status": "fetched_unreviewed",
+      "sha256": "29717753d3454580a1e6254ea673db20f88e5d88b45a82b14ebcdd5bf11b1555",
+      "links": [
+        {
+          "url": "https://regulationswing.punjab.gov.pk/system/files/Regularization%20of%20Service%20%28Repeal%29%20Act%202025%2C%2018-Dec-2025.pdf",
+          "title": "The Punjab Regularization of Service (Repeal) Act, 2025"
+        },
+        {
+          "url": "https://regulationswing.punjab.gov.pk/system/files/Pb_Regularization_of_Service_Act_2018.pdf",
+          "title": "The Punjab Regularization of Service Act 2018"
+        },
+        {
+          "url": "https://regulationswing.punjab.gov.pk/system/files/Pb_Regularization_of_Service_Act_2018_Amendment.pdf",
+          "title": "Punjab Regularization of Service (Amendment) Ordinance, 2019"
+        },
+        {
+          "url": "https://regulationswing.punjab.gov.pk/system/files/Pb_Right_to_Public_Services_Act_2019_0.pdf",
+          "title": "The Punjab Right to Public Services Act 2019"
+        },
+        {
+          "url": "https://regulationswing.punjab.gov.pk/contact_us",
+          "title": "Contact Us"
+        }
+      ],
+      "department_ids": [
+        "punjab-rts"
+      ]
+    },
+    {
+      "url": "https://regulationswing.punjab.gov.pk/system/files/Regularization%20of%20Service%20%28Repeal%29%20Act%202025%2C%2018-Dec-2025.pdf",
+      "status": "fetched_unreviewed",
+      "sha256": "69676e59157b48161368a4df2982236c418053c3b05d8d60434a250124a4ba2f",
+      "links": [],
+      "department_ids": [
+        "punjab-rts"
+      ]
+    },
+    {
+      "url": "https://regulationswing.punjab.gov.pk/system/files/Pb_Regularization_of_Service_Act_2018.pdf",
+      "status": "fetched_unreviewed",
+      "sha256": "8cf1e33d5a6bf6f0bdc3a47daf9dce048cd39ee214b9e9000b78c131cb2b0444",
+      "links": [],
+      "department_ids": [
+        "punjab-rts"
+      ]
+    },
+    {
+      "url": "https://regulationswing.punjab.gov.pk/system/files/Pb_Regularization_of_Service_Act_2018_Amendment.pdf",
+      "status": "fetched_unreviewed",
+      "sha256": "2d5f14b0b56f0ca3cae51f865577584dff712da649469274b7b595b3312b774a",
+      "links": [],
+      "department_ids": [
+        "punjab-rts"
+      ]
+    }
+  ]
+}

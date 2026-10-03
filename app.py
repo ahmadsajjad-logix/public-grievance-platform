@@ -4,6 +4,7 @@ import streamlit as st
 from grievance import agents
 from grievance.identity import validate_identity
 from grievance.legal import KINDS, filing_profile
+from grievance.guidance import department_guide, guide_text, guide_sections, PROFILES, research_documents
 from grievance.knowledge import detect
 from grievance.catalog import CATEGORIES, DEPARTMENTS, REGIONS, STAGES, available_departments, REVIEW_DATE
 from grievance.storage import aggregates, save_aggregate
@@ -19,12 +20,62 @@ st.sidebar.info("Prepare here, submit to the authority yourself. Nothing is sent
 st.title("Public Grievance & Statutory Escalation Platform")
 st.caption("A clearer path from a public service problem to a prepared complaint.")
 
+
+def show_guide(guide):
+    st.caption(guide["status"] + " • Reviewed: " + (guide["reviewed"] or "not completed"))
+    st.markdown("**What this department can help with**")
+    st.write(guide["can"])
+    st.markdown("**Limits and exclusions**")
+    st.write(guide["cannot"])
+    st.markdown("**How to file**")
+    for i, step in enumerate(guide["procedure"], 1):
+        st.write(f"{i}. {step}")
+    for c in guide["channels"]:
+        if c["kind"] == "whatsapp":
+            st.write("Official WhatsApp:", c["value"])
+            st.markdown("[Open WhatsApp — send the message yourself](https://wa.me/" + c["value"].lstrip("+") + ")")
+        elif c["kind"] in ("portal", "website", "directory"):
+            st.markdown(f"[Open {c['kind']}]({c['value']})")
+        else:
+            st.write(c["kind"].title() + ":", c["value"])
+        st.caption(c["instructions"] + " Source: " + c["source"])
+    st.markdown("**Authority's document checklist**")
+    for item in guide["requirements"]:
+        st.write("• " + item)
+    st.caption("All uploads remain optional here. The receiving authority may require documents before accepting a filing.")
+    st.write("Time limits and procedure:", guide["limits"])
+    for law in guide["laws"]:
+        st.write(law["citation"] + ": " + law["purpose"])
+        st.markdown(f"[Legal framework source]({law['source']})")
+    if guide["address"]:
+        st.write("Office:", guide["address"])
+        st.markdown(f"[Find this office on a map — confirm the result]({guide['map']})")
+    st.caption(guide["hours"])
+    if guide.get("local_documents"):
+        st.markdown("**Departmental source documents**")
+        for document in guide["local_documents"]:
+            st.caption(document["file"] + " — " + document["note"])
+    st.caption("No complaint is transmitted when you open a link. Complete the official filing and retain its acknowledgment.")
+
+
 def downloads(case):
     if not case:
         st.info("Prepare a grievance to see your petition and follow-up reminder.")
         return
     st.info(f"{case['route']['body']} • Draft prepared — not submitted by this app")
     st.caption(f"Local draft ID: {case['id'][:12]}. This is not an official tracking number.")
+    guide = case["route"].get("filing_guide")
+    if guide:
+        with st.expander("Your department and filing guide", expanded=True):
+            show_guide(guide)
+            from grievance.petitions import build_petition
+            st.download_button("Download department & filing guide (PDF)", build_petition(case, guide_sections(guide)), "filing-guide.pdf", "application/pdf")
+            st.download_button("Download department & filing guide (text)", guide_text(guide).encode("utf-8-sig"), "filing-guide.txt", "text/plain")
+    if case.get("audit"):
+        with st.expander("Evidence readiness — optional preparation checklist"):
+            st.metric("Audit Readiness Score", f"{case['audit']['score']}%")
+            st.caption("Measures presence of suggested files only; it does not validate their contents, establish admissibility or block a draft.")
+            st.write("Suggested records not uploaded:", ", ".join(case["audit"]["missing"]) or "None")
     st.subheader("Use your prepared complaint")
     st.write("For an online form, copy the complaint text below into its complaint/details field and the requested resolution into its relief field if separate. Complete the portal's identity and other required fields yourself.")
     prepared_text = agents.filing_text(case)
@@ -32,6 +83,13 @@ def downloads(case):
         st.caption("Use the copy button in the text box. Review the wording and the portal's character limit; this app does not know each portal's current limits. Identity details are kept out of this copyable text.")
         st.code(prepared_text, language=None, wrap_lines=True)
         st.write(f"{len(prepared_text):,} characters")
+        if guide and guide.get("character_limit"):
+            limit = guide["character_limit"]
+            st.warning(f"This authority's form lists a {limit}-character description limit. Prepare a short factual summary below; keep the full complaint separately.")
+            short = st.text_area("Short description for this portal", value="", max_chars=limit, key="short-" + case["id"])
+            st.caption(f"{len(short)} / {limit} characters. Include the issue, location and requested action; review before copying.")
+            if short:
+                st.code(short, language=None, wrap_lines=True)
     st.write("Use the PDF as a supporting attachment only if the portal accepts it. Otherwise keep it as your complete written record, or sign and submit it by post/in person after confirming the receiving office and its requirements.")
     st.download_button("Download draft petition", case["pdf"], f"petition-{case['id'][:8]}.pdf", "application/pdf")
     st.download_button("Download calendar reminder", case["ics"], "follow-up.ics", "text/calendar")
@@ -53,7 +111,7 @@ def downloads(case):
         for index, page_image in enumerate(preview_pages(case["pdf"])):
             st.image(page_image, caption=f"Page {index + 1}", width="stretch")
     st.subheader("Submission guidance")
-    if case["route"]["portal"]:
+    if case["route"]["portal"] and not guide:
         st.link_button(case["route"].get("channel", "Open authority website / portal"), case["route"]["portal"])
         st.caption("Opens an external authority page. Your complaint and files are not transferred or submitted by this button. A website/directory link may require you to find the complaint service; attachment support has not been verified.")
     for i, step in enumerate(case["dispatch"]["steps"], 1):
@@ -108,6 +166,10 @@ if page == "Submit Grievance":
                 st.warning("This entry does not yet have a verified regional filing recipient. A draft is available, but confirm the recipient and legal grounds before filing.")
             if department_id == "pemra":
                 st.caption("Use the place where the programme was viewed for jurisdiction. Include channel, episode, broadcast date/time, and the specific scenes or dialogue in your complaint.")
+            with st.expander("Understand this department and how to complain", expanded=True):
+                guide = department_guide(department_id, region, filing)
+                show_guide(guide)
+                st.download_button("Save this guidance (text)", guide_text(guide).encode("utf-8-sig"), "department-guidance.txt", "text/plain")
         complaint_stage = st.selectbox("Complaint stage", STAGES)
         st.caption("First complaint goes to the selected office. An unresolved complaint may go to its regulator or eligible ombudsman. A formal appeal requires review of the decision and law.")
         with st.form("grievance"):
@@ -195,6 +257,8 @@ if page == "Submit Grievance":
                 st.caption(case["route"]["backend"])
                 for hit in case["route"]["matches"]:
                     st.write(f"{hit['name']} • relevance {hit['score']}")
+                    if hit.get("page"):
+                        st.caption(f"PDF page {hit['page']} • {hit.get('evidence_type', 'Reference')} • {hit.get('version_note', '')}")
                     st.text(hit["text"][:1500])
                     if hit.get("source"):
                         st.link_button("Official source: " + hit["name"], hit["source"])
@@ -226,7 +290,8 @@ elif page == "Analytics & Heatmap":
         st.caption("Coarse local aggregates of demo preparations; these are not official complaint statistics.")
 elif page == "Department Directory":
     st.subheader("Departments and complaint routes")
-    st.warning("This is a department directory, not a fully verified filing service. Provision-level research currently covers PEMRA broadcast-content complaints; an exact receiving office is verified here only for PEMRA Islamabad. Other entries require recipient and legal research.")
+    st.warning("Research coverage varies by department. Reviewed filing guidance, verified petition provisions and directory-only entries are distinct. Check each entry's research status and sources.")
+    st.caption(f"{len(DEPARTMENTS)} directory entries; {len(PROFILES)} reviewed guidance profiles; {len(research_documents())} source summaries available for retrieval. A reviewed guide does not mean all legal provisions or regional offices are verified.")
     st.caption(f"Directory review: {REVIEW_DATE}. A listed office is not a promise of admissibility. Local offices and statutory appeal routes may need verification.")
     region_filter = st.selectbox("Filter by province / territory", ["All", *REGIONS])
     category_filter = st.selectbox("Filter by service", ["All", *CATEGORIES])
@@ -239,7 +304,7 @@ elif page == "Department Directory":
         if search and search.casefold() not in (department.name + " " + department.scope + " " + " ".join(department.aliases)).casefold():
             continue
         with st.expander(department.name):
-            st.caption("PEMRA broadcast-content profile available; regional verification varies." if department.id == "pemra" else "Directory only: exact filing recipient and legal provisions not yet verified.")
+            show_guide(department_guide(department.id, "" if region_filter == "All" else region_filter))
             st.write(department.scope)
             st.caption("Regions: " + (", ".join(department.regions) or "Federal / nationwide"))
             st.write(department.caveat)
@@ -250,6 +315,14 @@ elif page == "Department Directory":
             st.link_button(department.channel, department.url)
 else:
     st.subheader("Knowledge base workspace")
+    from grievance.reference_library import library
+    indexed = library()
+    st.write(f"Bundled departmental library: {len(indexed['documents'])} PDFs inventoried; {len(indexed['chunks'])} page-cited reference chunks.")
+    st.caption("Supplied documents are reference evidence, not automatically current law. Scanned pages awaiting OCR and historical/out-of-scope documents are explicitly listed below.")
+    with st.expander("Departmental document inventory and research gaps"):
+        for document in indexed["documents"]:
+            st.write(document["file"])
+            st.caption(f"{document['pages']} pages • {document['indexed_chunks']} indexed chunks • {len(document['pages_needing_ocr'])} pages awaiting OCR. {document['version_note']}")
     st.caption("Session-local reference ingestion. This is a single-user demo, without administrator authentication. Manuals inform retrieval; they do not establish verified deadlines automatically.")
     category = st.selectbox("Manual jurisdiction", CATEGORIES)
     manual_region = st.selectbox("Manual applies in", ["All", *REGIONS])

@@ -25,6 +25,31 @@ def filing_profile(department_id, region, text, complaint_kind=None):
                   legal_status="Directory only - exact recipient and applicable legal provisions are not verified",
                   evidence_needed=[], complaint_kind=complaint_kind)
     if department_id != "pemra":
+        from .guidance import PROFILES
+        researched = PROFILES.get(department_id)
+        if researched:
+            result["legal_status"] = "Filing guidance researched; exact statutory grounds require complaint-specific review"
+        if department_id in ("wafaqi", "omb-kp"):
+            law = researched["laws"][0]
+            result.update(legal_provisions=[provision(law["citation"], law["purpose"], law["source"])],
+                          legal_reviewed=REVIEWED, legal_status="Maladministration jurisdiction provision sourced; eligibility and substantive grounds require review")
+        if department_id == "ogra" and re.search(r"gas|sngpl|ssgc|گیس|سوئی", text, re.I):
+            law = researched["laws"][0]
+            result.update(legal_provisions=[provision(law["citation"], law["purpose"], law["source"])],
+                          legal_reviewed=REVIEWED, legal_status="Gas-complaint filing provisions sourced; eligibility and substantive grounds require review")
+        electricity = {"nepra", "lesco", "iesco", "fesco", "gepco", "pesco", "hesco", "sepco", "qesco", "ke"}
+        if department_id in electricity:
+            source = "https://nepra.org.pk/Legal.php"
+            result.update(legal_reviewed=REVIEWED,
+                          legal_status="Revised 2025 Consumer Service Manual complaint procedure identified; exact office and alleged breach require review")
+            result["legal_provisions"] = [provision("Consumer Service Manual (26 November 2025), clause 10.1; supplied PDF page 65",
+                "Consumer Service Centres and DISCO one-window offices receive complaints and provide acknowledgments with reply dates.", source)]
+            if department_id == "nepra":
+                result["legal_provisions"].append(provision("Consumer Service Manual (26 November 2025), clause 15.1.3; NEPRA Act section 39; supplied PDF page 81",
+                    "An eligible written complaint alleging licensee contravention may be considered under the 2015 Complaint Handling and Dispute Resolution (Procedure) Rules. Identify the alleged contravention and earlier supplier response.", source))
+            if re.search(r"wrong meter reading|incorrect meter reading|wrong calculation|غلط ریڈنگ", text, re.I):
+                result["legal_provisions"].append(provision("Consumer Service Manual (26 November 2025), clause 10.3.1(a); supplied PDF page 65",
+                    "Wrong meter-reading or charge-calculation complaints are listed for redressal/reply within seven days of receipt. Receipt by the supplier must be established; this is not a general appeal deadline.", source, "Issue-specific service standard"))
         return result
     result["recipient"] = "Regional Director, PEMRA - concerned regional office (confirm jurisdiction)"
     result["endpoint_source"] = COC
