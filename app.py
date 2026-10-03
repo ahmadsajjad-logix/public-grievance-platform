@@ -14,8 +14,8 @@ for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None
 
 st.sidebar.title("⚖️ Civic Access")
 st.sidebar.caption("Pak Angels • Pakistan National Impact Challenge")
-page = st.sidebar.radio("Workspace", ["Submit Grievance", "Live Tracker", "Analytics & Heatmap", "Department Directory", "Knowledge Base Admin"])
-st.sidebar.info("Demo workspace. Electronic dispatch is simulated. Private case details stay in this session on the app server; uploaded documents are not saved to disk.")
+page = st.sidebar.radio("Workspace", ["Submit Grievance", "My drafts & filing records", "Analytics & Heatmap", "Department Directory", "Knowledge Base Admin"])
+st.sidebar.info("Prepare here, submit to the authority yourself. Nothing is sent automatically. Private case details stay in this session on the app server; uploaded documents are not saved to disk.")
 st.title("Public Grievance & Statutory Escalation Platform")
 st.caption("A clearer path from a public service problem to a prepared complaint.")
 
@@ -23,7 +23,16 @@ def downloads(case):
     if not case:
         st.info("Prepare a grievance to see your petition and follow-up reminder.")
         return
-    st.success(f"{case['route']['body']} • {case['dispatch']['tracking_id']} • {case['dispatch']['status']}")
+    st.info(f"{case['route']['body']} • Draft prepared — not submitted by this app")
+    st.caption(f"Local draft ID: {case['id'][:12]}. This is not an official tracking number.")
+    st.subheader("Use your prepared complaint")
+    st.write("For an online form, copy the complaint text below into its complaint/details field and the requested resolution into its relief field if separate. Complete the portal's identity and other required fields yourself.")
+    prepared_text = agents.filing_text(case)
+    with st.expander("Copy complaint text for an official form", expanded=True):
+        st.caption("Use the copy button in the text box. Review the wording and the portal's character limit; this app does not know each portal's current limits. Identity details are kept out of this copyable text.")
+        st.code(prepared_text, language=None, wrap_lines=True)
+        st.write(f"{len(prepared_text):,} characters")
+    st.write("Use the PDF as a supporting attachment only if the portal accepts it. Otherwise keep it as your complete written record, or sign and submit it by post/in person after confirming the receiving office and its requirements.")
     st.download_button("Download draft petition", case["pdf"], f"petition-{case['id'][:8]}.pdf", "application/pdf")
     st.download_button("Download calendar reminder", case["ics"], "follow-up.ics", "text/calendar")
     st.caption(f"Personal follow-up: {case['due'].date()}. This is not a statutory or appeal deadline.")
@@ -37,7 +46,7 @@ def downloads(case):
     st.write("Suggested next forum:", case["route"].get("escalation", "Review required"))
     for note in case["route"].get("notes", []):
         st.info(note)
-    st.download_button("Download complaint text (Urdu supported)", case["intake"]["text"].encode("utf-8-sig"), "complaint.txt", "text/plain")
+    st.download_button("Download prepared complaint text (Urdu supported)", prepared_text.encode("utf-8-sig"), "complaint.txt", "text/plain")
     with st.expander("Petition preview", expanded=True):
         # Cloud's nested iframe blocks Chrome's PDF viewer. Render pages directly.
         from grievance.petitions import preview_pages
@@ -46,9 +55,19 @@ def downloads(case):
     st.subheader("Submission guidance")
     if case["route"]["portal"]:
         st.link_button(case["route"].get("channel", "Open authority website / portal"), case["route"]["portal"])
+        st.caption("Opens an external authority page. Your complaint and files are not transferred or submitted by this button. A website/directory link may require you to find the complaint service; attachment support has not been verified.")
     for i, step in enumerate(case["dispatch"]["steps"], 1):
         st.write(f"{i}. {step}")
     st.caption("Local office addresses, maps and hours must be confirmed on the authority website before travel.")
+    st.subheader("After you submit to the authority")
+    st.caption("Save the acknowledgment on the authority's site. Record its reference here for this session only; this is your report of submission, not government confirmation or live tracking.")
+    with st.form("filing-record-" + case["id"]):
+        official_reference = st.text_input("Official acknowledgment / complaint reference", value=case.get("official_reference", ""), max_chars=160)
+        save_filing = st.form_submit_button("Save my filing reference")
+    if save_filing:
+        case["official_reference"] = official_reference.strip()
+    if case.get("official_reference"):
+        st.info("Submission reported by you. Official reference: " + case["official_reference"])
 
 if page == "Submit Grievance":
     intake_tab, output_tab = st.tabs(["Submit Grievance", "Petition & Downloads"])
@@ -115,7 +134,7 @@ if page == "Submit Grievance":
                     ("Payment proof", "Payment / fee receipt (optional)"),
                     ("Earlier complaint / decision", "Earlier complaint, acknowledgment or decision (optional)") ]}
                 st.caption("Only upload relevant records. OCR assists extraction; document authenticity needs review.")
-                dispatch_mode = st.selectbox("Submission pathway", ["Offline guidance", "Electronic (simulation)"])
+                st.caption("Preparation creates a PDF and copyable complaint text. You choose how to file with the authority afterwards.")
                 days = st.number_input("Personal follow-up in days", min_value=1, max_value=365, value=14)
                 consent = st.checkbox("Include this case in local aggregate analytics (category, province, date and demo status only)")
                 st.caption("By selecting Prepare my grievance, you authorize processing the details and any optional files to create your draft.")
@@ -150,7 +169,7 @@ if page == "Submit Grievance":
                             elif stage == agents.STAGES[3]:
                                 case["pdf"] = agents.petition(case)
                             elif stage == agents.STAGES[4]:
-                                case["dispatch"] = agents.dispatch(case, dispatch_mode)
+                                case["dispatch"] = agents.dispatch(case)
                             else:
                                 case["ics"] = agents.calendar(case)
                                 if consent:
@@ -181,13 +200,13 @@ if page == "Submit Grievance":
                         st.link_button("Official source: " + hit["name"], hit["source"])
     with output_tab:
         downloads(st.session_state.current)
-elif page == "Live Tracker":
+elif page == "My drafts & filing records":
     st.subheader("Your session's grievances")
     st.caption("Local preparation records. Status is not synchronized with government systems. Session records disappear when the session ends.")
     if not st.session_state.cases:
         st.info("No cases prepared in this session yet.")
     else:
-        selected = st.selectbox("Case", range(len(st.session_state.cases)), format_func=lambda i: st.session_state.cases[i]["dispatch"]["tracking_id"])
+        selected = st.selectbox("Case", range(len(st.session_state.cases)), format_func=lambda i: "Draft " + st.session_state.cases[i]["id"][:12])
         downloads(st.session_state.cases[selected])
 elif page == "Analytics & Heatmap":
     st.subheader("Community grievance overview")

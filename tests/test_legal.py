@@ -36,3 +36,17 @@ def test_pdf_contains_sources_and_legal_provisions():
     text = "\n".join(p.extract_text() for p in PdfReader(io.BytesIO(agents.petition(case))).pages)
     assert "Regional Director, PEMRA Islamabad" in text
     assert "20(b)" in text and "coc_rules_2010.pdf" in text
+
+
+def test_portal_text_preserves_complaint_remedy_and_law_without_identity_fields():
+    case = agents.new_case("Private applicant", "Islamabad", "Examine the identified scenes", "SERVICE-42", 14)
+    case["identity"] = {"cnic": "12345-1234567-1", "mobile": "03001234567"}
+    case["intake"] = agents.intake("ڈرامہ مذہبی اقدار کے خلاف ہے", {})
+    case["route"] = route(case["intake"]["text"], "Broadcasting", [], region="Islamabad", department_id="pemra")
+    text = agents.filing_text(case)
+    assert case["intake"]["text"] in text
+    assert case["remedy"] in text and "SERVICE-42" in text
+    assert "20(b)" in text and "Source:" in text
+    assert case["identity"]["cnic"] not in text
+    assert case["identity"]["mobile"] not in text
+    assert case["name"] not in text

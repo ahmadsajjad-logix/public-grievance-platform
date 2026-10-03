@@ -24,8 +24,8 @@ def test_pdf_calendar_and_simulation():
     case["attachments"] = []
     assert agents.petition(case).startswith(b"%PDF")
     result = agents.dispatch(case, "Electronic (simulation)")
-    assert result["tracking_id"].startswith("DEMO-")
-    assert result["status"] == "Demo dispatch"
+    assert result["tracking_id"].startswith("DRAFT-")
+    assert result["status"] == "Draft prepared - not submitted"
     content = agents.calendar(case).decode()
     assert "DTSTART;VALUE=DATE:" + case["due"].strftime("%Y%m%d") in content
     assert "DTEND;VALUE=DATE:" + (case["due"] + timedelta(days=1)).strftime("%Y%m%d") in content

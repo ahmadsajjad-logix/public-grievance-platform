@@ -6,7 +6,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from .knowledge import route
 
-STAGES = ["Intake & OCR", "Jurisdiction RAG", "Audit Readiness", "Petition Builder", "Dispatch & Router", "Tracker & Analytics"]
+STAGES = ["Intake & OCR", "Jurisdiction RAG", "Audit Readiness", "Petition Builder", "Filing guidance", "Reminder & Analytics"]
 
 def extract_document(name, content):
     if name.lower().endswith(".pdf"):
@@ -82,13 +82,30 @@ def petition(case):
     return build_petition(case)
 
 
-def dispatch(case, mode):
-    return {"status": "Demo dispatch" if mode == "Electronic (simulation)" else "Draft prepared - review recipient and legal grounds before filing",
-            "tracking_id": "DEMO-" + case["id"][:12] if mode == "Electronic (simulation)" else "LOCAL-" + case["id"][:12],
+def dispatch(case, mode=None):
+    # Legacy callers may pass a mode; preparation never constitutes dispatch.
+    return {"status": "Draft prepared - not submitted",
+            "tracking_id": "DRAFT-" + case["id"][:12],
             "steps": ["Review and sign the petition; confirm authority eligibility.",
                       "Use the official website to confirm the nearest office, address and current opening hours.",
                       "Submit through the official portal or bring copies to the confirmed office.",
                       "Keep the official acknowledgment and tracking number. This app has not submitted anything."]}
+
+
+def filing_text(case):
+    """Portal-ready narrative without duplicating identity fields or inventing facts."""
+    route = case["route"]
+    parts = ["Statement of complaint", case["intake"]["text"],
+             "Requested resolution", case["remedy"]]
+    if case.get("reference"):
+        parts.extend(["Service / application reference", case["reference"]])
+    if route.get("prior_reference"):
+        parts.extend(["Earlier complaint / decision", route["prior_reference"]])
+    if route.get("legal_provisions"):
+        parts.append("Legal provisions for consideration (subject to facts and applicability)")
+        parts.extend(f"{p['citation']}: {p['purpose']} Source: {p['source']}"
+                     for p in route["legal_provisions"])
+    return "\n\n".join(parts)
 
 def calendar(case):
     due = case["due"].date()
