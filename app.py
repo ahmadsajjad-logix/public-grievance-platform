@@ -225,11 +225,11 @@ if page == "Submit Grievance":
             left, right = st.columns(2)
             with left:
                 st.markdown("**Required identity and contact details**")
+                name = st.text_input("Applicant name (required)", max_chars=120, key="applicant_name").strip()
                 cnic = st.text_input("CNIC number (required)", placeholder="12345-1234567-1", max_chars=15, key="cnic")
                 cnic_expiry = st.date_input("CNIC expiry date (required)", value=None, min_value=date(1900, 1, 1), max_value=date(2200, 12, 31), key="cnic_expiry")
                 mobile = st.text_input("Mobile number (required)", placeholder="03001234567", max_chars=20, key="mobile")
                 st.caption("These details stay in this session and appear in your draft PDF. They are not included in aggregate analytics. Format checks do not verify identity or phone ownership.")
-                name = st.text_input("Applicant name (required)", max_chars=120, key="applicant_name").strip()
                 city = st.text_input("City / district and exact office or facility (optional)", max_chars=240)
                 remedy = st.text_area("What resolution do you want?", value="Please investigate this complaint, correct the service issue, and provide a written response.", max_chars=3000)
                 reference = st.text_input("Service / consumer / application reference (optional)", max_chars=100)
