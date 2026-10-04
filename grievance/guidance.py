@@ -246,7 +246,7 @@ def department_guide(department_id, region="", legal_profile=None):
         from .legal import filing_profile
         profile = filing_profile(department_id, region or (d.regions[0] if d.regions else ""), "")
     profile = profile or {}
-    guide["recipient"] = profile.get("recipient") or "Exact receiving officer requires verification"
+    guide["recipient"] = profile.get("recipient") or d.name
     guide["address"] = profile.get("address") or guide.get("address", "")
     guide["address_source"] = profile.get("endpoint_source") or guide.get("address_source", "")
     guide["hours"] = guide.get("hours", "Opening hours not verified; confirm before travelling.")

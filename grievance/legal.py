@@ -21,9 +21,11 @@ def provision(citation, purpose, source, kind="Filing procedure"):
 
 
 def filing_profile(department_id, region, text, complaint_kind=None):
-    result = dict(endpoint_verified=False, recipient=None, address="",
-                  endpoint_source="", legal_provisions=[], legal_reviewed=None,
-                  legal_status="Directory only - exact recipient and applicable legal provisions are not verified",
+    from .catalog import DEPARTMENTS
+    department = DEPARTMENTS[department_id]
+    result = dict(endpoint_verified=False, recipient=department.name, address="",
+                  endpoint_source=department.url, legal_provisions=[], legal_reviewed=None,
+                  legal_status="Department filing guidance; applicable legal provisions require complaint-specific review",
                   evidence_needed=[], complaint_kind=complaint_kind)
     if not is_pemra(department_id):
         from .guidance import PROFILES
@@ -58,7 +60,7 @@ def filing_profile(department_id, region, text, complaint_kind=None):
                 result["legal_provisions"].append(provision("Consumer Service Manual (26 November 2025), clause 10.3.1(a); supplied PDF page 65",
                     "Wrong meter-reading or charge-calculation complaints are listed for redressal/reply within seven days of receipt. Receipt by the supplier must be established; this is not a general appeal deadline.", source, "Issue-specific service standard"))
         return result
-    result["recipient"] = "Regional Director, PEMRA - concerned regional office (confirm jurisdiction)"
+    result["recipient"] = "PEMRA" if department_id == "pemra" else department.name
     result["endpoint_source"] = COC
     office = OFFICES.get(department_id)
     if office and office["region"] == region:

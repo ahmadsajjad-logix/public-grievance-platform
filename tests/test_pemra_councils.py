@@ -65,7 +65,8 @@ def test_province_switch_clears_stale_council_and_no_missing_recipient_warning()
         app.selectbox(key="region").set_value(region).run()
         app.selectbox(key="department").set_value("pemra").run()
         assert not app.exception
-        assert any("verified regional filing recipient" in w.value for w in app.warning)
+        assert not any("verified regional filing recipient" in w.value for w in app.warning)
+        assert any("Complaint handling recipient: PEMRA" in c.value for c in app.caption)
 
 
 @pytest.mark.parametrize("region,expected", [

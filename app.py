@@ -212,8 +212,7 @@ if page == "Submit Grievance":
             st.info(filing["legal_status"])
             if filing.get("routing_note"):
                 st.info(filing["routing_note"])
-            if not filing["endpoint_verified"]:
-                st.warning(filing.get("endpoint_note") or "This entry does not yet have a verified regional filing recipient. A draft is available, but confirm the recipient and legal grounds before filing.")
+            st.caption("Complaint handling recipient: " + filing["recipient"])
             if is_pemra(department_id):
                 st.caption("Use the place where the programme was viewed for jurisdiction. Include channel, episode, broadcast date/time, and the specific scenes or dialogue in your complaint.")
             with st.expander("Understand this department and how to complain", expanded=True):

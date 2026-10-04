@@ -110,7 +110,7 @@ def build_petition(case, sections_override=None):
         ("Title", "DRAFT - Public service grievance"),
         ("Normal", f"To: {route['body']}"),
         ("Normal", route.get("address", "")),
-        ("Normal", "Filing recipient: " + ("Official source checked; confirm territorial facts" if route.get("endpoint_verified") else "Exact recipient / territorial jurisdiction requires verification")),
+        ("Normal", "Complaint handling recipient: " + route["body"]),
         ("Normal", f"Selected authority: {route.get('department', route['body'])}"),
         ("Normal", f"Date: {case['created'].date()} | Stage: {route.get('stage', 'First complaint')}"),
         ("Normal", f"Applicant: {case['name'] or 'To be supplied'}"),
