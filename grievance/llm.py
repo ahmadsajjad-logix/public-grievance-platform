@@ -62,7 +62,9 @@ def request_json(key, model, system, payload, output_type):
         max_completion_tokens=2200,
         response_format=dict(type="json_schema", json_schema=dict(
             name=output_type.__name__, strict=True, schema=output_type.model_json_schema())))).encode()
-    request = Request(ENDPOINT, data=data, headers={"Authorization": "Bearer " + key, "Content-Type": "application/json"})
+    request = Request(ENDPOINT, data=data, headers={
+        "Authorization": "Bearer " + key, "Content-Type": "application/json",
+        "Accept": "application/json", "User-Agent": "CivicAccess/1.0"})
     try:
         with urlopen(request, timeout=35) as response:
             result = json.loads(response.read(200000))

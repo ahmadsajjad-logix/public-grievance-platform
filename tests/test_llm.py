@@ -39,6 +39,7 @@ def test_request_uses_strict_schema_and_hides_errors(monkeypatch):
     def call(request, timeout):
         captured.update(json.loads(request.data))
         assert request.full_url == llm.ENDPOINT and timeout == 35
+        assert request.get_header("User-agent") == "CivicAccess/1.0"
         return Response()
     monkeypatch.setattr(llm, "urlopen", call)
     result = llm.suggest("Jazz complaint 03001234567", "Punjab", "secret")
