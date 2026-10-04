@@ -3,6 +3,7 @@ import json
 import os
 import re
 from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -72,6 +73,19 @@ def request_json(key, model, system, payload, output_type):
         if any(len(q) > 500 for q in parsed.questions):
             raise ValueError("Oversized question")
         return parsed
+    except HTTPError as exc:
+        messages = {
+            400: "Groq rejected the request format or model settings (HTTP 400).",
+            401: "Groq did not accept the API key (HTTP 401). Check GROQ_API_KEY in Streamlit secrets.",
+            403: "Groq denied this request (HTTP 403). Check account and model access.",
+            404: "Groq could not find the configured model (HTTP 404). Check GROQ_MODEL.",
+            413: "The complaint context exceeds Groq's request limit (HTTP 413).",
+            429: "Groq's request or token allowance has been reached (HTTP 429). Wait before trying again.",
+        }
+        message = messages.get(exc.code, "Groq is temporarily unavailable (HTTP " + str(exc.code) + ").")
+        raise AIUnavailable(message + " The standard workflow remains available.") from None
+    except (URLError, TimeoutError):
+        raise AIUnavailable("Could not connect to Groq or the request timed out. The standard workflow remains available.") from None
     except Exception:
         # Never expose upstream errors, which may echo credentials or user text.
         raise AIUnavailable("AI assistance could not finish (service limit, connection or response issue). The standard workflow remains available.") from None
