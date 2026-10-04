@@ -5,6 +5,7 @@ require the complainant's district; directory links are labelled separately
 from online complaint forms. No universal statutory deadline is inferred.
 """
 from dataclasses import dataclass
+from .pemra import COUNCILS, SOURCE as PEMRA_SOURCE, council_id
 
 REGIONS = ["Punjab", "Sindh", "Khyber Pakhtunkhwa", "Balochistan", "Islamabad", "Gilgit-Baltistan", "Azad Jammu and Kashmir"]
 PROVINCES = REGIONS[:4]
@@ -133,11 +134,19 @@ add("punjab-rts", "Punjab Right to Public Services - verification required", "Pu
 from .sector_research import register_departments
 register_departments(add)
 
+for id, council in COUNCILS.items():
+    add(id, f"PEMRA Council of Complaints — {council['council']} ({council['city']})",
+        DEPARTMENTS["pemra"].category, PEMRA_SOURCE, regions=(council["region"],),
+        channel="Council filing information", scope=DEPARTMENTS["pemra"].scope,
+        caveat="For programme complaints, use the place where the programme was viewed. Include channel, programme and broadcast date/time.")
+
 CATEGORIES = list(dict.fromkeys(d.category for d in DEPARTMENTS.values()))
 
 
 def available_departments(category, region):
     choices = [d for d in DEPARTMENTS.values() if d.category == category and (not d.regions or region in d.regions)]
+    if council_id(region):
+        choices = [d for d in choices if d.id != "pemra"]
     return sorted(choices, key=lambda d: d.id in ("pta", "nepra"))
 
 

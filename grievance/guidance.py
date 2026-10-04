@@ -211,6 +211,13 @@ extend(PROFILES)
 from .sector_research import extend as extend_sectors
 extend_sectors(PROFILES)
 
+from .pemra import COUNCILS, SOURCE as PEMRA_SOURCE, REVIEWED as PEMRA_REVIEWED, is_pemra
+for id, council in COUNCILS.items():
+    PROFILES[id] = deepcopy(PROFILES["pemra"])
+    PROFILES[id].update(reviewed=PEMRA_REVIEWED, address=council["address"], address_source=PEMRA_SOURCE)
+    if council["phone"]:
+        PROFILES[id]["channels"].append(channel("phone", council["phone"], PEMRA_SOURCE, "Council office contact; retain proof of any formal complaint filing."))
+
 
 def department_guide(department_id, region="", legal_profile=None):
     d = DEPARTMENTS[department_id]
@@ -224,7 +231,11 @@ def department_guide(department_id, region="", legal_profile=None):
     guide.update(department_id=d.id, name=d.name, region=region,
                  reviewed=known.get("reviewed", CHECKED) if known else None,
                  status="Reviewed guidance; check provision-specific limitations" if known else "Directory only — research incomplete")
-    profile = legal_profile or {}
+    profile = legal_profile
+    if profile is None and is_pemra(department_id):
+        from .legal import filing_profile
+        profile = filing_profile(department_id, region or (d.regions[0] if d.regions else ""), "")
+    profile = profile or {}
     guide["recipient"] = profile.get("recipient") or "Exact receiving officer requires verification"
     guide["address"] = profile.get("address") or guide.get("address", "")
     guide["address_source"] = profile.get("endpoint_source") or guide.get("address_source", "")
@@ -234,7 +245,7 @@ def department_guide(department_id, region="", legal_profile=None):
     from .reference_library import library
     guide["local_documents"] = [dict(file=item["file"], pages=item["pages"],
                                      note=item["version_note"], missing_ocr=len(item["pages_needing_ocr"]))
-                                for item in library()["documents"] if d.id in item["department_ids"]]
+                                for item in library()["documents"] if ("pemra" if is_pemra(d.id) else d.id) in item["department_ids"]]
     return guide
 
 

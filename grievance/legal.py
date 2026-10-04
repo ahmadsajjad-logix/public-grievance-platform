@@ -4,6 +4,7 @@ Only the profiles below have provision-level research. An agency URL alone
 does not establish an exact filing recipient or a substantive legal ground.
 """
 import re
+from .pemra import COUNCILS, SOURCE as PEMRA_SOURCE, is_pemra, council_id, recipient
 
 REVIEWED = "2026-10-03"
 COC = "https://www.pemra.gov.pk/coc/"
@@ -24,7 +25,7 @@ def filing_profile(department_id, region, text, complaint_kind=None):
                   endpoint_source="", legal_provisions=[], legal_reviewed=None,
                   legal_status="Directory only - exact recipient and applicable legal provisions are not verified",
                   evidence_needed=[], complaint_kind=complaint_kind)
-    if department_id != "pemra":
+    if not is_pemra(department_id):
         from .guidance import PROFILES
         researched = PROFILES.get(department_id)
         if researched:
@@ -59,10 +60,11 @@ def filing_profile(department_id, region, text, complaint_kind=None):
         return result
     result["recipient"] = "Regional Director, PEMRA - concerned regional office (confirm jurisdiction)"
     result["endpoint_source"] = COC
-    if region == "Islamabad":
-        result.update(recipient="Regional Director, PEMRA Islamabad / Secretary, Council of Complaints Islamabad",
-                      address="3rd Floor, PEMRA Headquarters, Sector G-8/1, Mauve Area, Islamabad",
-                      endpoint_verified=True, endpoint_source=ISLAMABAD)
+    council = COUNCILS.get(council_id(region) if department_id == "pemra" else department_id)
+    if council and council["region"] == region:
+        result.update(recipient=recipient(council), address=council["address"],
+                      endpoint_verified=True, endpoint_source=PEMRA_SOURCE,
+                      endpoint_reviewed="2026-10-04")
     if not complaint_kind or complaint_kind == "Not specified":
         # Conservative fallback for existing callers; ambiguous services need selection.
         content = re.search(r"\b(drama|programme|program|advertisement|content|religious|cultural)\b|ڈرامہ|اشتہار|مواد", text, re.I)

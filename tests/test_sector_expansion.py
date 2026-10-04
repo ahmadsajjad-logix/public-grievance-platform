@@ -46,4 +46,4 @@ def test_regional_and_financial_boundaries():
 def test_electronic_media_category():
     category = "Electronic Media (Radio, TV, Cable TV, etc.)"
     assert category in CATEGORIES and "Broadcasting" not in CATEGORIES
-    assert detect("PEMRA drama complaint", "Islamabad") == (category, "pemra")
+    assert detect("PEMRA drama complaint", "Islamabad") == (category, "pemra-islamabad")

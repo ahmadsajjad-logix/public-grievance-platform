@@ -11,6 +11,7 @@ from grievance.storage import aggregates, save_aggregate
 from grievance.forms import form_guide, form_values
 from grievance.rights import rights_for
 from grievance.channels import complaint_links
+from grievance.pemra import is_pemra
 
 st.set_page_config(page_title="Civic Access | Public Grievance", page_icon="⚖️", layout="wide")
 for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None}.items():
@@ -203,13 +204,13 @@ if page == "Submit Grievance":
             st.caption(department.scope)
             if department.review_required:
                 st.info("The district office or channel needs verification. Enter its name and location below.")
-        complaint_kind = st.selectbox("PEMRA complaint type", KINDS) if department_id == "pemra" else None
+        complaint_kind = st.selectbox("PEMRA complaint type", KINDS) if is_pemra(department_id) else None
         if department_id:
             filing = filing_profile(department_id, region, text, complaint_kind)
             st.info(filing["legal_status"])
             if not filing["endpoint_verified"]:
                 st.warning("This entry does not yet have a verified regional filing recipient. A draft is available, but confirm the recipient and legal grounds before filing.")
-            if department_id == "pemra":
+            if is_pemra(department_id):
                 st.caption("Use the place where the programme was viewed for jurisdiction. Include channel, episode, broadcast date/time, and the specific scenes or dialogue in your complaint.")
             with st.expander("Understand this department and how to complain", expanded=True):
                 guide = department_guide(department_id, region, filing)

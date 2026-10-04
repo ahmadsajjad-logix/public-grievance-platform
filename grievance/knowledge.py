@@ -7,6 +7,7 @@ import hashlib
 import re
 import unicodedata
 from .catalog import CATEGORIES, DEPARTMENTS, STAGES, available_departments, starter_documents, REVIEW_DATE
+from .pemra import is_pemra, council_id
 
 AUTHORITIES = {
     "Electricity": ("NEPRA", "https://nepra.org.pk/CAD-Database/CMS-CAD/home.php", "NEPRA Complaint Handling & Dispute Resolution Procedure Rules, 2015", "https://nepra.org.pk/"),
@@ -55,7 +56,10 @@ def detect(text, region):
         return "Banking", None
     categories = list(dict.fromkeys(d.category for d in named))
     if len(categories) == 1:
-        return categories[0], named[0].id if len(named) == 1 else None
+        selected = named[0].id if len(named) == 1 else None
+        if selected == "pemra":
+            selected = council_id(region) or selected
+        return categories[0], selected
     if len(categories) > 1:
         raise ValueError("More than one department is mentioned. Choose one service category and department for this complaint.")
     scores = {k: sum(1 + len(term.split()) for term in terms.split("|") if contains(text, term)) for k, terms in KEYWORDS.items()}
@@ -147,6 +151,8 @@ def route(text, category, documents, region="Punjab", department_id=None,
     if category == "Gas & petroleum" and any(contains(text, s) for s in ("leak", "leakage", "گیس لیک", "gas leak")):
         notes.append("For a current gas leak, move away from the hazard and contact the utility's emergency service immediately. Do not wait for a complaint draft.")
     allowed_ids = {department.id, target.id}
+    if is_pemra(department.id):
+        allowed_ids.add("pemra")  # Shared PEMRA laws and supplied source documents.
     from .guidance import research_documents, department_guide
     from .reference_library import scoped_references
     scoped = [d for d in [*research_documents(), *starter_documents(), *documents]

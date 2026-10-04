@@ -16,7 +16,7 @@ def test_islamabad_content_complaint_has_recipient_and_relevant_law():
 
 
 def test_unresearched_region_and_department_never_claim_verified_endpoint():
-    assert not filing_profile("pemra", "Punjab", "drama")["endpoint_verified"]
+    assert not filing_profile("pemra", "Gilgit-Baltistan", "drama")["endpoint_verified"]
     result = filing_profile("pta", "Islamabad", "billing")
     assert not result["endpoint_verified"] and not result["legal_provisions"]
 

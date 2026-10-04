@@ -68,6 +68,8 @@ The department directory covers federal regulators, electricity and gas provider
 
 ## Project documents
 
+PEMRA council routing (reviewed 4 October 2026): the Electronic Media department selector shows the Council listed for the selected province: Punjab (Lahore), Sindh (Karachi), Khyber Pakhtunkhwa (Peshawar), Balochistan (Quetta), or Islamabad. Petitions and guides use the corresponding Regional Director / Council Secretary and official Council address. Sources: [current Council directory](https://www.pemra.gov.pk/coc/) and [regional office directory](https://www.pemra.gov.pk/contact/). Regional offices are not automatically treated as separate Councils; historical Multan Council material does not establish a current listing. AJK and GB retain the jurisdiction/recipient warning and are not assigned a local Council. Formal appeals still require decision-specific review.
+
 - [Product Requirements Document (Word)](docs/Civic%20Access%20Product%20Requirements%20Document.docx)
 - [Project presentation (PowerPoint)](docs/Civic%20Access%20Project%20Presentation.pptx)
 - [Product Requirements Document (Markdown)](docs/Product%20Requirements%20Document.md)
