@@ -84,12 +84,13 @@ def test_local_offices_keep_their_identity_and_do_not_claim_separate_council():
         result = route("Drama content against religious values", CATEGORY, [],
                        region=office["region"], department_id=id)
         assert result["body"] == f"Regional Director, PEMRA {office['city']}"
-        assert not result["endpoint_verified"]
-        assert "separate Council" in result["endpoint_note"]
+        assert result["endpoint_verified"]
+        assert result["receiving_council"] == f"Council of Complaints {office['region']}"
+        assert result["routing_note"] in result["notes"]
         assert result["legal_provisions"]
         guide = result["filing_guide"]
         assert any(c["value"] == office["phone"] for c in guide["channels"])
-        assert "current Council directory" in guide["procedure"][0]
+        assert "receives complaints locally" in guide["procedure"][0]
         assert guide["local_documents"]
         assert not guide["map"]  # Do not invent a postal address from an office name.
 
@@ -100,7 +101,8 @@ def test_local_office_selection_in_app():
     app.selectbox(key="category").set_value(CATEGORY).run()
     app.selectbox(key="department").set_value("pemra-multan").run()
     assert not app.exception
-    assert any("Official regional office listed" in w.value for w in app.warning)
+    assert not app.warning
+    assert any("Council of Complaints Punjab in Lahore" in i.value for i in app.info)
     app.selectbox(key="region").set_value("Sindh").run()
     assert app.selectbox(key="department").value is None
     app.selectbox(key="department").set_value("pemra-hyderabad").run()

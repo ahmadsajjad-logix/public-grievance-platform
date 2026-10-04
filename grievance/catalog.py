@@ -144,8 +144,8 @@ for id, council in COUNCILS.items():
 for id, office in OFFICES.items():
     add(id, f"PEMRA Regional Office — {office['city']}", DEPARTMENTS["pemra"].category,
         OFFICE_SOURCE, regions=(office["region"],), channel="Regional office contact",
-        scope="Local PEMRA office for assistance with electronic-media complaints and the appropriate Council filing route.",
-        caveat="This is an officially listed regional office. Confirm complaint acceptance, territorial coverage and the current postal address with the office; a separate Council at this location is not confirmed by the current Council directory.")
+        scope="Receives electronic-media complaints locally and routes Council matters to the province's Council of Complaints.",
+        caveat=f"Submit at the {office['city']} regional office and retain its acknowledgment. Council matters are routed to the Council of Complaints {office['region']}.")
 
 CATEGORIES = list(dict.fromkeys(d.category for d in DEPARTMENTS.values()))
 

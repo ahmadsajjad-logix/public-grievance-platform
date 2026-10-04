@@ -211,7 +211,7 @@ extend(PROFILES)
 from .sector_research import extend as extend_sectors
 extend_sectors(PROFILES)
 
-from .pemra import COUNCILS, OFFICES, OFFICE_SOURCE, SOURCE as PEMRA_SOURCE, REVIEWED as PEMRA_REVIEWED, is_pemra, council_id, recipient
+from .pemra import COUNCILS, OFFICES, OFFICE_SOURCE, SOURCE as PEMRA_SOURCE, REVIEWED as PEMRA_REVIEWED, is_pemra, council_id
 for id, council in COUNCILS.items():
     PROFILES[id] = deepcopy(PROFILES["pemra"])
     PROFILES[id].update(reviewed=PEMRA_REVIEWED, address=council["address"], address_source=PEMRA_SOURCE)
@@ -223,8 +223,10 @@ for id, office in OFFICES.items():
     council = COUNCILS[council_id(office["region"])]
     PROFILES[id].update(reviewed=PEMRA_REVIEWED, address="", address_source=OFFICE_SOURCE)
     PROFILES[id]["sources"].append(OFFICE_SOURCE)
-    PROFILES[id]["channels"].insert(0, channel("phone", office["phone"], OFFICE_SOURCE, "Ask about local complaint acceptance, territorial coverage and the current postal address."))
-    PROFILES[id]["procedure"].insert(0, f"Contact the {office['city']} Regional Office for local assistance. The current Council directory lists {recipient(council)}, at {council['address']}. Confirm whether to lodge locally or with that Council. Regional offices are not automatically separate Councils.")
+    PROFILES[id]["sources"].append("https://www.pemra.gov.pk/assets/uploads/legal/coc_rules_2010.pdf")
+    PROFILES[id]["channels"].insert(0, channel("phone", office["phone"], OFFICE_SOURCE, "Contact the receiving regional office for its current postal address, visiting hours and complaint follow-up."))
+    PROFILES[id]["procedure"][1] = f"Address the complaint to the Regional Director, PEMRA {office['city']}. Include the specific scenes/dialogue and requested remedy."
+    PROFILES[id]["procedure"].insert(0, f"File at PEMRA Regional Office {office['city']}, which receives complaints locally and routes Council matters to the Council of Complaints {council['council']} in {council['city']}. Keep the regional office's acknowledgment. The receiving office and the Council are separate stages of this route.")
 
 
 def department_guide(department_id, region="", legal_profile=None):

@@ -63,8 +63,9 @@ def filing_profile(department_id, region, text, complaint_kind=None):
     office = OFFICES.get(department_id)
     if office and office["region"] == region:
         result.update(recipient=f"Regional Director, PEMRA {office['city']}",
-                      endpoint_source=OFFICE_SOURCE, endpoint_reviewed="2026-10-04",
-                      endpoint_note="Official regional office listed. Contact it to confirm complaint acceptance and the relevant Council route before filing; a separate Council at this location is not confirmed.")
+                      endpoint_verified=True, endpoint_source=OFFICE_SOURCE, endpoint_reviewed="2026-10-04",
+                      receiving_council=f"Council of Complaints {office['region']}",
+                      routing_note=f"Submit to PEMRA Regional Office {office['city']}. The office receives the complaint and routes Council matters to the Council of Complaints {office['region']} in {COUNCILS[council_id(region)]['city']}. Keep the receiving office's acknowledgment.")
     council = COUNCILS.get(council_id(region) if department_id == "pemra" else department_id)
     if council and council["region"] == region:
         result.update(recipient=recipient(council), address=council["address"],

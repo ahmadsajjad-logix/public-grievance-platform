@@ -192,7 +192,7 @@ if page == "Submit Grievance":
             st.info("Complain to your bank or financial institution first through Sunwai. Banking Mohtasib handles eligible commercial-bank complaints; SBP handles specified cases, including microfinance. SBP is not a general appeal from Banking Mohtasib.")
             st.link_button("Open Sunwai — complain to your financial institution", "https://sunwai.sbp.org.pk/")
         elif category == "Electronic Media (Radio, TV, Cable TV, etc.)":
-            st.caption("Choose the Council or local PEMRA regional office for your area. Regional offices are labelled separately; confirm their complaint acceptance and territorial coverage. For programme complaints, the place where you viewed the programme matters.")
+            st.caption("Choose the Council or local PEMRA regional office for your area. Regional offices receive complaints and route Council matters to their province's Council of Complaints. For programme complaints, the place where you viewed the programme matters.")
         departments = available_departments(category, region)
         ids = [None] + [d.id for d in departments]
         if st.session_state.get("department") not in ids:
@@ -210,6 +210,8 @@ if page == "Submit Grievance":
         if department_id:
             filing = filing_profile(department_id, region, text, complaint_kind)
             st.info(filing["legal_status"])
+            if filing.get("routing_note"):
+                st.info(filing["routing_note"])
             if not filing["endpoint_verified"]:
                 st.warning(filing.get("endpoint_note") or "This entry does not yet have a verified regional filing recipient. A draft is available, but confirm the recipient and legal grounds before filing.")
             if is_pemra(department_id):

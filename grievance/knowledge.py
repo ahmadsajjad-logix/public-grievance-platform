@@ -166,6 +166,8 @@ def route(text, category, documents, region="Punjab", department_id=None,
     hits, backend = retrieve(text + " " + department.name, scoped, limit=5)
     from .legal import filing_profile
     profile = filing_profile(target.id, region, text, complaint_kind)
+    if profile.get("routing_note") and stage != "Challenge a formal decision":
+        notes.append(profile["routing_note"])
     if stage == "Challenge a formal decision":
         profile.update(endpoint_verified=False, legal_provisions=[], legal_status="Formal appeal recipient, provisions and limitation period require decision-specific review")
     if in_court and target.id in ("wafaqi", "omb-kp", "banking-mohtasib"):
