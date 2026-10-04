@@ -51,6 +51,11 @@ def test_streamlit_prepares_case():
     app.text_input(key="cnic").set_value("12345-1234567-1")
     app.date_input(key="cnic_expiry").set_value(date(2030, 1, 1))
     app.text_input(key="mobile").set_value("03001234567")
+    app.text_input(key="applicant_name").set_value("   ")
+    next(b for b in app.button if b.label == "Prepare my grievance").click().run()
+    assert app.session_state["current"] is None
+    assert any("Enter the applicant's name" in e.value for e in app.error)
+    app.text_input(key="applicant_name").set_value("Test Applicant")
     next(b for b in app.button if b.label == "Prepare my grievance").click().run(timeout=20)
     assert not app.exception
     assert app.session_state["current"]["route"]["stage"] == "First complaint"

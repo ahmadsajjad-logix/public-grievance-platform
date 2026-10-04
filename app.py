@@ -229,7 +229,7 @@ if page == "Submit Grievance":
                 cnic_expiry = st.date_input("CNIC expiry date (required)", value=None, min_value=date(1900, 1, 1), max_value=date(2200, 12, 31), key="cnic_expiry")
                 mobile = st.text_input("Mobile number (required)", placeholder="03001234567", max_chars=20, key="mobile")
                 st.caption("These details stay in this session and appear in your draft PDF. They are not included in aggregate analytics. Format checks do not verify identity or phone ownership.")
-                name = st.text_input("Applicant name (optional)", max_chars=120)
+                name = st.text_input("Applicant name (required)", max_chars=120, key="applicant_name").strip()
                 city = st.text_input("City / district and exact office or facility (optional)", max_chars=240)
                 remedy = st.text_area("What resolution do you want?", value="Please investigate this complaint, correct the service issue, and provide a written response.", max_chars=3000)
                 reference = st.text_input("Service / consumer / application reference (optional)", max_chars=100)
@@ -260,6 +260,8 @@ if page == "Submit Grievance":
                 st.error(str(exc))
             if not text.strip() or not department_id:
                 st.error("Enter your complaint and choose the department/provider.")
+            elif not name:
+                st.error("Enter the applicant's name.")
             elif identity is not None:
                 files = {k: {"name": v.name, "bytes": v.getvalue()} if v else None for k, v in uploads.items()}
                 case = agents.new_case(name, region, remedy, reference, days)
