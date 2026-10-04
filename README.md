@@ -12,13 +12,13 @@ python -m venv .venv
 .\.venv\Scripts\python -m streamlit run app.py
 ```
 
-No API key is needed. Type your complaint in Urdu, Roman Urdu or English and confirm the department. CNIC number, CNIC expiry date and Pakistani mobile number are required identity fields. Name, location, reference details and all uploads are optional. Identity fields are checked for format only, without NADRA or phone-owner verification. They appear in the draft PDF and stay in session memory, outside aggregate analytics.
+No API key is needed for the standard workflow; optional AI assistance uses a Groq key. Type your complaint in Urdu, Roman Urdu or English and confirm the department. Applicant name, CNIC number, CNIC expiry date and Pakistani mobile number are required identity fields. Location, reference details and all uploads are optional. Identity fields are checked for format only, without NADRA or phone-owner verification. They appear in the draft PDF and stay in session memory, outside aggregate analytics.
 
 Audio input has been withdrawn because Urdu transcription accuracy was insufficient. The archived speech module is not used by the app and no speech model downloads occur in the deployed workflow.
 
 ## Deploy on Streamlit Community Cloud
 
-Deploy `ahmadsajjad-logix/public-grievance-platform`, branch `main`, entrypoint `app.py`, with Python **3.13**. No API secrets are needed. The live app is https://public-grievance-platform.streamlit.app/.
+Deploy `ahmadsajjad-logix/public-grievance-platform`, branch `main`, entrypoint `app.py`, with Python **3.13**. Standard preparation needs no API secrets; optional AI assistance requires the Groq settings below. The live app is https://public-grievance-platform.streamlit.app/.
 
 Bundled Noto fonts provide Urdu PDF shaping; PDF previews render directly as images. OCR uses Tesseract, installed by `packages.txt` on Cloud. All attachments are optional. A missing local office or earlier reference produces review guidance without blocking the draft. An unresolved complaint without an earlier reference stays addressed to the selected office pending review.
 
@@ -66,7 +66,24 @@ The department directory covers federal regulators, electricity and gas provider
 .\.venv\Scripts\python -m pytest -q
 ```
 
-## Project documents
+## Optional Groq AI assistance
+
+In Streamlit Community Cloud, open the app settings and add these entries in **Secrets** (use your own key, never commit it):
+
+```toml
+GROQ_API_KEY = "your-private-groq-key"
+GROQ_MODEL = "openai/gpt-oss-120b"
+```
+
+For local use, put the same entries in the ignored `.streamlit/secrets.toml`, or set environment variables. A placeholder-only example is in `.streamlit/secrets.toml.example`. Enable Zero Data Retention in Groq's Data Controls. The key belongs to the app operator; complainants do not need a Groq account.
+
+Users explicitly enable AI assistance before text is sent to Groq. It suggests a department from the permitted directory and drafts wording using supplied official guidance and provisions. The app validates department/category/region combinations and source IDs. Original facts, source-grounded legal clauses and routing remain under application control; AI wording must be reviewed and applied before entering the petition or portal text. The model cannot submit complaints or add authorities to the directory.
+
+Separate identity fields and uploads are excluded. Recognizable CNIC/mobile/email patterns and known identity values in draft text are masked; this is not complete anonymization of free text. Users are told that other personal information in their narrative may be transmitted. API inputs, responses and keys are not written to logs or shared caches. The hosted API has a fixed HTTPS endpoint, a request timeout, no automatic retries and bounded output. Failures or rate limits fall back to the existing workflow. No live Groq availability or multilingual accuracy is implied by mocked integration tests; verify with synthetic complaints after configuring the key.
+
+Official API references: [structured outputs](https://console.groq.com/docs/structured-outputs), [model](https://console.groq.com/docs/model/openai/gpt-oss-120b), [data controls](https://console.groq.com/docs/your-data).
+
+## Project documents and routing notes
 
 Complaint recipients default to the selected department or service provider (for example, Jazz). A researched regional recipient overrides that default where available. The app, guides and petitions do not require a regional officer for every complaint or warn merely because none is listed. This fallback is not a claim that a named officer was verified; substantive jurisdiction, formal appeal and eligibility checks remain separate.
 

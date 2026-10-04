@@ -96,8 +96,8 @@ def dispatch(case, mode=None):
 def filing_text(case):
     """Portal-ready narrative without duplicating identity fields or inventing facts."""
     route = case["route"]
-    parts = ["Statement of complaint", case["intake"]["text"],
-             "Requested resolution", case["remedy"]]
+    parts = ["Statement of complaint", case.get("reviewed_statement", case["intake"]["text"]),
+             "Requested resolution", case.get("reviewed_remedy", case["remedy"])]
     if case.get("reference"):
         parts.extend(["Service / application reference", case["reference"]])
     if route.get("prior_reference"):

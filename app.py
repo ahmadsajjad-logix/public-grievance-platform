@@ -12,6 +12,7 @@ from grievance.forms import form_guide, form_values
 from grievance.rights import rights_for
 from grievance.channels import complaint_links
 from grievance.pemra import is_pemra
+from grievance import llm
 
 st.set_page_config(page_title="Civic Access | Public Grievance", page_icon="⚖️", layout="wide")
 for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None}.items():
@@ -20,7 +21,7 @@ for key, default in {"cases": [], "manuals": [], "pipeline": {}, "current": None
 st.sidebar.title("⚖️ Civic Access")
 st.sidebar.caption("Pak Angels • Pakistan National Impact Challenge")
 page = st.sidebar.radio("Workspace", ["Submit Grievance", "FIR & Offence Guide", "Right to Information (RTI)", "My drafts & filing records", "Analytics & Heatmap", "Department Directory", "Knowledge Base Admin"])
-st.sidebar.info("Prepare here, submit to the authority yourself. Nothing is sent automatically. Private case details stay in this session on the app server; uploaded documents are not saved to disk.")
+st.sidebar.info("Prepare here, submit to the authority yourself. Case records stay in this session; uploaded documents are not saved to disk. Optional AI assistance sends complaint text to Groq only when you enable it.")
 st.title("Public Grievance & Statutory Escalation Platform")
 st.caption("A clearer path from a public service problem to a prepared complaint.")
 
@@ -103,6 +104,24 @@ def downloads(case):
         return
     st.info(f"{case['route']['body']} • Draft prepared — not submitted by this app")
     st.caption(f"Local draft ID: {case['id'][:12]}. This is not an official tracking number.")
+    if case.get("ai_message"):
+        st.info(case["ai_message"])
+    if case.get("ai_draft"):
+        with st.expander("Review AI-suggested complaint wording", expanded=True):
+            st.caption("Check every fact and restore any [private detail] placeholders before using this wording. The original complaint remains saved in this session. Official provisions and the filing recipient remain controlled by the app.")
+            suggestion = case["ai_draft"]
+            revised = st.text_area("Review complaint statement", suggestion["statement"], key="ai-statement-" + case["id"], max_chars=12000)
+            relief = st.text_area("Review requested resolution", suggestion["remedy"], key="ai-remedy-" + case["id"], max_chars=3000)
+            for question in suggestion["questions"]:
+                st.write(question)
+            if st.button("Use this reviewed wording in my petition", key="apply-ai-" + case["id"]):
+                if revised.strip() and relief.strip():
+                    case["reviewed_statement"] = revised.strip()
+                    case["reviewed_remedy"] = relief.strip()
+                    case["pdf"] = agents.petition(case)
+                    st.success("Reviewed wording applied to your petition and copyable complaint.")
+                else:
+                    st.error("Both the complaint statement and requested resolution are required.")
     guide = case["route"].get("filing_guide")
     if guide:
         with st.expander("Your department and filing guide", expanded=True):
@@ -175,9 +194,27 @@ if page == "Submit Grievance":
         region = st.selectbox("Province / territory of the complaint", REGIONS, key="region")
         st.caption("Write your complaint in Urdu, Roman Urdu or English. Select the department below or ask for a suggestion, then confirm it.")
         text = st.text_area("Complaint • English, Roman Urdu or Urdu", key="narrative", height=170, max_chars=12000)
+        groq_key, groq_model = llm.settings(st.secrets)
+        ai_enabled = st.checkbox("Use AI assistance for department suggestions and draft wording", key="ai_enabled", disabled=not bool(groq_key))
+        st.caption("Optional: sends complaint text, requested resolution and official reference extracts to Groq. Separate identity fields and uploads are excluded; recognizable CNIC, mobile and email patterns are masked. Names or private details typed in the narrative may remain. Review your text before enabling.")
+        if not groq_key:
+            st.caption("AI assistance is not configured. Standard complaint preparation is available.")
         if st.button("suggest Complaint based relevant department"):
             try:
-                suggested_category, suggested_id = detect(text, region)
+                ai_result = None
+                if ai_enabled and groq_key:
+                    try:
+                        with st.spinner("Understanding your complaint"):
+                            ai_result = llm.suggest(text, region, groq_key, groq_model)
+                    except llm.AIUnavailable as exc:
+                        st.info(str(exc))
+                if ai_result:
+                    suggested_category, suggested_id = ai_result.category, ai_result.department_id or None
+                    st.info(ai_result.explanation)
+                    for question in ai_result.questions:
+                        st.write(question)
+                else:
+                    suggested_category, suggested_id = detect(text, region)
                 st.session_state["category"] = suggested_category
                 options = available_departments(suggested_category, region)
                 st.session_state["department"] = suggested_id if suggested_id in [d.id for d in options] else None
@@ -280,6 +317,12 @@ if page == "Submit Grievance":
                             elif stage == agents.STAGES[2]:
                                 case["audit"] = agents.audit(files, case["route"]["category"], complaint_stage, payment_dispute)
                             elif stage == agents.STAGES[3]:
+                                if ai_enabled and groq_key:
+                                    try:
+                                        case["ai_draft"] = llm.draft(case, groq_key, groq_model).model_dump()
+                                        case["ai_message"] = "AI wording is ready for your review in Petition & Downloads. The original wording is used until you apply the reviewed version."
+                                    except llm.AIUnavailable as exc:
+                                        case["ai_message"] = str(exc)
                                 case["pdf"] = agents.petition(case)
                             elif stage == agents.STAGES[4]:
                                 case["dispatch"] = agents.dispatch(case)

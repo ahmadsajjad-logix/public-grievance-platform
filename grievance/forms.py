@@ -72,7 +72,7 @@ def form_guide(department_id):
 def form_values(case):
     """Only copyable case content, no automatic CNIC/phone/name transmission."""
     from .agents import filing_text
-    return dict(narrative=case["intake"]["text"], complaint=filing_text(case),
+    return dict(narrative=case.get("reviewed_statement", case["intake"]["text"]), complaint=filing_text(case),
                 reference=case.get("reference", ""), prior_reference=case["route"].get("prior_reference", ""))
 
 
