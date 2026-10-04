@@ -68,6 +68,8 @@ The department directory covers federal regulators, electricity and gas provider
 
 ## Project documents
 
+PEMRA local choices also include Gujranwala, Faisalabad, Sargodha and Multan in Punjab; Hyderabad and Sukkur in Sindh; and Peshawar North in KP. The Peshawar Council choice identifies the South office location. These additional choices are labelled regional offices, using the official contact directory, with phone contacts and guidance to confirm local acceptance and the appropriate Council route. They are not asserted to be separately constituted Councils, and no unverified street address or office map is generated. Quetta remains the only Balochistan location listed in the current official directory.
+
 PEMRA council routing (reviewed 4 October 2026): the Electronic Media department selector shows the Council listed for the selected province: Punjab (Lahore), Sindh (Karachi), Khyber Pakhtunkhwa (Peshawar), Balochistan (Quetta), or Islamabad. Petitions and guides use the corresponding Regional Director / Council Secretary and official Council address. Sources: [current Council directory](https://www.pemra.gov.pk/coc/) and [regional office directory](https://www.pemra.gov.pk/contact/). Regional offices are not automatically treated as separate Councils; historical Multan Council material does not establish a current listing. AJK and GB retain the jurisdiction/recipient warning and are not assigned a local Council. Formal appeals still require decision-specific review.
 
 - [Product Requirements Document (Word)](docs/Civic%20Access%20Product%20Requirements%20Document.docx)

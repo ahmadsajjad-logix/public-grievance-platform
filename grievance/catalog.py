@@ -5,7 +5,7 @@ require the complainant's district; directory links are labelled separately
 from online complaint forms. No universal statutory deadline is inferred.
 """
 from dataclasses import dataclass
-from .pemra import COUNCILS, SOURCE as PEMRA_SOURCE, council_id
+from .pemra import COUNCILS, OFFICES, OFFICE_SOURCE, SOURCE as PEMRA_SOURCE, council_id
 
 REGIONS = ["Punjab", "Sindh", "Khyber Pakhtunkhwa", "Balochistan", "Islamabad", "Gilgit-Baltistan", "Azad Jammu and Kashmir"]
 PROVINCES = REGIONS[:4]
@@ -135,10 +135,17 @@ from .sector_research import register_departments
 register_departments(add)
 
 for id, council in COUNCILS.items():
-    add(id, f"PEMRA Council of Complaints — {council['council']} ({council['city']})",
+    city_label = "Peshawar South" if id == "pemra-peshawar" else council["city"]
+    add(id, f"PEMRA Council of Complaints — {council['council']} ({city_label})",
         DEPARTMENTS["pemra"].category, PEMRA_SOURCE, regions=(council["region"],),
         channel="Council filing information", scope=DEPARTMENTS["pemra"].scope,
         caveat="For programme complaints, use the place where the programme was viewed. Include channel, programme and broadcast date/time.")
+
+for id, office in OFFICES.items():
+    add(id, f"PEMRA Regional Office — {office['city']}", DEPARTMENTS["pemra"].category,
+        OFFICE_SOURCE, regions=(office["region"],), channel="Regional office contact",
+        scope="Local PEMRA office for assistance with electronic-media complaints and the appropriate Council filing route.",
+        caveat="This is an officially listed regional office. Confirm complaint acceptance, territorial coverage and the current postal address with the office; a separate Council at this location is not confirmed by the current Council directory.")
 
 CATEGORIES = list(dict.fromkeys(d.category for d in DEPARTMENTS.values()))
 

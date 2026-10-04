@@ -22,7 +22,7 @@ CASES = [
 
 @pytest.mark.parametrize("region,id,city,address", CASES)
 def test_council_selection_routes_pdf_and_guidance(region, id, city, address):
-    assert [d.id for d in available_departments(CATEGORY, region)] == [id]
+    assert id in [d.id for d in available_departments(CATEGORY, region)]
     assert detect("PEMRA drama complaint", region) == (CATEGORY, id)
     result = route("Drama content against religious values", CATEGORY, [], region=region, department_id=id)
     assert result["endpoint_verified"] and city in result["body"]
@@ -66,3 +66,42 @@ def test_province_switch_clears_stale_council_and_no_missing_recipient_warning()
         app.selectbox(key="department").set_value("pemra").run()
         assert not app.exception
         assert any("verified regional filing recipient" in w.value for w in app.warning)
+
+
+@pytest.mark.parametrize("region,expected", [
+    ("Punjab", {"pemra-lahore", "pemra-gujranwala", "pemra-faisalabad", "pemra-sargodha", "pemra-multan"}),
+    ("Sindh", {"pemra-karachi", "pemra-hyderabad", "pemra-sukkur"}),
+    ("Khyber Pakhtunkhwa", {"pemra-peshawar", "pemra-peshawar-north"}),
+    ("Balochistan", {"pemra-quetta"}),
+])
+def test_all_official_regional_choices_are_province_filtered(region, expected):
+    assert {d.id for d in available_departments(CATEGORY, region)} == expected
+
+
+def test_local_offices_keep_their_identity_and_do_not_claim_separate_council():
+    from grievance.pemra import OFFICES
+    for id, office in OFFICES.items():
+        result = route("Drama content against religious values", CATEGORY, [],
+                       region=office["region"], department_id=id)
+        assert result["body"] == f"Regional Director, PEMRA {office['city']}"
+        assert not result["endpoint_verified"]
+        assert "separate Council" in result["endpoint_note"]
+        assert result["legal_provisions"]
+        guide = result["filing_guide"]
+        assert any(c["value"] == office["phone"] for c in guide["channels"])
+        assert "current Council directory" in guide["procedure"][0]
+        assert guide["local_documents"]
+        assert not guide["map"]  # Do not invent a postal address from an office name.
+
+
+def test_local_office_selection_in_app():
+    from streamlit.testing.v1 import AppTest
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "app.py")).run()
+    app.selectbox(key="category").set_value(CATEGORY).run()
+    app.selectbox(key="department").set_value("pemra-multan").run()
+    assert not app.exception
+    assert any("Official regional office listed" in w.value for w in app.warning)
+    app.selectbox(key="region").set_value("Sindh").run()
+    assert app.selectbox(key="department").value is None
+    app.selectbox(key="department").set_value("pemra-hyderabad").run()
+    assert not app.exception

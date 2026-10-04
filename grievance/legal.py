@@ -4,7 +4,7 @@ Only the profiles below have provision-level research. An agency URL alone
 does not establish an exact filing recipient or a substantive legal ground.
 """
 import re
-from .pemra import COUNCILS, SOURCE as PEMRA_SOURCE, is_pemra, council_id, recipient
+from .pemra import COUNCILS, OFFICES, OFFICE_SOURCE, SOURCE as PEMRA_SOURCE, is_pemra, council_id, recipient
 
 REVIEWED = "2026-10-03"
 COC = "https://www.pemra.gov.pk/coc/"
@@ -60,6 +60,11 @@ def filing_profile(department_id, region, text, complaint_kind=None):
         return result
     result["recipient"] = "Regional Director, PEMRA - concerned regional office (confirm jurisdiction)"
     result["endpoint_source"] = COC
+    office = OFFICES.get(department_id)
+    if office and office["region"] == region:
+        result.update(recipient=f"Regional Director, PEMRA {office['city']}",
+                      endpoint_source=OFFICE_SOURCE, endpoint_reviewed="2026-10-04",
+                      endpoint_note="Official regional office listed. Contact it to confirm complaint acceptance and the relevant Council route before filing; a separate Council at this location is not confirmed.")
     council = COUNCILS.get(council_id(region) if department_id == "pemra" else department_id)
     if council and council["region"] == region:
         result.update(recipient=recipient(council), address=council["address"],

@@ -211,12 +211,20 @@ extend(PROFILES)
 from .sector_research import extend as extend_sectors
 extend_sectors(PROFILES)
 
-from .pemra import COUNCILS, SOURCE as PEMRA_SOURCE, REVIEWED as PEMRA_REVIEWED, is_pemra
+from .pemra import COUNCILS, OFFICES, OFFICE_SOURCE, SOURCE as PEMRA_SOURCE, REVIEWED as PEMRA_REVIEWED, is_pemra, council_id, recipient
 for id, council in COUNCILS.items():
     PROFILES[id] = deepcopy(PROFILES["pemra"])
     PROFILES[id].update(reviewed=PEMRA_REVIEWED, address=council["address"], address_source=PEMRA_SOURCE)
     if council["phone"]:
         PROFILES[id]["channels"].append(channel("phone", council["phone"], PEMRA_SOURCE, "Council office contact; retain proof of any formal complaint filing."))
+
+for id, office in OFFICES.items():
+    PROFILES[id] = deepcopy(PROFILES["pemra"])
+    council = COUNCILS[council_id(office["region"])]
+    PROFILES[id].update(reviewed=PEMRA_REVIEWED, address="", address_source=OFFICE_SOURCE)
+    PROFILES[id]["sources"].append(OFFICE_SOURCE)
+    PROFILES[id]["channels"].insert(0, channel("phone", office["phone"], OFFICE_SOURCE, "Ask about local complaint acceptance, territorial coverage and the current postal address."))
+    PROFILES[id]["procedure"].insert(0, f"Contact the {office['city']} Regional Office for local assistance. The current Council directory lists {recipient(council)}, at {council['address']}. Confirm whether to lodge locally or with that Council. Regional offices are not automatically separate Councils.")
 
 
 def department_guide(department_id, region="", legal_profile=None):
