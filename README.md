@@ -66,6 +66,14 @@ The department directory covers federal regulators, electricity and gas provider
 .\.venv\Scripts\python -m pytest -q
 ```
 
+## Project documents
+
+- [Product Requirements Document (Word)](docs/Civic%20Access%20Product%20Requirements%20Document.docx)
+- [Project presentation (PowerPoint)](docs/Civic%20Access%20Project%20Presentation.pptx)
+- [Product Requirements Document (Markdown)](docs/Product%20Requirements%20Document.md)
+
+The PRD and presentation include the project team and distinguish the current implementation from planned capabilities.
+
 ## GitHub
 
 The repository ignores keys, virtual environments and the local analytics database. Review files and create a GitHub repository, then set its remote and push. Publishing requires a chosen account/repository and working GitHub authentication; no remote is assumed.
