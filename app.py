@@ -194,7 +194,7 @@ if page == "Submit Grievance":
         ids = [None] + [d.id for d in departments]
         if st.session_state.get("department") not in ids:
             st.session_state["department"] = None
-        department_id = st.selectbox("Department / provider", ids, key="department",
+        department_id = st.selectbox("Department / Service Provider", ids, key="department",
                                      format_func=lambda id: DEPARTMENTS[id].name if id else "Choose department / provider")
         if not departments:
             st.info("This region has no verified directory entry for this category yet. Choose a listed federal forum where applicable; local jurisdiction needs verification.")
