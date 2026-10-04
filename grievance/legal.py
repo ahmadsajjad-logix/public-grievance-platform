@@ -67,7 +67,7 @@ def filing_profile(department_id, region, text, complaint_kind=None):
                       endpoint_reviewed="2026-10-04")
     if not complaint_kind or complaint_kind == "Not specified":
         # Conservative fallback for existing callers; ambiguous services need selection.
-        content = re.search(r"\b(drama|programme|program|advertisement|content|religious|cultural)\b|ڈرامہ|اشتہار|مواد", text, re.I)
+        content = re.search(r"\b(drama|dramma|programme|program|advertisement|content|religious|cultural)\b|ڈرامہ|ڈراما|اشتہار|مواد", text, re.I)
         service = re.search(r"\b(bill|billing|connection|salary|wages)\b", text, re.I)
         complaint_kind = "Programme / advertisement content" if content and not service else "Not specified"
     result["complaint_kind"] = complaint_kind

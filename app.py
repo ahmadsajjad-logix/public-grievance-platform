@@ -175,7 +175,7 @@ if page == "Submit Grievance":
         region = st.selectbox("Province / territory of the complaint", REGIONS, key="region")
         st.caption("Write your complaint in Urdu, Roman Urdu or English. Select the department below or ask for a suggestion, then confirm it.")
         text = st.text_area("Complaint • English, Roman Urdu or Urdu", key="narrative", height=170, max_chars=12000)
-        if st.button("Suggest department from my complaint"):
+        if st.button("suggest Complaint based relevant department"):
             try:
                 suggested_category, suggested_id = detect(text, region)
                 st.session_state["category"] = suggested_category

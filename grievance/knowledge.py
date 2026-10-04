@@ -21,7 +21,7 @@ KEYWORDS = {
     "Electricity": "electricity|electric|load shedding|loadshedding|bijli|wapda|بجلی|لوڈ شیڈنگ",
     "Gas & petroleum": "gas|petrol|petroleum|lpg|cng|گیس|پٹرول",
     "Telecom": "telecom|internet|mobile network|sim|spam|انٹرنیٹ|سم|اسپیم",
-    "Electronic Media (Radio, TV, Cable TV, etc.)": "broadcast|television|tv channel|cable|drama|drama serial|نشریات|کیبل|ٹی وی|ڈرامہ",
+    "Electronic Media (Radio, TV, Cable TV, etc.)": "broadcast|television|tv|tv channel|cable|drama|dramma|drama serial|نشریات|کیبل|ٹی وی|ڈرامہ|ڈراما",
     "Federal administration": "federal|pension|passport|nadra|وفاقی|پنشن|پاسپورٹ|نادرا",
     "Tax administration": "tax refund|income tax|customs|fbr|tax|ٹیکس|کسٹمز",
     "Cybercrime": "cybercrime|hacking|hacked|online harassment|online fraud|identity theft|blackmail|فراڈ|ہیک|بلیک میل|آن لائن ہراسانی",
@@ -67,7 +67,10 @@ def detect(text, region):
     winners = [k for k, score in scores.items() if score == best and score > 0]
     if len(winners) != 1:
         raise ValueError("Jurisdiction is unclear. Select the service category and department.")
-    return winners[0], None
+    category = winners[0]
+    if category == "Electronic Media (Radio, TV, Cable TV, etc.)":
+        return category, council_id(region) or "pemra"
+    return category, None
 
 def tokens(text):
     return re.findall(r"\w+", text.casefold())
